@@ -217,7 +217,7 @@ watch([elementX, elementY], () => {
   background-color: #daa520;
 }
 .sectionHolder {
-  height: 50px;
+  height: 20px;
   width: 100vw;
   max-width: 100%;
   background-color: #daa520;

@@ -157,29 +157,33 @@ function stopCarousel() {
 button {
   padding: 10px;
   margin: 5px;
+  color: #daa520;
+  background-color: rgba(0, 0, 0, 0.642);
+  border-radius: 15px;
 }
 
 .carouselSection {
-  height: 520px;
+  height: 400px;
   width: 100vw;
   max-width: 100%;
   background-color: #daa520;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .carouselContainer {
   position: relative;
-  width: 75vw;
-  height: 520px;
-  background-color: #000000;
+  width: 100vw;
+  height: 400px;
+  background-color: #daa520;
   overflow: hidden;
 }
 .page {
   list-style: none;
-  width: 75vw;
-  height: 520px;
+  width: 100vw;
+  height: 400px;
 }
 .pageImg {
   width: 100%;
@@ -197,11 +201,15 @@ button {
 }
 
 .carouselLeft {
+  position: absolute;
   left: 5px;
+  z-index: 11;
 }
 
 .carouselRight {
+  position: absolute;
   right: 5px;
+  z-index: 11;
 }
 
 /* right--------------------------------------------------------------------------------- */
@@ -243,8 +251,12 @@ button {
 }
 
 .carouselOneToFive {
-  background-color: goldenrod;
+  position: absolute;
   display: flex;
   justify-content: center;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
 }
 </style>

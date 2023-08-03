@@ -79,7 +79,7 @@ function toTopFunction() {
   <section>
     <div class="sectionHolder"></div>
     <div class="titleLayout">
-      <div class="title" :class="{ titleShow: y > 99 }">
+      <div class="title" :class="{ titleShow: y > 120 }">
         <h2 class="corDaa">關於我們</h2>
       </div>
     </div>
@@ -87,7 +87,7 @@ function toTopFunction() {
     <div class="twoCardSection">
       <div class="twoCardLayout">
         <div class="cardLeft">
-          <div class="cardLeftText" :class="{ cardLeftTextShow: y > 99 }">
+          <div class="cardLeftText" :class="{ cardLeftTextShow: y > 220 }">
             <div class="disCen">
               <h3 class="corB">Wayne's Shopping Spot</h3>
             </div>
@@ -99,21 +99,21 @@ function toTopFunction() {
             </p>
           </div>
         </div>
-        <div class="imgRightLayout">
+        <div class="imgRightLayout" :class="{ imgRightLayoutShow: y > 220 }">
           <img class="imgRight" src="../assets/pictures/openAlert.jpg" alt="" />
         </div>
       </div>
     </div>
     <div class="sectionHolderSmall"></div>
     <div class="titleLayout">
-      <div class="title" :class="{ titleShow: y > 350 }">
+      <div class="title" :class="{ titleShow: y > 450 }">
         <h2 class="corDaa">更好的服務</h2>
       </div>
     </div>
     <div class="sectionHolderSmall"></div>
     <div class="twoCardSection">
       <div class="twoCardLayout">
-        <div class="imgRightLayout">
+        <div class="imgRightLayout" :class="{ imgRightLayoutShow: y > 750 }">
           <img
             class="imgRight"
             src="../assets/pictures/clark-street-q.jpg"
@@ -121,7 +121,7 @@ function toTopFunction() {
           />
         </div>
         <div class="cardLeft">
-          <div class="cardLeftText" :class="{ cardLeftTextShow: y > 650 }">
+          <div class="cardLeftText" :class="{ cardLeftTextShow: y > 750 }">
             <div class="disCen">
               <h3 class="corB">Wayne's Shopping Spot</h3>
             </div>
@@ -139,7 +139,7 @@ function toTopFunction() {
   </section>
 
   <transition name="fade" tag="div" v-show="showAboutOneRef">
-    <button @mouseenter="toTopFunction" class="toTop">
+    <button @click="toTopFunction" class="toTop">
       <div class="toTopButton">
         <div class="disCen">___</div>
         <div class="disCen">▲</div>
@@ -174,7 +174,7 @@ section {
 }
 
 .sectionHolder {
-  height: 100px;
+  height: 270px;
   width: 100vw;
   max-width: 100%;
 }
@@ -241,6 +241,12 @@ section {
   width: 45vw;
   z-index: 10;
   padding-top: 40px;
+  opacity: 0;
+}
+
+.imgRightLayoutShow {
+  opacity: 1;
+  transition: all 0.7s ease;
 }
 
 .imgRight {

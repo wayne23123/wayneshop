@@ -81,8 +81,22 @@ function stopCarousel() {
 <template>
   <section class="sectionCarousel">
     <div class="carouselLayout">
-      <button @click="moveCarouselLeft" class="carouselLeftButton">《</button>
-      <button @click="moveCarouselRight" class="carouselRightButton">》</button>
+      <button
+        @mouseenter="stopCarousel"
+        @mouseleave="startCarousel"
+        @click="moveCarouselLeft"
+        class="carouselLeftButton"
+      >
+        ＜
+      </button>
+      <button
+        @mouseenter="stopCarousel"
+        @mouseleave="startCarousel"
+        @click="moveCarouselRight"
+        class="carouselRightButton"
+      >
+        ＞
+      </button>
       <div
         @mouseenter="stopCarousel"
         @mouseleave="startCarousel"
@@ -128,6 +142,7 @@ function stopCarousel() {
   font-size: 30px;
   z-index: 10;
   top: 90px;
+  left: 15px;
 }
 
 .carouselRightButton {
@@ -136,7 +151,7 @@ function stopCarousel() {
   font-size: 30px;
   z-index: 10;
   top: 90px;
-  right: 0;
+  right: 15px;
 }
 .caroselContainer {
   display: flex;
@@ -159,5 +174,11 @@ function stopCarousel() {
 .caroselLi:hover {
   transform: scale(1.3);
   transition: all 0.6s ease;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0.642);
+  padding: 5px;
+  border-radius: 15px;
 }
 </style>
