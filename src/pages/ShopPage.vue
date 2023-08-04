@@ -187,7 +187,7 @@ function addCartsFunction() {
 
           <br />
           <div class="leftNavBarCenter">
-            <label for="showAll"> 全部商品</label>
+            <label for="showAll"> 全部商品 </label>
             <input
               id="showAll"
               type="radio"
@@ -296,7 +296,7 @@ function addCartsFunction() {
 
       <!-- <Footer /> -->
 
-      <div class="leftNavBar opa" :class="{ show: y > 300 }">
+      <div class="leftNavBar opa" :class="{ show: y >= 295 }">
         <div class="leftNavBarLayout">
           <div class="leftNavBarCenter">
             <label for="input-field">搜尋:</label>
@@ -480,9 +480,8 @@ label {
   position: fixed;
   top: 70px;
   width: 100%;
-  transition: all 0.3s linear;
+  transition: all 0.1s linear;
   opacity: 1;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* A left--------------------------------------------------------------------------------- */

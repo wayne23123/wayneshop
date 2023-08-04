@@ -1,11 +1,6 @@
 <script setup>
 import { ref, reactive, computed } from "vue";
 import { useAdminCartStore } from "../stores/admincart";
-import AdminPageOne from "../components/AdminPageOne.vue";
-import AdminPageTwo from "../components/AdminPageTwo.vue";
-import AdminPageThree from "../components/AdminPageThree.vue";
-import AdminPageFour from "../components/AdminPageFour.vue";
-import AdminPageFive from "../components/AdminPageFive.vue";
 
 const adminCartStore = useAdminCartStore();
 
@@ -97,29 +92,19 @@ function showPageFiveFunction() {
     <div class="rightSection">
       <div class="sectionHolder"></div>
       <div class="rightLayuot">
-        <div v-show="showPageOne">
-          <AdminPageOne />
-        </div>
+        <div v-show="showPageOne"></div>
       </div>
       <div class="rightLayuot">
-        <div v-show="showPageTwo">
-          <AdminPageTwo />
-        </div>
+        <div v-show="showPageTwo"></div>
       </div>
       <div class="rightLayuot">
-        <div v-show="showPageThree">
-          <AdminPageThree />
-        </div>
+        <div v-show="showPageThree"></div>
       </div>
       <div class="rightLayuot">
-        <div v-show="showPageFour">
-          <AdminPageFour />
-        </div>
+        <div v-show="showPageFour"></div>
       </div>
       <div class="rightLayuot">
-        <div v-show="showPageFive">
-          <AdminPageFive />
-        </div>
+        <div v-show="showPageFive"></div>
       </div>
     </div>
   </section>

@@ -73,7 +73,7 @@ function toTopFunction() {
       </TransitionGroup>
     </div>
   </section> -->
-  <div class="bgcIMG" :class="{ show: y > 78 }">
+  <div class="bgcIMG" :class="{ show: y >= 100 }">
     <img class="bgcIMGClass" src="../assets/pictures/carl-r.jpg" alt="" />
   </div>
   <section>
@@ -198,6 +198,7 @@ section {
   z-index: 10;
   padding: 20px;
   opacity: 0;
+  border-radius: 30px;
 }
 
 .titleShow {
@@ -246,12 +247,13 @@ section {
 
 .imgRightLayoutShow {
   opacity: 1;
-  transition: all 0.7s ease;
+  transition: all 1s ease;
 }
 
 .imgRight {
   width: 100%;
   height: auto;
+  border-radius: 30px;
 }
 
 .corDaa {

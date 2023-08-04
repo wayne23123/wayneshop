@@ -69,12 +69,14 @@ function pushAdminCart() {
       <div class="payCard">
         <table>
           <tr>
+            <th></th>
             <th>品項</th>
             <th>尺寸</th>
             <th>數量</th>
             <th>單價</th>
           </tr>
           <tr v-for="pay in payStore.pays" :key="pay.key">
+            <td><img :src="pay.img" alt="" width="40" height="40" /></td>
             <td>{{ pay.title }}</td>
             <td>{{ pay.size }}</td>
             <td>{{ pay.counter }}</td>
