@@ -284,7 +284,8 @@ a {
 }
 
 a:hover {
-  color: green;
+  color: rgb(0, 144, 0);
+  background-color: #fabd21;
 }
 
 .a {
@@ -294,7 +295,8 @@ a:hover {
 }
 
 .a:hover {
-  color: green;
+  color: rgb(0, 144, 0);
+  background-color: #fabd21;
 }
 
 .payCheck {

@@ -2,11 +2,11 @@
 import { ref } from "vue";
 
 const imgs = ref([
-  "./src/assets/pictures/mike.jpg",
+  "./src/assets/pictures/clark-street-q.jpg",
   "./src/assets/pictures/clark.jpg",
   "./src/assets/pictures/carl-r.jpg",
   "./src/assets/pictures/hannah-m.jpg",
-  "./src/assets/pictures/prudence.jpg",
+  "./src/assets/pictures/openAlert.jpg",
 ]);
 
 // showCarousel 代表從第0張開始
@@ -163,7 +163,7 @@ button {
 }
 
 .carouselSection {
-  height: 400px;
+  height: 500px;
   width: 100vw;
   max-width: 100%;
   background-color: #daa520;
@@ -176,14 +176,14 @@ button {
 .carouselContainer {
   position: relative;
   width: 100vw;
-  height: 400px;
+  height: 500px;
   background-color: #daa520;
   overflow: hidden;
 }
 .page {
   list-style: none;
   width: 100vw;
-  height: 400px;
+  height: 500px;
 }
 .pageImg {
   width: 100%;
@@ -254,7 +254,7 @@ button {
   position: absolute;
   display: flex;
   justify-content: center;
-  top: 450px;
+  top: 530px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 11;

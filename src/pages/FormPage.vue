@@ -317,7 +317,8 @@ a {
 }
 
 a:hover {
-  color: green;
+  color: rgb(0, 144, 0);
+  background-color: #fabd21;
 }
 
 .goPay {
@@ -328,7 +329,8 @@ a:hover {
 }
 
 .goPay:hover {
-  color: green;
+  color: rgb(0, 144, 0);
+  background-color: #fabd21;
 }
 
 input[type="number"] {

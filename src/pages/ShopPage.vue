@@ -449,6 +449,7 @@ section {
 
 .leftNavBarLayout {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .searchInput {
@@ -469,18 +470,9 @@ label {
   display: none;
 }
 
-@media screen and (max-width: 700px) {
-  .leftNavBarCenter {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .searchInput {
-    width: 50px;
-  }
-}
-
 .opa {
   opacity: 0;
+  position: fixed;
 }
 
 .show {

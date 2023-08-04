@@ -343,7 +343,7 @@ watch([elementX, elementY], () => {
 
 .demoButton:hover {
   background-color: #ffb700;
-  color: #565656;
+  color: rgb(0, 144, 0);
   padding: 7px 11px 7px 11px;
 }
 

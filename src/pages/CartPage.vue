@@ -112,7 +112,7 @@ function useKupengFunction() {
               {{ cart.counter }} 件
               <button
                 @click="cartStore.increaseCartItemById(cart.id, cart.size)"
-                class="addRight"
+                class="addLeft"
               >
                 +1
               </button>
@@ -134,7 +134,12 @@ function useKupengFunction() {
   <section class="sectionInputKupeng">
     <div class="sectionInputKupengLayout">
       <div class="inputKupeng">
-        <input v-model="inputKupengRef" type="text" placeholder="輸入優惠碼" />
+        <input
+          v-model="inputKupengRef"
+          type="text"
+          placeholder="輸入優惠碼"
+          class="nputKupengInput"
+        />
         <button @click="useKupengFunction" class="nputKupengButton">
           套用優惠碼
         </button>
@@ -307,14 +312,25 @@ td {
   border-bottom: solid 1px black;
 }
 
-.addLeft {
-  margin-right: 10px;
+.removeButton {
   padding: 10px;
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
-.addRight {
-  margin-left: 10px;
+.removeButton:hover {
+  background-color: #565656;
+  color: #fff;
+}
+
+.addLeft {
+  margin: 0 10px;
   padding: 10px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.addLeft:hover {
+  background-color: #565656;
+  color: #fff;
 }
 
 .sectionInputKupeng {
@@ -331,13 +347,21 @@ td {
   display: flex;
   justify-content: center;
 }
+
+.nputKupengInput {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+}
 .nputKupengButton {
+  margin-left: 10px;
   background-color: #daa520;
   padding: 10px;
 }
 
 .nputKupengButton:hover {
-  color: #777777;
+  color: rgb(0, 144, 0);
+  background-color: #fabd21;
 }
 
 .sectionTotal {
@@ -393,6 +417,7 @@ a {
 
 a:hover {
   color: rgb(0, 144, 0);
+  background-color: #fabd21;
   transition: all 0.4s ease;
 }
 

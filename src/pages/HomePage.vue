@@ -22,19 +22,19 @@ function toTopFunction() {
   <Carousel />
   <section class="sectionHoler40px"></section>
   <section class="sectionHoler40px">
-    <div class="title" :class="{ titleShow: y > 99 }">
+    <div class="title" :class="{ titleShow: y > 199 }">
       <h3>今日新上架</h3>
     </div>
   </section>
   <section class="sectionHoler40px"></section>
   <section class="sectionCarouselShop">
     <transition name="fade" tag="div">
-      <div v-show="y > 190"><CarouselShop></CarouselShop></div>
+      <div v-show="y > 290"><CarouselShop></CarouselShop></div>
     </transition>
   </section>
   <section class="sectionHoler40px"></section>
   <section class="sectionHoler40px">
-    <div class="title" :class="{ titleShow: y > 350 }">
+    <div class="title" :class="{ titleShow: y > 450 }">
       <h3>依分類挑商品</h3>
     </div>
   </section>
@@ -43,7 +43,7 @@ function toTopFunction() {
   <section class="sectionCategoryTop">
     <div class="categoryLayout">
       <transition name="listRight" tag="div">
-        <div v-show="y > 450" class="categoryDivContainer">
+        <div v-show="y > 550" class="categoryDivContainer">
           <div
             @mouseenter="productionStore.searchTerm = 'pants'"
             class="categoryDivOne"
@@ -84,7 +84,7 @@ function toTopFunction() {
   <section class="sectionCategoryTop">
     <div class="categoryLayout">
       <transition name="listLeft" tag="div">
-        <div v-show="y > 500" class="categoryDivContainer">
+        <div v-show="y > 600" class="categoryDivContainer">
           <div
             @mouseenter="productionStore.searchTerm = 'shoes'"
             class="categoryDivTwo"
@@ -123,7 +123,7 @@ function toTopFunction() {
   </section>
   <section class="sectionHoler40px"></section>
   <section class="sectionHoler40px">
-    <div class="title" :class="{ titleShow: y > 850 }">
+    <div class="title" :class="{ titleShow: y > 950 }">
       <h3>創造你的風格</h3>
     </div>
   </section>
@@ -140,7 +140,10 @@ function toTopFunction() {
     </div>
   </section>
   <section class="sectionHoler40pxB"></section>
-  <section class="sectionHoler40pxB">
+  <section
+    class="sectionHoler40pxB"
+    @mouseenter="productionStore.searchTerm = ''"
+  >
     <router-link to="/shop" class="totalLeftButton">
       <button class="btn btn-background-slide">➜ 前往線上商城</button>
     </router-link>

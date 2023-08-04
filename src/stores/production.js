@@ -1,5 +1,25 @@
 import { ref, computed, watch } from "vue";
 import { defineStore } from "pinia";
+import w001 from "@/assets/imgs/w001.jpg";
+import w002 from "@/assets/imgs/w002.jpg";
+import w003 from "@/assets/imgs/w003.jpg";
+import w004 from "@/assets/imgs/w004.jpg";
+import w005 from "@/assets/imgs/w005.jpg";
+import w006 from "@/assets/imgs/w006.jpg";
+import w007 from "@/assets/imgs/w007.jpg";
+import w008 from "@/assets/imgs/w008.jpg";
+import w009 from "@/assets/imgs/w009.jpg";
+import w010 from "@/assets/imgs/w010.jpg";
+import w011 from "@/assets/imgs/w011.jpg";
+import w012 from "@/assets/imgs/w012.jpg";
+import w013 from "@/assets/imgs/w013.jpg";
+import w014 from "@/assets/imgs/w014.jpg";
+import w015 from "@/assets/imgs/w015.jpg";
+import w016 from "@/assets/imgs/w016.jpg";
+import w017 from "@/assets/imgs/w017.jpg";
+import w018 from "@/assets/imgs/w018.jpg";
+import w019 from "@/assets/imgs/w019.jpg";
+import w020 from "@/assets/imgs/w020.jpg";
 
 export const useProductionStore = defineStore("productions", () => {
   const productions = ref([
@@ -468,6 +488,127 @@ export const useProductionStore = defineStore("productions", () => {
       description:
         "尖角衣領、彈性伸縮袖口、全鈕扣式開襟、正面斜口袋、腰部可調式拉繩",
       color: "blue",
+      label: "other",
+      counter: 1,
+      size: "M",
+      kupeng: false,
+      email: "",
+      name: "",
+      telphone: "",
+      adress: "",
+      message: "",
+      d: "",
+      year: "",
+      month: "",
+      date: "",
+      hours: "",
+      minutes: "",
+      seconds: "",
+      pay: false,
+      complete: false,
+    },
+    {
+      id: 17,
+      order: "",
+      img: "./src/assets/imgs/w017.jpg",
+      title: "PANEL TRACK PANT",
+      category: "pants",
+      star: "★★★★★",
+      stars: 5,
+      price: 1700,
+      description: "正常版型運動褲、可調式抽繩、100%尼龍",
+      color: "blue",
+      label: "other",
+      counter: 1,
+      size: "M",
+      kupeng: false,
+      email: "",
+      name: "",
+      telphone: "",
+      adress: "",
+      message: "",
+      d: "",
+      year: "",
+      month: "",
+      date: "",
+      hours: "",
+      minutes: "",
+      seconds: "",
+      pay: false,
+      complete: false,
+    },
+    {
+      id: 18,
+      order: "",
+      img: "./src/assets/imgs/w018.jpg",
+      title: "格紋寬褲",
+      category: "pants",
+      star: "★★★★★",
+      stars: 5,
+      price: 1000,
+      description: "兩側口袋、上寬下窄",
+      color: "blue",
+      label: "other",
+      counter: 1,
+      size: "M",
+      kupeng: false,
+      email: "",
+      name: "",
+      telphone: "",
+      adress: "",
+      message: "",
+      d: "",
+      year: "",
+      month: "",
+      date: "",
+      hours: "",
+      minutes: "",
+      seconds: "",
+      pay: false,
+      complete: false,
+    },
+    {
+      id: 19,
+      order: "",
+      img: "./src/assets/imgs/w019.jpg",
+      title: "Miki discovery 網眼拼接水兵帽",
+      category: "hat",
+      star: "★★★★",
+      stars: 4,
+      price: 1100,
+      description:
+        "經典Miki水兵帽版型；純棉材質，局部網眼拼接設計，背部調節帶為皮革；側邊logo刺繡",
+      color: "brown",
+      label: "other",
+      counter: 1,
+      size: "M",
+      kupeng: false,
+      email: "",
+      name: "",
+      telphone: "",
+      adress: "",
+      message: "",
+      d: "",
+      year: "",
+      month: "",
+      date: "",
+      hours: "",
+      minutes: "",
+      seconds: "",
+      pay: false,
+      complete: false,
+    },
+    {
+      id: 20,
+      order: "",
+      img: "./src/assets/imgs/w020.jpg",
+      title: "STOCK BUCKET HAT",
+      category: "hat",
+      star: "★★★★",
+      stars: 4,
+      price: 1200,
+      description: "Stussy經典漁夫帽，Basic Stock標誌刺繡",
+      color: "black",
       label: "other",
       counter: 1,
       size: "M",

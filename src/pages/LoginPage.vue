@@ -170,4 +170,8 @@ section {
   width: 100%;
   background-color: #b7b7b7;
 }
+
+.subBtn:hover {
+  background-color: #a5a4a4;
+}
 </style>
