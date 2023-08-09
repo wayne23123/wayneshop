@@ -4,7 +4,7 @@ import { useAdminCartStore } from "../stores/admincart";
 
 const adminCartStore = useAdminCartStore();
 
-// 呼叫 orderFunction，從 Vuex store 中取得訂單
+// 呼叫 orderFunction，從 Pinia store 中取得訂單
 adminCartStore.orderFunction;
 
 // 定義一個名為 completeTrue 的函式，傳入 orderId 參數
@@ -64,11 +64,7 @@ function completeFalse(orderId) {
           :class="{ tableContainerDone: cartItems[0].complete }"
         >
           <table>
-            <tr
-              v-if="adminCartStore.orderSearchTermRef.length < 1"
-              v-for="cartItem in cartItems"
-              :key="cartItem.id"
-            >
+            <tr v-for="cartItem in cartItems" :key="cartItem.id">
               <td>
                 <img :src="'.' + cartItem.img" alt="" width="40" height="50" />
               </td>
@@ -314,6 +310,23 @@ function completeFalse(orderId) {
       </div>
     </div>
     <!-- bottom -->
+    <!-- 這邊 v-else 顯示搜尋欄搜尋不到東西時 -->
+    <div class="dataLayout">
+      <div
+        v-if="adminCartStore.orderSearchTermFunction == ''"
+        class="cardLayout"
+      >
+        <br />
+        <img src="../assets/wrong.svg" alt="" />
+        <br />
+        <br />
+        <div class="disCen">搜尋不到訂單</div>
+        <br />
+        <div class="disCen">請再次確認訂單號碼</div>
+        <br />
+        <br />
+      </div>
+    </div>
   </div>
 </template>
 

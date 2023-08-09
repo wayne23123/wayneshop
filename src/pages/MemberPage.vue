@@ -34,6 +34,7 @@ a.router-link-exact-active {
   display: flex;
   padding: 10px;
   background-color: #daa520;
+  min-height: 30vw;
 }
 
 .memberAside {

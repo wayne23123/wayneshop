@@ -239,13 +239,16 @@ export const useAdminCartStore = defineStore(
     const orderUndoFunction = computed(() => {
       //先用 filter 先對 admincarts 過濾出 complete 為 false
       const undo = admincarts.value.filter((item) => item.complete == false);
+
       // 使用reduce方法計算訂單，acc是最終累積結果，cur是當前遍歷到的購物車數據
       const result = undo.reduce((acc, cur) => {
         const order = cur.order;
+
         // 如果acc中不存在當前訂單號碼，則創建一個空陣列，並且添加當前購物車數據到陣列中
         if (!acc[order]) {
           acc[order] = [];
         }
+
         acc[order].push(cur);
         return acc;
       }, {});
