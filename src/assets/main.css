@@ -66,6 +66,11 @@ button {
   justify-content: center;
 }
 
+.aliSta {
+  display: flex;
+  align-items: start;
+}
+
 .pTwo {
   text-indent: 2.5rem;
 }

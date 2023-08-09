@@ -51,32 +51,28 @@ const { y } = useScroll(window);
   <header :class="{ show: y > 78 }">
     <div class="logo">
       <router-link to="/" class="none"
-        ><div class="svg"><img src="../assets/svgs/wss.svg" /></div
+        ><div class="svgH"><img src="../assets/svgs/wss.svg" /></div
       ></router-link>
     </div>
     <input type="checkbox" id="nav_check" hidden />
     <nav>
       <ul>
         <li>
-          <router-link to="/" class="router importSVG"
+          <router-link to="/" class="svgH"
             ><div class="">首頁</div></router-link
           >
         </li>
         <li>
           <router-link
             to="/shop"
-            class="router importSVG"
+            class="svgH"
             @mouseenter="productionStore.searchTerm = ''"
             ><div class="svg">商城</div></router-link
           >
         </li>
-        <li><router-link to="/about" class="router">關於我們</router-link></li>
+        <li><router-link to="/about" class="svgH">關於我們</router-link></li>
         <li>
-          <router-link
-            @mouseenter="mouseEnterShowCart"
-            to="/cart"
-            class="router"
-          >
+          <router-link @mouseenter="mouseEnterShowCart" to="/cart" class="svgH">
             <div class="svg">
               購物車(<span class="corRed"> {{ cartsTotalCounter }} </span>)
             </div></router-link
@@ -163,13 +159,13 @@ const { y } = useScroll(window);
 
 <style scoped>
 a.router-link-exact-active {
-  color: rgb(0, 183, 0);
+  color: #00b700;
 }
 
 .svg {
   padding: 0 25px 0 25px;
 }
-.svg:hover {
+.svgH:hover {
   transition: all 0.4s ease;
   filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(100deg);
 }
@@ -260,7 +256,7 @@ a {
   a {
     margin: 5px 0;
   }
-  .router {
+  .svgH {
     display: flex;
     justify-content: center;
   }
@@ -272,7 +268,7 @@ a {
   position: fixed;
   z-index: 201;
   right: 80px;
-  top: 80px;
+  top: 55px;
   /* background-color: #8a0202; */
 }
 

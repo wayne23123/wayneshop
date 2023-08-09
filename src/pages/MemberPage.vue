@@ -25,6 +25,11 @@
 </template>
 
 <style scoped>
+a.router-link-exact-active {
+  /* 到頁面 active 顏色 */
+  color: #00b700;
+  border-bottom: 1px #00b700 solid;
+}
 .container {
   display: flex;
   padding: 10px;
@@ -32,17 +37,19 @@
 }
 
 .memberAside {
-  width: 220px;
+  width: 180px;
   margin-right: 15px;
   border-radius: 2px;
   background-color: #c4c4c4;
 }
 
 .userManage {
+  width: 180px;
   background-color: #c4c4c4;
 }
 
 h4 {
+  color: #464646;
   font-size: 18px;
   font-weight: 400;
   padding: 20px 52px 5px;
@@ -54,10 +61,11 @@ h4 {
 }
 
 .article {
+  width: 100%;
   background-color: #c4c4c4;
 }
 
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 1100px) {
   .container {
     flex-wrap: wrap;
   }
@@ -70,6 +78,8 @@ h4 {
   }
   .userManage {
     display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
 </style>

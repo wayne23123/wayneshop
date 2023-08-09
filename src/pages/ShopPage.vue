@@ -492,6 +492,10 @@ label {
   padding-left: 20px;
 }
 
+.none:hover {
+  color: green;
+}
+
 .shopContainer {
   display: flex;
   flex-wrap: wrap;
