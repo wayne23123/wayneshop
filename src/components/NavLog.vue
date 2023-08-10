@@ -23,15 +23,15 @@ const confirm = () => {
         <template v-if="userStore.userInfo.token">
           <li>
             <a href="javascript:;" @click="$router.push('/member')">
-              <!-- {{ userStore.userInfo.account }} -->
-              <span>
+              <span class="imgLayout">
                 <img
-                  src="../assets/pictures/avatarDefault.png"
+                  :src="userStore.userInfo.img"
                   alt=""
-                  width="12"
-                  height="12"
+                  width="14"
+                  height="14"
+                  style="border-radius: 50%"
               /></span>
-              <span>{{ userStore.userInfo.name }}</span>
+              <span class="padL10">{{ userStore.userInfo.name }}</span>
             </a>
           </li>
           <li>
@@ -99,5 +99,16 @@ ul {
   list-style: none;
   display: flex;
   justify-content: flex-end;
+}
+
+.padL10 {
+  padding: 0 0 0 10px;
+}
+
+.imgLayout {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 </style>

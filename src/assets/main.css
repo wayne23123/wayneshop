@@ -39,6 +39,10 @@ button {
   display: flex;
 }
 
+.wra {
+  flex-wrap: wrap;
+}
+
 .pTwo {
   text-indent: 2.5rem;
 }
