@@ -18,6 +18,12 @@ const onFileChange = (event) => {
   };
   reader.readAsDataURL(file);
 };
+
+const showNameEditRef = ref(false);
+
+function showNameEdit() {
+  showNameEditRef.value = !showNameEditRef.value;
+}
 </script>
 
 <template>
@@ -32,24 +38,31 @@ const onFileChange = (event) => {
     </div>
     <div class="item">
       <a href="javascript:;">
-        <p><span>✏</span>會員中心</p>
+        <p><span>✏ </span>會員中心</p>
       </a>
     </div>
   </div>
   <div class="container">
     <div class="memberPanel">
       <div class="header">
-        <p>會員姓名: {{ userStore.userInfo.name }}</p>
-        標題:<input
-          v-model="userStore.nameEditRef"
-          class="inputText"
-          type="text"
-          maxlength="32"
-        />
-        <button @click="userStore.nameEditFunction()">
-          <div v-if="userStore.nameEditDone" class="green">完成☑</div>
-          <div v-else="userStore.nameEditDone">更改☐</div>
-        </button>
+        <div class="showTitle dis">
+          <div>會員姓名: {{ userStore.userInfo.name }}</div>
+          <div @click="showNameEdit" class="showEdit">✎ 編輯</div>
+        </div>
+        <div v-show="showNameEditRef">
+          <div class="inputLayout">
+            <input
+              v-model="userStore.nameEditRef"
+              class="inputText"
+              type="text"
+              maxlength="32"
+            />
+            <button @click="userStore.nameEditFunction()">
+              <div v-if="userStore.nameEditDone" class="green">完成☑</div>
+              <div v-else="userStore.nameEditDone">更改☐</div>
+            </button>
+          </div>
+        </div>
         <br />
         <p>會員電話: {{ userStore.userInfo.telphone }}</p>
         <br />
@@ -57,14 +70,16 @@ const onFileChange = (event) => {
         <br />
         <p>會員住址: {{ userStore.userInfo.adress }}</p>
         <br />
-        <div>
-          上傳新會員圖片:
+        <div class="dis">
           <div>
-            <input class="inputImg" type="file" @change="onFileChange" />
+            上傳新會員圖片:
+            <div>
+              <input class="inputImg" type="file" @change="onFileChange" />
+            </div>
           </div>
-        </div>
-        <div class="avatarImgLayout">
-          <img :src="imageUrl" class="avatarImg" alt="" />
+          <div class="avatarImgLayout padL20">
+            <img :src="imageUrl" class="avatarImg" alt="" />
+          </div>
         </div>
       </div>
       <div class="goods-list"></div>
@@ -121,7 +136,8 @@ h4 {
 }
 
 .memberPanel {
-  width: 80vw;
+  width: 60vw;
+  padding: 15px;
   background-color: #565656;
 }
 
@@ -129,5 +145,28 @@ h4 {
   width: 70px;
   background-color: #c4c4c4;
   border: none;
+}
+
+.showTitle:hover {
+  opacity: 1;
+}
+
+.showEdit {
+  cursor: pointer;
+  opacity: 0;
+  flex-grow: 1;
+  /* background-color: #000; */
+}
+
+.showEdit:hover {
+  opacity: 1;
+}
+
+.inputLayout {
+  position: absolute;
+}
+
+.padL20 {
+  margin: auto;
 }
 </style>
