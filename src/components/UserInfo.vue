@@ -15,9 +15,6 @@
       <a href="javascript:;">
         <p><span>☼ </span>安全設定</p>
       </a>
-      <a href="javascript:;">
-        <p><span>♢ </span>地址管理</p>
-      </a>
     </div>
   </div>
   <div class="like-container">

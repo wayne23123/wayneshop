@@ -25,6 +25,10 @@ a.router-link-exact-active {
   padding-bottom: 4px;
   border-bottom: 1px solid #00b700;
 }
+
+a:hover {
+  color: #01ca01;
+}
 .orderContainer {
   padding: 20px;
 }

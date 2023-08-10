@@ -21,10 +21,16 @@ const confirm = () => {
         <!-- 是否有 token -->
         <template v-if="userStore.userInfo.token">
           <li>
-            <a href="javascript:;" @click="$router.push('/member')"
-              ><i class="iconfont icon-user"></i>
+            <a href="javascript:;" @click="$router.push('/member')">
               <!-- {{ userStore.userInfo.account }} -->
-              test001
+              <span>
+                <img
+                  src="../assets/pictures/avatarDefault.png"
+                  alt=""
+                  width="12"
+                  height="12"
+              /></span>
+              <span> test001</span>
             </a>
           </li>
           <li>
@@ -65,6 +71,10 @@ const confirm = () => {
 </template>
 
 <style scoped>
+.dis {
+  display: flex;
+}
+
 nav {
   background-color: #2b2a2a;
   color: white;

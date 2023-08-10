@@ -1,4 +1,16 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const orderActiveRef = ref(false);
+
+function orderActiveTrue() {
+  orderActiveRef.value = true;
+}
+
+function orderActiveFalse() {
+  orderActiveRef.value = false;
+}
+</script>
 
 <template>
   <div class="container">
@@ -6,15 +18,23 @@
       <div class="userManage">
         <div>
           <h4>我的帳戶</h4>
-          <div class="links">
+          <br />
+          <div @click="orderActiveFalse" class="links">
             <RouterLink to="/member/">個人中心</RouterLink>
           </div>
+          <br />
         </div>
         <div>
           <h4>交易管理</h4>
-          <div class="links">
-            <RouterLink to="/member/order">我的訂單</RouterLink>
+          <br />
+          <div @click="orderActiveTrue()">
+            <RouterLink to="/member/order"
+              ><div class="links">
+                <span :class="{ active: orderActiveRef }">我的訂單</span>
+              </div>
+            </RouterLink>
           </div>
+          <br />
         </div>
       </div>
     </div>
@@ -30,6 +50,15 @@ a.router-link-exact-active {
   color: #00b700;
   border-bottom: 1px #00b700 solid;
 }
+
+.active {
+  color: #00b700;
+  border-bottom: 1px #00b700 solid;
+}
+
+a:hover {
+  color: #01ca01;
+}
 .container {
   display: flex;
   padding: 10px;
@@ -42,6 +71,7 @@ a.router-link-exact-active {
   margin-right: 15px;
   border-radius: 2px;
   background-color: #c4c4c4;
+  border-bottom: 1px solid #f6f6f6;
 }
 
 .userManage {
@@ -51,10 +81,12 @@ a.router-link-exact-active {
 
 h4 {
   color: #464646;
+  background-color: #adadad;
   font-size: 18px;
   font-weight: 400;
   padding: 20px 52px 5px;
   border-top: 1px solid #f6f6f6;
+  border-left: 1px solid #f6f6f6;
 }
 
 .links {

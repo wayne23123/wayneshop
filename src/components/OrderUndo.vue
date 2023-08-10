@@ -26,6 +26,25 @@ function completeFalse(orderId) {
     }
   });
 }
+
+// 依照 orderId 刪除訂單
+function deleteOrderUndo(orderId) {
+  for (let i = 0; i < adminCartStore.admincarts.length; i++) {
+    // 先用 findIndex 方法找到 orderId 所在的 admincarts 的 index
+    const orderIndex = adminCartStore.admincarts.findIndex(
+      (order) => order.order === orderId
+    );
+    // 找到 orderIndex 不等於 就要 刪除
+    if (orderIndex !== -1) {
+      adminCartStore.admincarts.splice(orderIndex, 1);
+
+      // 刪完後 重新載入訂單
+      adminCartStore.orderUndoFunction;
+      // 刪完後 將搜尋條清空
+      adminCartStore.orderUndoSearchTermRef = "";
+    }
+  }
+}
 </script>
 
 <template>
@@ -74,8 +93,11 @@ function completeFalse(orderId) {
                 />
               </td>
               <td>
-                <div>{{ cartItem.title }}</div>
                 <div>
+                  {{ cartItem.title }}
+                  <span class="sizeCor">| 尺寸: {{ cartItem.size }}</span>
+                </div>
+                <div class="desCor">
                   {{ cartItem.description }}
                 </div>
               </td>
@@ -165,7 +187,7 @@ function completeFalse(orderId) {
                       <div></div>
                     </div>
                     <div
-                      @click="completeFalse(cartItems[0].order)"
+                      @click="deleteOrderUndo(cartItems[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>
@@ -206,11 +228,19 @@ function completeFalse(orderId) {
           <table>
             <tr v-for="(search, adminIndex) in searchs" :key="adminIndex">
               <td>
-                <!-- <img :src="'.' + search.img" alt="" width="40" height="50" /> -->
+                <img
+                  :src="'../../' + search.img"
+                  alt=""
+                  width="40"
+                  height="50"
+                />
               </td>
               <td>
-                <div>{{ search.title }}</div>
                 <div>
+                  {{ search.title }}
+                  <span class="sizeCor">| 尺寸: {{ search.size }}</span>
+                </div>
+                <div class="desCor">
                   {{ search.description }}
                 </div>
               </td>
@@ -299,7 +329,7 @@ function completeFalse(orderId) {
                       <div></div>
                     </div>
                     <div
-                      @click="completeFalse(searchs[0].order)"
+                      @click="deleteOrderUndo(searchs[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>
@@ -315,6 +345,31 @@ function completeFalse(orderId) {
       </div>
     </div>
     <!-- bottom -->
+    <div class="dataLayout">
+      <div
+        v-if="adminCartStore.orderUndoSearchTermFunction == ''"
+        class="cardLayout"
+      >
+        <br />
+        <div class="disCen">
+          <div>
+            <img src="../assets/wrong.svg" alt="" />
+            <br />
+            <hr />
+            <br />
+            <div class="disCen">搜尋不到訂單</div>
+            <br />
+            <div class="disCen">請再次確認訂單號碼</div>
+            <br />
+            <hr />
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -356,8 +411,12 @@ td {
 
 .inputOne {
   background-color: #000;
-  padding: 5px;
+  padding: 15px;
   color: #c4c4c4;
+}
+
+input {
+  padding: 10px;
 }
 
 .tableRight {
@@ -421,5 +480,13 @@ td {
 
 .pad10 {
   padding: 0 10px;
+}
+
+.sizeCor {
+  color: #888;
+}
+
+.desCor {
+  color: #747474;
 }
 </style>

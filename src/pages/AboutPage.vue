@@ -149,6 +149,12 @@ function toTopFunction() {
 </template>
 
 <style scoped>
+p {
+  font-size: 16px;
+  color: #222;
+  margin: 15px 0 20px 0;
+}
+
 .bgcIMG {
   position: absolute;
   width: 100vw;
