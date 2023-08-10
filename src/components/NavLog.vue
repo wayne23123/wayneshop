@@ -1,6 +1,7 @@
 <script setup>
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
+
 const userStore = useUserStore();
 
 const router = useRouter();
@@ -30,7 +31,7 @@ const confirm = () => {
                   width="12"
                   height="12"
               /></span>
-              <span> test001</span>
+              <span>{{ userStore.userInfo.name }}</span>
             </a>
           </li>
           <li>
