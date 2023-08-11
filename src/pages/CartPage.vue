@@ -5,8 +5,6 @@ import Footer from "../components/Footer.vue";
 import { useCartStore } from "../stores/cart";
 import { useSteponeStore } from "../stores/stepone";
 
-const sectionDebugRef = ref(false);
-
 const cartStore = useCartStore();
 const steponeStore = useSteponeStore();
 
@@ -50,7 +48,19 @@ const useKupengRef = ref(false);
 function useKupengFunction() {
   // 保存當下的 carts 狀態
   emptyCopyCartsRef.value = cartStore.carts;
-  if (inputKupengRef.value == "open") {
+  if (inputKupengRef.value == "") {
+    ElMessage({
+      type: "warning",
+      message: "優惠碼不能為空",
+    });
+    return;
+  } else if (inputKupengRef.value == " ") {
+    ElMessage({
+      type: "warning",
+      message: "優惠碼不能為空",
+    });
+    return;
+  } else if (inputKupengRef.value == "open") {
     steponeStore.updateMultipleKupengValues();
     useKupengRef.value = true;
     ElMessage({ type: "success", message: "套用優惠碼成功" });
@@ -65,16 +75,16 @@ function useKupengFunction() {
 </script>
 
 <template>
-  <Marquee />
-
-  <section class="sectionBuyProcess">
-    <div class="buyProcessLayout">
-      <div class="processDivOne">step1.確認購物清單</div>
-      <div class="processDivTwo">step2.填寫購買資料</div>
-      <div class="processDivThree">step3.付款去</div>
+  <section>
+    <Marquee />
+    <div class="sectionBuyProcess">
+      <div class="buyProcessLayout">
+        <div class="processDivOne">step1.確認購物清單</div>
+        <div class="processDivTwo">step2.填寫購買資料</div>
+        <div class="processDivThree">step3.付款去</div>
+      </div>
     </div>
-  </section>
-  <section class="sectionCart">
+
     <div class="sectionTable">
       <table>
         <thead>
@@ -130,323 +140,298 @@ function useKupengFunction() {
         </TransitionGroup>
       </table>
     </div>
-  </section>
-  <section class="sectionInputKupeng">
-    <div class="sectionInputKupengLayout">
-      <div class="inputKupeng">
-        <input
-          v-model="inputKupengRef"
-          type="text"
-          placeholder="輸入優惠碼"
-          class="nputKupengInput"
-        />
-        <button @click="useKupengFunction" class="nputKupengButton">
-          套用優惠碼
-        </button>
+
+    <div class="sectionInputKupeng">
+      <div class="sectionInputKupengLayout">
+        <div>
+          <input
+            v-model="inputKupengRef"
+            type="text"
+            placeholder="輸入優惠碼"
+            class="nputKupengInput"
+          />
+          <button @click="useKupengFunction" class="nputKupengButton">
+            套用優惠碼
+          </button>
+        </div>
       </div>
     </div>
-  </section>
-  <section class="sectionTotal">
-    <div class="sectionTotalLayout">
-      <div
-        v-if="cartStore.cartsHasProductionFunction()"
-        @click="cartStore.clearCartFunction()"
-        class="totalLeftButton"
-      >
-        清除購物車
-      </div>
-      <router-link
-        v-else
-        @mouseenter="copyStepOne"
-        to="/shop"
-        class="totalLeftButton"
-      >
-        <div>前往至商城</div>
-      </router-link>
 
-      <div>
-        <transition name="fade" tag="div" class="POA">
-          <div v-if="useKupengRef">
-            <div class="totalUse">使用了優惠碼</div>
-            <div class="totalPrice">目前購物車總共 {{ total }} 件商品，</div>
-            <div class="totalPriceTop">原本 NT {{ totalPrice }} 元</div>
-            <div class="totalPriceBottom">
-              特價 NT {{ Math.floor(totalPrice * 0.7) }} 元
+    <div class="sectionTotal">
+      <div class="sectionTotalLayout">
+        <div
+          v-if="cartStore.cartsHasProductionFunction()"
+          @click="cartStore.clearCartFunction()"
+          class="totalLeftButton"
+        >
+          清除購物車
+        </div>
+        <router-link
+          v-else
+          @mouseenter="copyStepOne"
+          to="/shop"
+          class="totalLeftButton"
+        >
+          <div>前往至商城</div>
+        </router-link>
+
+        <div>
+          <transition name="fade" tag="div" class="POA">
+            <div v-if="useKupengRef">
+              <div class="totalUse">使用了優惠碼</div>
+              <div class="totalPrice">目前購物車總共 {{ total }} 件商品，</div>
+              <div class="totalPriceTop">原本 NT {{ totalPrice }} 元</div>
+              <div class="totalPriceBottom">
+                特價 NT {{ Math.floor(totalPrice * 0.7) }} 元
+              </div>
             </div>
-          </div>
-          <div v-else>
-            目前購物車總共 {{ total }} 件商品，總共 NT {{ totalPrice }} 元
-          </div>
-        </transition>
-      </div>
+            <div v-else>
+              目前購物車總共 {{ total }} 件商品，總共 NT {{ totalPrice }} 元
+            </div>
+          </transition>
+        </div>
 
-      <div>
-        <transition name="fade" tag="div" class="totalRightButton">
-          <router-link
-            v-if="cartStore.cartsHasProductionFunction()"
-            @mouseenter="copyStepOne"
-            to="/form"
-            class="router"
-            >前去結帳</router-link
-          >
-          <router-link
-            v-else
-            @mouseenter="copyStepOne"
-            to="/shop"
-            class="router"
-          >
-            <div>到商城看新商品</div>
-          </router-link>
-        </transition>
+        <div>
+          <transition name="fade" tag="div" class="totalRightButton">
+            <router-link
+              v-if="cartStore.cartsHasProductionFunction()"
+              @mouseenter="copyStepOne"
+              to="/form"
+              class="router"
+              >前去結帳</router-link
+            >
+            <router-link
+              v-else
+              @mouseenter="copyStepOne"
+              to="/shop"
+              class="router"
+            >
+              <div>到商城看新商品</div>
+            </router-link>
+          </transition>
+        </div>
       </div>
     </div>
   </section>
-
-  <section v-show="sectionDebugRef" class="sectionDebug">
-    <div>stepones 訂單的狀態{{ emptyCopyCartsRef }}</div>
-    <div v-for="cart in cartStore.carts" :key="cart.id">
-      carts的狀態{{ cart }}
-    </div>
-  </section>
-  <section class="footerHolder"></section>
 </template>
 
-<style scoped>
-.sectionDebug {
-  display: flex;
-  background-color: black;
-  color: green;
-  width: 100%;
-  height: 60vh;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor;
 
-.sectionDebug button {
-  background-color: green;
-}
-.sectionHolder {
-  height: 110px;
+section {
   width: 100vw;
   max-width: 100%;
-  background-color: #daa520;
-}
+  // background-color: #c4c4c4;
+  .sectionBuyProcess {
+    width: 100vw;
+    max-width: 100%;
+    background-color: $yellowColor;
+    display: flex;
+    justify-content: center;
 
-.sectionBuyProcess {
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
-  display: flex;
-  justify-content: center;
-}
+    .buyProcessLayout {
+      width: 70vw;
+      background-color: $yellowColor;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
 
-.buyProcessLayout {
-  width: 60vw;
-  background-color: #daa520;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+      .processDivOne {
+        width: 200px;
+        height: 100px;
+        margin: 10px;
+        color: rgb(200, 200, 200);
+        background-color: rgb(0, 0, 0);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-.processDivOne {
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  color: rgb(200, 200, 200);
-  background-color: rgb(0, 0, 0);
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      .processDivTwo {
+        width: 200px;
+        height: 100px;
+        margin: 10px;
+        color: black;
+        background-color: #ddd;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-.processDivTwo {
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  color: black;
-  background-color: #ddd;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+      .processDivThree {
+        width: 200px;
+        height: 100px;
+        margin: 10px;
+        color: black;
+        background-color: #ddd;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
 
-.processDivThree {
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  color: black;
-  background-color: #ddd;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sectionCart {
-  width: 100vw;
-  max-width: 100%;
-  background-color: #c4c4c4;
-}
+  .sectionTable {
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: $grayColor;
 
-.footerHolder {
-  height: 0;
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
-}
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
 
-.sectionTable {
-  display: flex;
-  justify-content: center;
-  color: black;
-}
+      th,
+      td {
+        padding: 10px;
+        border-bottom: solid 1px black;
+      }
+      tr {
+        td {
+          .removeButton {
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.15);
+          }
 
-table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-}
+          .removeButton:hover {
+            background-color: #565656;
+            color: #fff;
+          }
+          .addLeft {
+            margin: 0 10px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.15);
+          }
 
-th,
-td {
-  padding: 10px;
-  border-bottom: solid 1px black;
-}
+          .addLeft:hover {
+            background-color: #565656;
+            color: #fff;
+          }
 
-.removeButton {
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.15);
-}
+          .yellow {
+            background-color: #daa520;
+          }
 
-.removeButton:hover {
-  background-color: #565656;
-  color: #fff;
-}
+          .textNone {
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+  }
 
-.addLeft {
-  margin: 0 10px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.15);
-}
+  .sectionInputKupeng {
+    width: 100vw;
+    max-width: 100%;
+    background-color: #c4c4c4;
+    display: flex;
+    justify-content: center;
 
-.addLeft:hover {
-  background-color: #565656;
-  color: #fff;
-}
+    .sectionInputKupengLayout {
+      padding: 20px 0;
+      width: 50vw;
+      /* background-color: #fff; */
+      display: flex;
+      justify-content: center;
 
-.sectionInputKupeng {
-  width: 100vw;
-  max-width: 100%;
-  background-color: #c4c4c4;
-  display: flex;
-  justify-content: center;
-}
+      .nputKupengInput {
+        width: 150px;
+        height: 30px;
+        border-radius: 5px;
+      }
+      .nputKupengButton {
+        margin-left: 10px;
+        background-color: #daa520;
+        padding: 10px;
+        border-radius: 15px;
+      }
 
-.sectionInputKupengLayout {
-  width: 50vw;
-  /* background-color: #fff; */
-  display: flex;
-  justify-content: center;
-}
+      .nputKupengButton:hover {
+        color: rgb(0, 144, 0);
+        background-color: #fabd21;
+      }
+    }
+  }
 
-.nputKupengInput {
-  width: 150px;
-  height: 30px;
-  border-radius: 5px;
-}
-.nputKupengButton {
-  margin-left: 10px;
-  background-color: #daa520;
-  padding: 10px;
-}
+  .sectionTotal {
+    width: 100vw;
+    max-width: 100%;
+    height: 190px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    background-color: #939393;
 
-.nputKupengButton:hover {
-  color: rgb(0, 144, 0);
-  background-color: #fabd21;
-}
+    .sectionTotalLayout {
+      width: 60vw;
+      height: 190px;
+      /* background-color: #fff; */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-.sectionTotal {
-  width: 100vw;
-  max-width: 100%;
-  height: 190px;
-  color: black;
-  display: flex;
-  justify-content: center;
-  background-color: #939393;
-}
+      .totalLeftButton {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+      }
 
-.sectionTotalLayout {
-  width: 60vw;
-  height: 190px;
-  /* background-color: #fff; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      .totalLeftButton:hover {
+        background-color: #aa0000;
+        color: black;
+        transition: all 0.6s ease;
+      }
 
-.totalLeftButton {
-  background-color: black;
-  color: white;
-  padding: 20px;
-  cursor: pointer;
-}
+      .totalUse {
+        background-color: #daa520;
+        width: 100px;
+      }
+      .totalPrice {
+        display: flex;
+      }
 
-.totalLeftButton:hover {
-  background-color: #aa0000;
-  color: black;
-  transition: all 0.6s ease;
-}
+      .totalPriceTop {
+        text-decoration: line-through;
+        width: 120px;
+      }
+      .totalPriceBottom {
+        background-color: #daa520;
+        width: 120px;
+      }
 
-.POA {
-  width: 196px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
+      .POA {
+        width: 196px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
 
-.totalRightButton {
-  display: flex;
-  justify-content: center;
-  width: 150px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-}
+      .totalRightButton {
+        display: flex;
+        justify-content: center;
+        width: 150px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+      }
 
-a {
-  background-color: #daa520;
-  padding: 20px;
-}
+      a {
+        background-color: #daa520;
+        padding: 20px;
+      }
 
-a:hover {
-  color: rgb(0, 144, 0);
-  background-color: #fabd21;
-  transition: all 0.4s ease;
+      a:hover {
+        color: rgb(0, 144, 0);
+        background-color: #fabd21;
+        transition: all 0.4s ease;
+      }
+    }
+  }
 }
-
-.totalUse {
-  background-color: #daa520;
-  width: 100px;
-}
-.totalPrice {
-  display: flex;
-}
-
-.totalPriceTop {
-  text-decoration: line-through;
-  width: 120px;
-}
-.totalPriceBottom {
-  background-color: #daa520;
-  width: 120px;
-}
-
-.yellow {
-  background-color: #daa520;
-}
-
-.textNone {
-  text-decoration: line-through;
-}
-
-/* test---------------------------------------------------------------------------------------------------- */
 
 .fade-enter-active,
 .fade-leave-active {
@@ -462,5 +447,4 @@ a:hover {
 .fade-leave-from {
   opacity: 1;
 }
-/* test---------------------------------------------------------------------------------------------------- */
 </style>

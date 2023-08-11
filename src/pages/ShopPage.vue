@@ -346,7 +346,7 @@ section {
   width: 100vw;
   max-width: 100%;
   .topNavBar {
-    background-color: #b18d30;
+    background-color: $darkYellowColor;
     color: black;
     display: flex;
     align-items: center;
