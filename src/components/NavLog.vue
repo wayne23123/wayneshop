@@ -84,7 +84,6 @@ const confirm = () => {
 
 nav {
   background-color: #2b2a2a;
-  color: white;
   height: 25px;
 
   ul {
@@ -94,7 +93,7 @@ nav {
 
     li {
       a {
-        color: #fff4f4;
+        color: $whiteColor;
         padding: 0 20px 0 20px;
 
         .imgLayout {
@@ -110,11 +109,11 @@ nav {
       }
 
       a:hover {
-        color: greenyellow;
+        color: $hoverGreenColor;
       }
 
       .borR {
-        border-right: 1px solid white;
+        border-right: 1px solid $whiteColor;
       }
     }
   }

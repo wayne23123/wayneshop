@@ -44,92 +44,101 @@ const cartsTotalPrice = computed(() => {
 </script>
 
 <template>
-  <header>
-    <div class="logo">
-      <router-link to="/" class="none"
-        ><div class="svgH"><img src="../assets/svgs/wss.svg" /></div
-      ></router-link>
-    </div>
-    <input type="checkbox" id="nav" hidden />
-    <nav>
-      <ul>
-        <li>
-          <router-link to="/" class="svgH"
-            ><div class="">首頁</div></router-link
-          >
-        </li>
-        <li>
-          <router-link
-            to="/shop"
-            class="svgH"
-            @mouseenter="productionStore.searchTerm = ''"
-            ><div class="svg">商城</div></router-link
-          >
-        </li>
-        <li><router-link to="/about" class="svgH">關於我們</router-link></li>
-        <li>
-          <router-link to="/cart" class="svgH">
-            <div class="svg">
-              購物車(<span class="corRed"> {{ cartsTotalCounter }} </span>)
-            </div></router-link
-          >
-        </li>
-      </ul>
-    </nav>
-    <label for="nav" class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </label>
-  </header>
+  <section>
+    <header>
+      <div>
+        <router-link to="/"
+          ><div class="svgHover"><img src="../assets/svgs/wss.svg" /></div
+        ></router-link>
+      </div>
+      <input type="checkbox" id="nav" hidden />
+      <nav>
+        <ul>
+          <li>
+            <router-link to="/" class="svgHover"
+              ><div class="">首頁</div></router-link
+            >
+          </li>
+          <li>
+            <router-link
+              to="/shop"
+              class="svgHover"
+              @mouseenter="productionStore.searchTerm = ''"
+              ><div class="svg">商城</div></router-link
+            >
+          </li>
+          <li>
+            <router-link to="/about" class="svgHover">關於我們</router-link>
+          </li>
+          <li>
+            <router-link to="/cart" class="svgHover">
+              <div class="svg">
+                購物車(<span class="corRed"> {{ cartsTotalCounter }} </span>)
+              </div></router-link
+            >
+          </li>
+        </ul>
+      </nav>
+      <label for="nav" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </header>
+  </section>
 </template>
 
-<style scoped>
-.corRed {
-  color: red;
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
+section {
+  header {
+    background: $grayColor;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 200;
+
+    a.router-link-exact-active {
+      color: #00b700;
+    }
+
+    a {
+      display: inline-block;
+      color: #000;
+      padding: 5px 0;
+      margin: 0 1;
+      border: 3px solid transparent;
+    }
+
+    .svgHover:hover {
+      transition: all 0.4s ease;
+      filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(100deg);
+    }
+
+    nav {
+      ul {
+        display: flex;
+
+        li {
+          .svg {
+            padding: 0 25px 0 25px;
+
+            .corRed {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-
-a.router-link-exact-active {
-  color: #00b700;
-}
-
-.svg {
-  padding: 0 25px 0 25px;
-}
-
-.svgH:hover {
-  transition: all 0.4s ease;
-  filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(100deg);
-}
-
-header {
-  background: #c4c4c4;
-  height: 70px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 50px;
-  z-index: 200;
-}
-
-ul {
-  display: flex;
-}
-
-a {
-  display: inline-block;
-  color: #000;
-  padding: 5px 0;
-  margin: 0 1;
-  border: 3px solid transparent;
-}
-
-/* a:hover,
-.active {
-  border-bottom-color: black;
-} */
-
 .hamburger {
   cursor: pointer;
   display: none;
@@ -141,6 +150,7 @@ a {
   margin: 5px 0;
   background-color: black;
 }
+
 @media only screen and (max-width: 900px) {
   header {
     padding: 0 30px;
@@ -165,7 +175,8 @@ a {
     left: 0;
   }
   ul {
-    display: block;
+    flex-direction: column;
+    align-items: center;
   }
   a {
     margin: 5px 0;
