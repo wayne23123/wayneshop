@@ -22,30 +22,41 @@ import w019 from "@/assets/imgs/w019.jpg";
 import w020 from "@/assets/imgs/w020.jpg";
 
 export const useDemoStore = defineStore("demos", () => {
-  const demos = ref([]);
-
-  // // sliceLastDemoFunction需要的空ref
-  // const sliceLastDemoRef = ref("");
-
-  // // 透過computed屬性計算最後一個範例的資訊
-  // const sliceLastDemoFunction = computed(() => {
-  //   // 取得最後一個範例的資訊
-  //   const lastDemo = demos.value.slice(-1);
-  //   // 將最後一個範例的標題儲存到sliceLastDemoRef變數中，如果不存在最後一個範例則sliceLastDemoRef設為空字串
-  //   sliceLastDemoRef.value = lastDemo[0] ? lastDemo[0].title : "";
-  //   // 回傳最後一個範例的資訊
-  //   return lastDemo;
-  // });
-
-  // // 回傳 demos 的最後一個物件轉換成 JSON 格式的字串
-  // const jsonLastDemosFunction = computed(() => {
-  //   return JSON.stringify(demos.value[demos.value.length - 1]);
-  // });
+  const demos = ref([
+    {
+      id: 1,
+      order: "",
+      img: "./src/assets/imgs/w001.jpg",
+      title: "燈芯絨水手帽",
+      category: "hat",
+      star: "★★★★",
+      stars: 4,
+      price: 1200,
+      description:
+        "粗條燈芯絨；主題繡花，為今年聖誕設計的幾何小圖；男女皆可戴。",
+      color: "orange",
+      label: "Other",
+      counter: 1,
+      size: "M",
+      kupeng: false,
+      email: "",
+      name: "",
+      telphone: "",
+      adress: "",
+      message: "",
+      d: "",
+      year: "",
+      month: "",
+      date: "",
+      hours: "",
+      minutes: "",
+      seconds: "",
+      pay: false,
+      complete: false,
+    },
+  ]);
 
   return {
     demos,
-    // sliceLastDemoRef,
-    // sliceLastDemoFunction,
-    // jsonLastDemosFunction,
   };
 });

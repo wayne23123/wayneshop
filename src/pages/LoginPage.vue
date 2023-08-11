@@ -188,7 +188,7 @@ section {
       color: black;
       background-image: url(../assets/svgs/circle-scatter1.svg);
       background-repeat: no-repeat;
-      background-size: 100% auto;
+      background-size: cover;
 
       .formCardLayout {
         display: flex;

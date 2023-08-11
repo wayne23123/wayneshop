@@ -288,7 +288,7 @@ section {
     justify-content: center;
     background-image: url("../assets/svgs/stacked-waves-2.svg");
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
 
     .formLayout {
       padding: 20px 50px;

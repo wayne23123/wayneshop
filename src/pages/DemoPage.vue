@@ -5,8 +5,6 @@ import { useCartStore } from "../stores/cart";
 
 import { useMouseInElement } from "@vueuse/core";
 
-const sectionDebugRef = ref(false);
-
 const demoStore = useDemoStore();
 const cartStore = useCartStore();
 
@@ -121,266 +119,252 @@ watch([elementX, elementY], () => {
 </script>
 
 <template>
-  <!-- {{ elementX }} , {{ elementY }} , {{ isOutside }} -->
-  <section class="sectionHolder"></section>
-  <div class="bread">
-    <div>
-      <span> <router-link to="/" class="none"> 首頁 ➣ </router-link></span>
-      <span> <router-link to="/shop" class="none"> 商城 ➣ </router-link></span>
-      <span> 商品預覽</span>
-    </div>
-  </div>
-  <section class="sectionHolder"></section>
-  <section v-show="sectionDebugRef" class="sectionDebug">
-    <div>{{ copyDemoRef }}</div>
-    <div v-for="demoLast in demoStore.sliceLastDemo" :key="demoLast.id">
-      <div>{{ demoLast }}</div>
-    </div>
-  </section>
+  <section>
+    <!-- {{ elementX }} , {{ elementY }} , {{ isOutside }} -->
 
-  <section class="sectionDemo">
-    <div @mouseenter="copyDemoFunction($event, demoRef)" class="demoLayout">
-      <div class="leftImgLayout" ref="target">
-        <div class="leftImg">
-          <img class="imgSize" :src="demoRef.img" />
-
-          <!-- 蒙層小滑塊 -->
-          <div
-            class="layer"
-            :style="{ left: `${left}px`, top: `${top}px` }"
-            v-show="!isOutside"
-          ></div>
-        </div>
-        <div class="large" v-show="!isOutside">
-          <img class="imgLargeSize" :src="demoRef.img" />
-        </div>
-      </div>
-
-      <div class="rightInfoLayout">
-        <div class="rightInfo">
-          <div class="demoTitle">商品名稱: {{ demoRef.title }}</div>
-
-          <div class="demoPrice">商品價格: {{ demoRef.price }}</div>
-          <div class="demoStar">
-            社群評價:
-            <div class="demoYellowStar">{{ demoRef.star }}</div>
-          </div>
-          <div class="formAddButton">
-            <select class="sizeRef" name="sizeRef" v-model="sizeRef">
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="S">S</option>
-            </select>
-            <select class="amountDemo" name="amountDemo" v-model="amountDemo">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <button class="demoButton" @click="addcopyDemoFunction">
-              新增至購物車
-            </button>
-          </div>
-          <div class="demoCategory">商品種類: {{ demoRef.category }}</div>
-          <div class="demoDescriptionTitle">商品簡介:</div>
-          <div class="demoDescription">{{ demoRef.description }}</div>
-        </div>
+    <div class="bread">
+      <div>
+        <span>
+          <router-link to="/" class="greenHov"> 首頁 ➣ </router-link></span
+        >
+        <span>
+          <router-link to="/shop" class="greenHov"> 商城 ➣ </router-link></span
+        >
+        <span> 商品預覽</span>
       </div>
     </div>
+
+    <div class="sectionDemo">
+      <div @mouseenter="copyDemoFunction($event, demoRef)" class="demoLayout">
+        <div class="leftImgLayout" ref="target">
+          <div class="leftImg">
+            <img class="imgSize" :src="demoRef.img" />
+
+            <!-- 蒙層小滑塊 -->
+            <div
+              class="layer"
+              :style="{ left: `${left}px`, top: `${top}px` }"
+              v-show="!isOutside"
+            ></div>
+          </div>
+          <div class="large" v-show="!isOutside">
+            <img class="imgLargeSize" :src="demoRef.img" />
+          </div>
+        </div>
+
+        <div class="rightInfoContainer">
+          <div class="rightInfoLayout">
+            <div class="rightInfo">
+              <div class="demoTitle">商品名稱: {{ demoRef.title }}</div>
+
+              <div class="demoPrice">商品價格: {{ demoRef.price }}</div>
+              <div class="demoStar">
+                社群評價:
+                <div class="demoYellowStar">{{ demoRef.star }}</div>
+              </div>
+              <div>
+                <select class="sizeRef" name="sizeRef" v-model="sizeRef">
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="S">S</option>
+                </select>
+                <select
+                  class="amountDemo"
+                  name="amountDemo"
+                  v-model="amountDemo"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <button class="demoButton" @click="addcopyDemoFunction">
+                  新增至購物車
+                </button>
+              </div>
+              <div class="demoCategory">商品種類: {{ demoRef.category }}</div>
+              <div class="demoDescriptionTitle">商品簡介:</div>
+              <div class="demoDescription">{{ demoRef.description }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  <section class="footerHolder"></section>
 </template>
 
-<style scoped>
-.bread {
-  background-color: #daa520;
-  color: black;
-  padding-left: 20px;
-}
-.none:hover {
-  color: green;
-}
-.sectionDebug {
-  display: flex;
-  background-color: black;
-  color: green;
-  width: 100%;
-  height: 10vh;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
 
-.sectionDebug button {
-  background-color: green;
-}
+section {
+  .bread {
+    padding: 20px;
+    background-color: $yellowColor;
+    color: black;
+  }
 
-.noteList {
-  background-color: #daa520;
-}
-.sectionHolder {
-  height: 20px;
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
-}
+  .greenHov:hover {
+    color: #00b700;
+  }
 
-.sectionDemo {
-  width: 100vw;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #daa520;
-}
+  .sectionDemo {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 0 50px 0;
+    display: flex;
+    justify-content: center;
+    // background-color: #daa520;
+    background-image: url(../assets/svgs/layered-waves1.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.demoLayout {
-  position: relative;
-  width: 800px;
-  max-width: 800px;
-  /* background-color: #500000; */
-  display: flex;
-  justify-content: center;
-}
+    .demoLayout {
+      position: relative;
+      width: 800px;
+      max-width: 800px;
+      /* background-color: #500000; */
+      display: flex;
+      justify-content: center;
 
-.leftImg {
-  width: 400px;
-  height: 400px;
-  background-color: #343333;
-  overflow: hidden;
-}
+      .leftImgLayout {
+        .leftImg {
+          width: 400px;
+          height: 400px;
+          background-color: #343333;
+          overflow: hidden;
 
-.large {
-  position: absolute;
-  top: 0;
-  left: 412px;
-  width: 400px;
-  height: 400px;
-  z-index: 10;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-repeat: no-repeat;
-  background-color: #f8f8f8;
-  overflow: hidden;
-}
+          .imgSize {
+            width: 100%;
+            height: 100%;
+          }
 
-.imgLargeSize {
-  width: 800px;
-  height: 800px;
-  object-position: v-bind(positionX) v-bind(positionY);
-}
+          .layer {
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.2);
+            left: 0;
+            top: 0;
+            position: absolute;
+          }
+        }
 
-.imgSize {
-  width: 100%;
-  height: 100%;
-}
+        .large {
+          position: absolute;
+          top: 0;
+          left: 412px;
+          width: 400px;
+          height: 400px;
+          z-index: 10;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          background-repeat: no-repeat;
+          background-color: #f8f8f8;
+          overflow: hidden;
 
-.imgPOR {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  filter: blur(5px);
-  transform: translate(0, 0);
-}
+          .imgLargeSize {
+            width: 800px;
+            height: 800px;
+            object-position: v-bind(positionX) v-bind(positionY);
+          }
+        }
+      }
+    }
 
-.layer {
-  width: 200px;
-  height: 200px;
-  background: rgba(0, 0, 0, 0.2);
-  left: 0;
-  top: 0;
-  position: absolute;
-}
+    .rightInfoContainer {
+      .rightInfoLayout {
+        width: 400px;
+        height: 400px;
+        padding: 0 0 0 20px;
 
-.rightInfoLayout {
-  width: 400px;
-  height: 400px;
-  padding: 0 0 0 20px;
-}
-.rightInfo {
-  padding: 15px;
-  background-color: #a3a3a3;
-  border-radius: 15px;
-  padding: 40px;
-}
+        .rightInfo {
+          padding: 15px;
+          background-color: #a3a3a3;
+          border-radius: 15px;
+          padding: 40px;
 
-.demoTitle {
-  color: black;
-  padding: 5px;
-}
+          .demoTitle {
+            color: black;
+            padding: 5px;
+          }
 
-.demoPrice {
-  color: black;
-  padding: 5px;
-}
+          .demoPrice {
+            color: black;
+            padding: 5px;
+          }
 
-.demoStar {
-  color: #565656;
-  padding: 5px;
-  display: flex;
-}
+          .demoStar {
+            color: #565656;
+            padding: 5px;
+            display: flex;
 
-.demoYellowStar {
-  color: yellow;
-  padding-left: 5px;
-}
+            .demoYellowStar {
+              color: yellow;
+              padding-left: 5px;
+            }
+          }
 
-.sizeRef {
-  font-size: 18px;
-  margin: 5px;
-  padding: 4px;
-}
+          .sizeRef {
+            font-size: 18px;
+            margin: 5px;
+            padding: 4px;
+          }
 
-.amountDemo {
-  font-size: 18px;
-  margin: 5px;
-  padding: 4px;
-}
+          .amountDemo {
+            font-size: 18px;
+            margin: 5px;
+            padding: 4px;
+          }
 
-.demoButton {
-  background-color: #daa520;
-  color: black;
-  padding: 6px 10px 6px 10px;
-  margin-left: 5px;
-}
+          .demoButton {
+            background-color: #daa520;
+            color: black;
+            padding: 6px 10px 6px 10px;
+            margin-left: 5px;
+          }
 
-.demoButton:hover {
-  background-color: #ffb700;
-  color: rgb(0, 144, 0);
-  padding: 7px 11px 7px 11px;
-}
+          .demoButton:hover {
+            background-color: #ffb700;
+            color: rgb(0, 144, 0);
+            padding: 7px 11px 7px 11px;
+          }
 
-.demoCategory {
-  color: #565656;
-}
-.demoDescriptionTitle {
-  color: black;
-  padding: 5px 0;
-}
+          .demoCategory {
+            color: #565656;
+          }
+          .demoDescriptionTitle {
+            color: black;
+            padding: 5px 0;
+          }
 
-.demoDescription {
-  color: black;
-}
-.footerHolder {
-  height: 50px;
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
+          .demoDescription {
+            color: black;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 820px) {
   .demoLayout {
-    display: flex;
-    flex-direction: column;
-  }
-  .rightInfoLayout {
-    display: flex;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
-    padding: 0;
-  }
+    flex-wrap: wrap;
+    .leftImgLayout {
+      .layer {
+        display: none;
+      }
 
-  .large {
-    top: 412px;
-    left: 0;
+      .large {
+        display: none;
+      }
+    }
+
+    .rightInfoContainer {
+      padding: 50px 0 0 0;
+    }
   }
 }
 </style>
