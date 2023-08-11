@@ -6,7 +6,7 @@ const userStore = useUserStore();
 
 const router = useRouter();
 const confirm = () => {
-  // 退出登陸邏輯
+  // 退出登入邏輯
   localStorage.removeItem("token");
   // 1. 清除用戶訊息 觸發 action
   userStore.clearUserInfo();
@@ -17,7 +17,7 @@ const confirm = () => {
 
 <template>
   <nav>
-    <div class="navContainer">
+    <div>
       <ul>
         <!-- 登入時顯示 -->
         <!-- 是否有 token -->
@@ -74,7 +74,10 @@ const confirm = () => {
   </nav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor;
+
 .dis {
   display: flex;
 }
@@ -83,35 +86,37 @@ nav {
   background-color: #2b2a2a;
   color: white;
   height: 25px;
-}
 
-a {
-  color: white;
-  padding: 0 20px 0 20px;
-}
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
 
-.borR {
-  border-right: 1px solid white;
-}
+    li {
+      a {
+        color: #fff4f4;
+        padding: 0 20px 0 20px;
 
-a:hover {
-  color: greenyellow;
-}
+        .imgLayout {
+          width: 170px;
+          height: 170px;
+          border-radius: 50%;
+          overflow: hidden;
+        }
 
-ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-}
+        .padL10 {
+          padding: 0 0 0 10px;
+        }
+      }
 
-.padL10 {
-  padding: 0 0 0 10px;
-}
+      a:hover {
+        color: greenyellow;
+      }
 
-.imgLayout {
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  overflow: hidden;
+      .borR {
+        border-right: 1px solid white;
+      }
+    }
+  }
 }
 </style>

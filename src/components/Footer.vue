@@ -1,24 +1,22 @@
 <script setup></script>
 
 <template>
-  <section class="sectionFooter">
+  <section>
     <div class="footerLayout">
-      <br />
-      <br />
       <div class="centerWord"><div>聯絡我們 :</div></div>
 
       <div class="centerWord">
-        <a href="https://github.com/wayne23123/" class="padding"
+        <a href="https://github.com/wayne23123/" class="pad5"
           ><img src="../assets/svgs/github.svg" alt=""
         /></a>
-        <router-link to="/" class="padding">
+        <router-link to="/" class="pad5">
           <img src="../assets/svgs/facebook.svg" />
         </router-link>
 
-        <router-link to="/" class="padding">
+        <router-link to="/" class="pad5">
           <img src="../assets/svgs/instergram.svg" />
         </router-link>
-        <router-link to="/" class="padding">
+        <router-link to="/" class="pad5">
           <img src="../assets/svgs/twitter.svg" />
         </router-link>
       </div>
@@ -29,36 +27,41 @@
   </section>
 </template>
 
-<style scoped>
-.sectionFooter {
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
+
+section {
   position: absolute;
   z-index: 100;
-  height: 220px;
   width: 100vw;
+  padding: 50px 0;
   max-width: 100%;
-  background-color: #c4c4c4;
+  background-color: $grayColor;
   display: flex;
   justify-content: center;
-}
+  .footerLayout {
+    width: 40vw;
 
-.footerLayout {
-  width: 40vw;
-}
+    div {
+      color: black;
+    }
 
-div {
-  color: black;
-}
+    .centerWord {
+      display: flex;
+      justify-content: center;
 
-.padding {
-  padding: 5px;
-}
+      .pad5 {
+        padding: 5px;
+      }
 
-.centerWord {
-  display: flex;
-  justify-content: center;
-}
-
-img:hover {
-  filter: invert(30%) sepia(100%) saturate(2000%) hue-rotate(100deg);
+      img:hover {
+        filter: invert(30%) sepia(100%) saturate(2000%) hue-rotate(100deg);
+      }
+    }
+  }
 }
 </style>
