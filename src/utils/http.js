@@ -13,6 +13,13 @@ const httpInstance = axios.create({
 // axios請求攔截器
 httpInstance.interceptors.request.use(
   (config) => {
+    // 1.從 pinia 獲取 token 數據
+    const userStore = useUserStore();
+    // 2.照後端的要求拼接token
+    const token = userStore.userInfo.token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (e) => Promise.reject(e)
@@ -34,6 +41,7 @@ httpInstance.interceptors.response.use(
     // 2. 跳轉登入頁
     if (e.response.status === 401) {
       userStore.clearUserInfo();
+      // 先 import router from "@/router"; 再調用router方法
       router.push("/login");
     }
 

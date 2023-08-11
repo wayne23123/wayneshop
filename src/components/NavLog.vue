@@ -7,6 +7,7 @@ const userStore = useUserStore();
 const router = useRouter();
 const confirm = () => {
   // 退出登陸邏輯
+  localStorage.removeItem("token");
   // 1. 清除用戶訊息 觸發 action
   userStore.clearUserInfo();
   // 2. 跳轉到登入頁
@@ -63,8 +64,10 @@ const confirm = () => {
               >登錄</a
             >
           </li>
-          <li><a href="javascript:;" class="borR">幫助</a></li>
-          <li><a href="javascript:;">關於</a></li>
+          <li>
+            <RouterLink class="borR" to="/about">幫助</RouterLink>
+          </li>
+          <li><RouterLink to="/about">關於</RouterLink></li>
         </template>
       </ul>
     </div>

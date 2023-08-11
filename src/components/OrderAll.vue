@@ -16,15 +16,7 @@ function completeTrue(orderId) {
       order.complete = true;
     }
   });
-}
-
-// 定義一個名為 completeFalse 的函式，傳入 orderId 參數
-function completeFalse(orderId) {
-  adminCartStore.admincarts.forEach((order) => {
-    if (order.order === orderId) {
-      order.complete = false;
-    }
-  });
+  ElMessage({ type: "success", message: "訂單完成" });
 }
 
 // 依照 orderId 刪除訂單
@@ -42,8 +34,11 @@ function deleteOrder(orderId) {
       adminCartStore.orderFunction;
       // 刪完後 將搜尋條清空
       adminCartStore.orderSearchTermRef = "";
+    } else {
+      return;
     }
   }
+  ElMessage({ type: "success", message: "取消訂單成功" });
 }
 </script>
 
@@ -180,6 +175,7 @@ function deleteOrder(orderId) {
                     >
                       <div>完成訂單✓</div>
                     </div>
+
                     <div
                       @click="deleteOrder(cartItems[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
@@ -314,16 +310,15 @@ function deleteOrder(orderId) {
                       class="tableRightCardBtnLayoutBtnR pointer"
                     >
                       <div>完成訂單✓</div>
-                      <div></div>
                     </div>
                     <div
                       @click="deleteOrder(searchs[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>
-                      <div></div>
                     </div>
                   </div>
+
                   <br />
                 </div>
               </div>
@@ -477,5 +472,12 @@ input {
 
 .desCor {
   color: #747474;
+}
+
+.dialogLayout {
+  background-color: #c4c4c4;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
 }
 </style>

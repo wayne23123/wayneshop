@@ -14,22 +14,27 @@ export const useUserStore = defineStore(
       adress: "測試用地址",
       email: "test@gmail.com",
       img: "../src/assets/pictures/avatarDefault.png",
+      token: "",
     });
     // 2. 定義獲取接口數據的 action 函數
     const getUserInfo = async ({ account, password }) => {
       const res = await loginAPI({ account, password });
-      userInfo.value = res.result;
+      userInfo.value.token = res.result.token;
+      // userInfo.value.name = "test001";
+      // userInfo.value.telephone = "0912345678";
+      // userInfo.value.adress = "測試用地址";
+      // userInfo.value.email = "test@gmail.com";
     };
 
-    //退出時清除用戶訊息
+    //退出時清除用戶 token
     const clearUserInfo = () => {
-      userInfo.value = {};
+      userInfo.value.token = "";
     };
 
     // 宣告名為 nameEditRef 的 ref 變數，用來儲存欲修改的會員名稱
     const nameEditRef = ref("");
 
-    // 依照商品 id 修改商品名稱的函式
+    //
     const nameEditFunction = () => {
       if (nameEditRef.value == "") {
         ElMessage.warning("姓名不能為空！");
@@ -42,10 +47,10 @@ export const useUserStore = defineStore(
       userInfo.value.name = nameEditRef.value;
     };
 
-    // 宣告名為 nameEditRef 的 ref 變數，用來儲存欲修改的會員名稱
+    // 宣告名為 telephoneEditRef 的 ref 變數，用來儲存欲修改的電話號碼
     const telephoneEditRef = ref("");
 
-    // 依照商品 id 修改商品名稱的函式
+    //
     const telephoneEditFunction = () => {
       if (telephoneEditRef.value == "") {
         ElMessage.warning("電話號碼不能為空！");
@@ -64,52 +69,36 @@ export const useUserStore = defineStore(
       userInfo.value.telephone = telephoneEditRef.value;
     };
 
-    // 宣告名為 nameEditRef 的 ref 變數，用來儲存欲修改的會員名稱
+    // 宣告名為 emailEditRef 的 ref 變數，用來儲存欲修改的 email
     const emailEditRef = ref("");
 
-    // 依照商品 id 修改商品名稱的函式
+    //
     const emailEditFunction = () => {
       if (emailEditRef.value == "") {
-        ElMessage.warning("姓名不能為空！");
+        ElMessage.warning("email 不能為空！");
         return;
       } else if (emailEditRef.value == " ") {
-        ElMessage.warning("姓名不能為空！");
+        ElMessage.warning("email 不能為空！");
         return;
       }
-      ElMessage({ type: "success", message: "更改姓名成功" });
+      ElMessage({ type: "success", message: "更改 email 成功" });
       userInfo.value.email = emailEditRef.value;
     };
 
-    // 宣告名為 nameEditRef 的 ref 變數，用來儲存欲修改的會員名稱
+    // 宣告名為 adressEditRef 的 ref 變數，用來儲存欲修改的地址
     const adressEditRef = ref("");
 
-    // 依照商品 id 修改商品名稱的函式
+    //
     const adressEditFunction = () => {
       if (adressEditRef.value == "") {
-        ElMessage.warning("姓名不能為空！");
+        ElMessage.warning("地址不能為空！");
         return;
       } else if (adressEditRef.value == " ") {
-        ElMessage.warning("姓名不能為空！");
+        ElMessage.warning("地址不能為空！");
         return;
       }
-      ElMessage({ type: "success", message: "更改姓名成功" });
+      ElMessage({ type: "success", message: "更改地址成功" });
       userInfo.value.adress = adressEditRef.value;
-    };
-
-    // 宣告名為 nameEditRef 的 ref 變數，用來儲存欲修改的會員名稱
-    const imgEditRef = ref("");
-
-    // 依照商品 id 修改商品名稱的函式
-    const imgEditFunction = () => {
-      if (nameEditRef.value == "") {
-        ElMessage.warning("姓名不能為空！");
-        return;
-      } else if (nameEditRef.value == " ") {
-        ElMessage.warning("姓名不能為空！");
-        return;
-      }
-      ElMessage({ type: "success", message: "更改姓名成功" });
-      userInfo.value.img = imgEditRef.value;
     };
 
     // 3. 以對象的格式把 state 和 action return
@@ -129,9 +118,6 @@ export const useUserStore = defineStore(
 
       emailEditRef,
       emailEditFunction,
-
-      imgEditRef,
-      imgEditFunction,
     };
   },
   {

@@ -128,27 +128,27 @@ function toTopFunction() {
     </div>
   </section>
 
-  <section class="sectionHoler40pxB"></section>
-  <section class="sectionToShop">
-    <div class="toShopLayout">
-      <div class="toShopCotainer">
-        <div class="disCen">
-          <img src="../assets/svgs/wss.svg" />
+  <section @mouseenter="productionStore.searchTerm = ''" class="sectionToShop">
+    <div>
+      <div class="disCen">
+        <div class="toShopLayout">
+          <div class="toShopCotainer">
+            <div class="disCen">
+              <img src="../assets/svgs/wss.svg" />
+            </div>
+            <div class="disCen corB">最新流行小舖</div>
+          </div>
         </div>
-        <div class="disCen corB">最新流行小舖</div>
+      </div>
+      <br />
+      <br />
+      <div>
+        <router-link to="/shop" class="totalLeftButton">
+          <button class="btn btn-background-slide">➜ 前往線上商城</button>
+        </router-link>
       </div>
     </div>
   </section>
-  <section class="sectionHoler40pxB"></section>
-  <section
-    class="sectionHoler40pxB"
-    @mouseenter="productionStore.searchTerm = ''"
-  >
-    <router-link to="/shop" class="totalLeftButton">
-      <button class="btn btn-background-slide">➜ 前往線上商城</button>
-    </router-link>
-  </section>
-  <section class="sectionHoler40pxB"></section>
 
   <transition name="fade" tag="div" v-show="y > 0">
     <button @click="toTopFunction" class="toTop">
@@ -300,16 +300,19 @@ h1 {
 .sectionToShop {
   width: 100vw;
   max-width: 100%;
-  background-color: #000;
+
+  // background-color: #000;
+  background-image: url(../assets/svgs/polygon-scatter2.svg);
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 120px 0;
 }
 
 .toShopLayout {
   width: 200px;
   height: 200px;
-  background-color: rgb(84, 84, 84);
+
+  background-color: #252525;
   border-radius: 50%;
   display: flex;
   justify-content: center;

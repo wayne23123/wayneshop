@@ -70,13 +70,14 @@ a:hover {
   width: 180px;
   margin-right: 15px;
   border-radius: 2px;
-  background-color: #c4c4c4;
+  /* background-color: #c4c4c4; */
+  background-image: url(../assets/svgs/stacked-peaks1.svg);
   border-bottom: 1px solid #f6f6f6;
 }
 
 .userManage {
   width: 180px;
-  background-color: #c4c4c4;
+  /* background-color: #c4c4c4; */
 }
 
 h4 {

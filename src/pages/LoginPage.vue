@@ -66,8 +66,11 @@ const doLogin = () => {
       // await userStore.getUserInfo({ account, password });
       // 1. 提示用戶
       ElMessage({ type: "success", message: "登陸成功" });
+
       // 2. 跳轉首頁
       router.replace({ path: "/" });
+
+      localStorage.setItem("token", "1");
     }
   });
 };

@@ -82,10 +82,12 @@ const onFileChange = (event) => {
 
 function uploadImg() {
   userStore.userInfo.img = imageUrl.value;
+  ElMessage({ type: "success", message: "上傳圖片成功" });
 }
 
 function clearimgRef() {
   imageUrl.value = "";
+  ElMessage({ type: "success", message: "已取消" });
 }
 </script>
 
@@ -97,12 +99,12 @@ function clearimgRef() {
           <img class="avatarImg" :src="userStore.userInfo.img" alt="" />
         </div>
       </div>
-      <h4>{{ userStore.userInfo.name }}</h4>
+      <h4 class="bgcHome">{{ userStore.userInfo.name }}</h4>
     </div>
     <div class="item">
-      <a href="javascript:;">
-        <p><span>✏ </span>會員中心</p>
-      </a>
+      <RouterLink to="/member">
+        <p class="bgcHome"><span>✏ </span>會員中心</p>
+      </RouterLink>
     </div>
   </div>
   <div class="container">
@@ -256,7 +258,7 @@ function clearimgRef() {
                     @click="uploadImg"
                     class="pointer tableRightCardBtnLayoutBtnR"
                   >
-                    確定上傳
+                    上傳✓
                   </div>
                 </div>
                 <div class="btnLayout">
@@ -264,7 +266,7 @@ function clearimgRef() {
                     @click="clearimgRef"
                     class="pointer tableRightCardBtnLayoutBtnL"
                   >
-                    取消上傳
+                    取消✕
                   </div>
                 </div>
               </div>
@@ -280,10 +282,16 @@ function clearimgRef() {
 </template>
 
 <style scoped>
+a.router-link-exact-active {
+  /* 到頁面 active 顏色 */
+  color: #00b700;
+}
+
 .homeOverview {
   display: flex;
   height: 132px;
-  background-color: #d5d6d6;
+  /* background-color: #d5d6d6; */
+  background-image: url(../assets/svgs/low-poly-grid.svg);
 }
 
 .userMeta {
@@ -294,6 +302,7 @@ function clearimgRef() {
 
 .avatar {
   margin-left: 60px;
+  margin-right: 20px;
 }
 
 .avatarImgLayout {
@@ -335,7 +344,13 @@ h4 {
   width: 50vw;
   padding: 30px 40px;
   /* background-color: #aba39c; */
-  background-image: url(../assets/svgs/stacked-waves-haikei.svg);
+  background-image: url(../assets/svgs/polygon-scatter1.svg);
+}
+
+.bgcHome {
+  padding: 10px;
+  background-color: #dededebf;
+  border-radius: 15px;
 }
 
 .inputImg {
@@ -367,6 +382,7 @@ h4 {
 }
 
 .newImgLayout {
+  background-color: #c4c4c4;
   width: 170px;
   height: 170px;
   border-radius: 50%;

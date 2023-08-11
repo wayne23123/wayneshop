@@ -1,15 +1,25 @@
-<script setup></script>
+<script setup>
+import { useAdminCartStore } from "../stores/admincart";
+
+const adminCartStore = useAdminCartStore();
+
+function clearSearchValue() {
+  adminCartStore.orderSearchTermRef = "";
+  adminCartStore.orderUndoSearchTermRef = "";
+  adminCartStore.orderDoneSearchTermRef = "";
+}
+</script>
 
 <template>
   <div class="orderContainer">
     <div class="orderTop">
-      <div class="links">
+      <div @click="clearSearchValue()" class="links">
         <RouterLink to="/member/order">全部訂單</RouterLink>
       </div>
-      <div class="links">
+      <div @click="clearSearchValue()" class="links">
         <RouterLink to="/member/order/undo">配送中訂單</RouterLink>
       </div>
-      <div class="links">
+      <div @click="clearSearchValue()" class="links">
         <RouterLink to="/member/order/finish">已完成訂單</RouterLink>
       </div>
     </div>
