@@ -320,6 +320,8 @@ a.router-link-exact-active {
   height: 132px;
   /* background-color: #d5d6d6; */
   background-image: url(../assets/svgs/low-poly-grid.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .userMeta {
