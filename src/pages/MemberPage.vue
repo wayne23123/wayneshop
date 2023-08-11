@@ -17,22 +17,22 @@ function orderActiveFalse() {
     <div class="memberAside">
       <div class="userManage">
         <div>
-          <h4>我的帳戶</h4>
-          <br />
-          <div @click="orderActiveFalse" class="links">
-            <RouterLink to="/member/">個人中心</RouterLink>
-          </div>
-          <br />
-        </div>
-        <div>
           <h4>交易管理</h4>
           <br />
           <div @click="orderActiveTrue()">
-            <RouterLink to="/member/order"
+            <RouterLink to="/member/"
               ><div class="links">
                 <span :class="{ active: orderActiveRef }">我的訂單</span>
               </div>
             </RouterLink>
+          </div>
+          <br />
+        </div>
+        <div>
+          <h4>我的帳戶</h4>
+          <br />
+          <div @click="orderActiveFalse" class="links">
+            <RouterLink to="/member/user">個人中心</RouterLink>
           </div>
           <br />
         </div>

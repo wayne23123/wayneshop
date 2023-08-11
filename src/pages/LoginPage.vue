@@ -77,104 +77,152 @@ const doLogin = () => {
 </script>
 
 <template>
-  <section class="sectionLogin">
+  <section>
     <div class="formLayout">
       <div class="logo">
-        <router-link to="/" class="none"
-          ><div class="svg">
+        <router-link to="/"
+          ><div class="svgHover">
             <img src="../assets/svgs/wss.svg" /></div
         ></router-link>
       </div>
-      <br />
-      <br />
       <div class="bread">
         <div>
-          <span> <router-link to="/" class="none"> 首頁 ➣ </router-link></span>
+          <span>
+            <router-link to="/" class="greenHov"> 首頁 ➣ </router-link></span
+          >
           <span> 會員登入</span>
         </div>
       </div>
-      <div class="disCen">
-        <div class="formCard">
-          <br />
-          <div class="disCen">帳戶登入</div>
-          <br />
-          <el-form
-            ref="formRef"
-            :model="form"
-            :rules="rules"
-            label-position="right"
-            label-width="60px"
-            status-icon
-          >
-            <el-form-item prop="account" label="帳號">
-              <el-input v-model="form.account" />
-            </el-form-item>
-            <el-form-item prop="password" label="密碼">
-              <el-input v-model="form.password" />
-            </el-form-item>
-            <el-form-item prop="agree" label-width="22px">
-              <el-checkbox size="large" v-model="form.agree">
-                我已同意隱私條款和服務條款
-              </el-checkbox>
-            </el-form-item>
-            <el-button size="large" class="subBtn" @click="doLogin"
-              >點擊登陸</el-button
+      <div class="formCardContainer">
+        <div class="formCardLayout">
+          <div class="formCard">
+            <br />
+            <div class="disCen bgcTitle">帳戶登入</div>
+            <br />
+            <br />
+            <el-form
+              ref="formRef"
+              :model="form"
+              :rules="rules"
+              label-position="right"
+              label-width="60px"
+              status-icon
             >
-          </el-form>
-          <br />
-          <br />
+              <el-form-item prop="account" label="帳號">
+                <el-input v-model="form.account" />
+              </el-form-item>
+              <el-form-item prop="password" label="密碼">
+                <el-input v-model="form.password" />
+              </el-form-item>
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox size="large" v-model="form.agree">
+                  我已同意隱私條款和服務條款
+                </el-checkbox>
+              </el-form-item>
+              <el-button size="large" class="subBtn" @click="doLogin"
+                >點擊登陸</el-button
+              >
+            </el-form>
+            <br />
+            <br />
+          </div>
         </div>
-        <br />
+
+        <div>
+          <div>測試帳號 xiaotuxian001</div>
+          <div>測試密碼 123456</div>
+        </div>
       </div>
     </div>
-
-    <br />
-    <br />
-    <div>
-      <div>測試帳號 xiaotuxian001</div>
-      <div>測試密碼 123456</div>
-    </div>
-    <Footer />
   </section>
+  <Footer />
 </template>
 
-<style scoped>
-.bread {
-  background-color: #daa520;
-  color: black;
-  padding-left: 20px;
-}
-.none:hover {
-  color: green;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
+
 section {
-  background-color: #daa520;
-  color: rgb(46, 46, 46);
-}
+  .formLayout {
+    // background-color: #daa520;
 
-.logo {
-  background-color: #c4c4c4;
-}
+    .logo {
+      background-color: $grayColor;
+      padding-left: 50px;
 
-.disCen {
-  display: flex;
-  justify-content: center;
-}
+      .svgHover:hover {
+        transition: all 0.4s ease;
+        filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(100deg);
+      }
+    }
 
-.formCard {
-  width: 350px;
-  background-color: #c4c4c4;
-  padding: 0 20px 0 20px;
-  /* width: 250px; */
-  border-radius: 15px;
-}
+    .bread {
+      padding: 20px;
+      background-color: $yellowColor;
+      color: black;
+    }
 
-.subBtn {
-  width: 100%;
-  background-color: #b7b7b7;
-}
+    .greenHov:hover {
+      color: #00b700;
+    }
 
-.subBtn:hover {
-  background-color: #a5a4a4;
+    .bread {
+      background-color: $yellowColor;
+      color: black;
+      padding-left: 50px;
+
+      .breacPad {
+        padding: 20px;
+        margin-left: 20px;
+      }
+    }
+
+    .greenHov:hover {
+      color: #00b700;
+    }
+
+    .formCardContainer {
+      color: black;
+      background-image: url(../assets/svgs/circle-scatter1.svg);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+
+      .formCardLayout {
+        display: flex;
+        justify-content: center;
+        // background-color: #c4c4c4;
+
+        .formCard {
+          width: 350px;
+          background-color: #c4c4c4;
+          padding: 0 20px 0 20px;
+          /* width: 250px; */
+          border-radius: 15px;
+
+          .bgcTitle {
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #171717;
+            color: #c4c4c4;
+          }
+
+          .subBtn {
+            width: 100%;
+            background-color: #171717;
+            color: #c4c4c4;
+          }
+          .subBtn:hover {
+            background-color: #aa0000;
+            color: black;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

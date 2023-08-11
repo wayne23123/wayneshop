@@ -58,10 +58,6 @@ const router = createRouter({
           children: [
             {
               path: "",
-              component: UserInfo,
-            },
-            {
-              path: "order",
               component: UserOrder,
               children: [
                 {
@@ -77,6 +73,10 @@ const router = createRouter({
                   component: OrderFinish,
                 },
               ],
+            },
+            {
+              path: "user",
+              component: UserInfo,
             },
           ],
         },

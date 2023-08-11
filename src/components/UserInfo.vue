@@ -130,7 +130,7 @@ function clearimgRef() {
       <h4 class="bgcHome">{{ userStore.userInfo.name }}</h4>
     </div>
     <div class="item">
-      <RouterLink to="/member">
+      <RouterLink to="/member/user">
         <p class="bgcHome"><span>✏ </span>會員中心</p>
       </RouterLink>
     </div>

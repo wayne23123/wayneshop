@@ -48,12 +48,12 @@ const confirm = () => {
             </el-popconfirm>
           </li>
           <li>
-            <a href="javascript:;" @click="$router.push('/member/order')"
+            <a href="javascript:;" @click="$router.push('/member/')"
               >我的訂單</a
             >
           </li>
           <li>
-            <a href="javascript:;" @click="$router.push('/member/')"
+            <a href="javascript:;" @click="$router.push('/member/user')"
               >會員中心</a
             >
           </li>

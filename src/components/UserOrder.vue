@@ -15,13 +15,13 @@ function clearSearchValue() {
   <div class="orderContainer">
     <div class="orderTop">
       <div @click="clearSearchValue()" class="links">
-        <RouterLink to="/member/order">全部訂單</RouterLink>
+        <RouterLink to="/member/">全部訂單</RouterLink>
       </div>
       <div @click="clearSearchValue()" class="links">
-        <RouterLink to="/member/order/undo">配送中訂單</RouterLink>
+        <RouterLink to="/member/undo">配送中訂單</RouterLink>
       </div>
       <div @click="clearSearchValue()" class="links">
-        <RouterLink to="/member/order/finish">已完成訂單</RouterLink>
+        <RouterLink to="/member/finish">已完成訂單</RouterLink>
       </div>
     </div>
     <br />
