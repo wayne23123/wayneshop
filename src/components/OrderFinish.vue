@@ -1,5 +1,4 @@
 <script setup>
-import { ref, computed } from "vue";
 import { useAdminCartStore } from "../stores/admincart";
 
 const adminCartStore = useAdminCartStore();
@@ -18,13 +17,34 @@ function completeTrue(orderId) {
   });
 }
 
-// 定義一個名為 completeFalse 的函式，傳入 orderId 參數
-function completeFalse(orderId) {
-  adminCartStore.admincarts.forEach((order) => {
-    if (order.order === orderId) {
-      order.complete = false;
+// 依照 orderId 刪除訂單
+function deleteOrderDone(orderId) {
+  // 方法1
+  // // 創建一個新 admincarts 不包含orderId
+  // adminCartStore.admincarts = adminCartStore.admincarts.filter(
+  //   (order) => order.order !== orderId
+  // );
+
+  // 方法2
+  const ordersToDelete = []; // 用於儲存要刪除的訂單的索引
+
+  // 找到所有要刪除的訂單的索引
+  for (let i = 0; i < adminCartStore.admincarts.length; i++) {
+    if (adminCartStore.admincarts[i].order === orderId) {
+      ordersToDelete.push(i);
     }
-  });
+  }
+
+  // 從陣列中刪除對應索引的訂單(倒敘刪除以防所引錯位)
+  for (let i = ordersToDelete.length - 1; i >= 0; i--) {
+    adminCartStore.admincarts.splice(ordersToDelete[i], 1);
+  }
+
+  // 刪完後 重新載入訂單
+  adminCartStore.orderDoneFunction;
+  // 刪完後 將搜尋條清空
+  adminCartStore.orderDoneSearchTermRef = "";
+  ElMessage({ type: "success", message: "取消訂單成功" });
 }
 </script>
 
@@ -168,7 +188,7 @@ function completeFalse(orderId) {
                       <div></div>
                     </div>
                     <div
-                      @click="completeFalse(cartItems[0].order)"
+                      @click="deleteOrderDone(cartItems[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>
@@ -310,7 +330,7 @@ function completeFalse(orderId) {
                       <div></div>
                     </div>
                     <div
-                      @click="completeFalse(searchs[0].order)"
+                      @click="deleteOrderDone(cartItems[0].order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>

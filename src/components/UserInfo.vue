@@ -4,12 +4,15 @@ import { useUserStore } from "../stores/user";
 
 const userStore = useUserStore();
 
+// 顯示修改姓名的input
 const showNameEditRef = ref(false);
 
+// 點擊修改來展示
 function showNameEdit() {
   showNameEditRef.value = !showNameEditRef.value;
 }
 
+// 改完名字後點擊 完成 來關閉input框
 function closeNameEdit() {
   if (userStore.nameEditRef == "") {
     return;
@@ -19,12 +22,15 @@ function closeNameEdit() {
   showNameEditRef.value = false;
 }
 
+// 顯示修改電話的input
 const showTelephoneEditRef = ref(false);
 
+// 點擊修改來展示
 function showTelephoneEdit() {
   showTelephoneEditRef.value = !showTelephoneEditRef.value;
 }
 
+// 改完電話後點擊 完成 來關閉input框
 function closeTelephoneEdit() {
   if (userStore.telephoneEditRef == "") {
     return;
@@ -34,27 +40,45 @@ function closeTelephoneEdit() {
   showTelephoneEditRef.value = false;
 }
 
+// 顯示修改email的input
 const showEmailEditRef = ref(false);
 
+// 點擊修改來展示
 function showEmailEdit() {
   showEmailEditRef.value = !showEmailEditRef.value;
 }
 
+// 此函數檢查 email 格式是否正確
+function checkEmailFormat(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+// 改完 email 後點擊 完成 來關閉input框
 function closeEmailEdit() {
   if (userStore.emailEditRef == "") {
     return;
   } else if (userStore.emailEditRef == " ") {
     return;
+  } else if (!checkEmailFormat(userStore.emailEditRef)) {
+    ElMessage({
+      type: "warning",
+      message: "請確認Email格式",
+    });
+    return;
   }
   showEmailEditRef.value = false;
 }
 
+// 顯示修改地址的input
 const showAdressEditRef = ref(false);
 
+// 點擊修改來展示
 function showAdressEdit() {
   showAdressEditRef.value = !showAdressEditRef.value;
 }
 
+// 改完 地址 後點擊 完成 來關閉input框
 function closeAdressEdit() {
   if (userStore.adressEditRef == "") {
     return;
@@ -80,11 +104,15 @@ const onFileChange = (event) => {
   reader.readAsDataURL(file);
 };
 
+// 上傳圖片函式
 function uploadImg() {
+  // 將保存的圖片值賦值給userStore的userInfo的img
   userStore.userInfo.img = imageUrl.value;
   ElMessage({ type: "success", message: "上傳圖片成功" });
+  imageUrl.value = "";
 }
 
+// 取消上傳圖片函式
 function clearimgRef() {
   imageUrl.value = "";
   ElMessage({ type: "success", message: "已取消" });

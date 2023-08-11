@@ -172,15 +172,6 @@ function toTopFunction() {
   justify-content: center;
 }
 
-.sectionHoler40pxB {
-  width: 100vw;
-  max-width: 100%;
-  height: 60px;
-  background-color: #000;
-  display: flex;
-  justify-content: center;
-}
-
 .title {
   opacity: 0;
   transform: translateY(-100);

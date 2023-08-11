@@ -72,6 +72,12 @@ export const useUserStore = defineStore(
     // 宣告名為 emailEditRef 的 ref 變數，用來儲存欲修改的 email
     const emailEditRef = ref("");
 
+    // 此函數檢查 email 格式是否正確
+    function checkEmailFormat(email) {
+      const re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
+
     //
     const emailEditFunction = () => {
       if (emailEditRef.value == "") {
@@ -79,6 +85,8 @@ export const useUserStore = defineStore(
         return;
       } else if (emailEditRef.value == " ") {
         ElMessage.warning("email 不能為空！");
+        return;
+      } else if (!checkEmailFormat(emailEditRef.value)) {
         return;
       }
       ElMessage({ type: "success", message: "更改 email 成功" });
@@ -118,6 +126,7 @@ export const useUserStore = defineStore(
 
       emailEditRef,
       emailEditFunction,
+      checkEmailFormat,
     };
   },
   {

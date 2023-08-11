@@ -596,8 +596,8 @@ export const useAdminCartStore = defineStore(
       orderDoneSearchTermRef,
       orderDoneSearchTermFunction,
     };
-  },
-  {
-    persist: true,
   }
+  // {
+  //   persist: true,
+  // }
 );

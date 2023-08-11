@@ -3,6 +3,7 @@ import { useAdminCartStore } from "../stores/admincart";
 
 const adminCartStore = useAdminCartStore();
 
+// 用來切換訂單狀態時 清空搜尋
 function clearSearchValue() {
   adminCartStore.orderSearchTermRef = "";
   adminCartStore.orderUndoSearchTermRef = "";

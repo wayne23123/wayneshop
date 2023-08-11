@@ -21,23 +21,31 @@ function completeTrue(orderId) {
 
 // 依照 orderId 刪除訂單
 function deleteOrder(orderId) {
-  for (let i = 0; i < adminCartStore.admincarts.length; i++) {
-    // 先用 findIndex 方法找到 orderId 所在的 admincarts 的 index
-    const orderIndex = adminCartStore.admincarts.findIndex(
-      (order) => order.order === orderId
-    );
-    // 找到 orderIndex 不等於 就要 刪除
-    if (orderIndex !== -1) {
-      adminCartStore.admincarts.splice(orderIndex, 1);
+  // 方法1
+  // // 創建一個新 admincarts 不包含orderId
+  // adminCartStore.admincarts = adminCartStore.admincarts.filter(
+  //   (order) => order.order !== orderId
+  // );
 
-      // 刪完後 重新載入訂單
-      adminCartStore.orderFunction;
-      // 刪完後 將搜尋條清空
-      adminCartStore.orderSearchTermRef = "";
-    } else {
-      return;
+  // 方法2
+  const ordersToDelete = []; // 用於儲存要刪除的訂單的索引
+
+  // 找到所有要刪除的訂單的索引
+  for (let i = 0; i < adminCartStore.admincarts.length; i++) {
+    if (adminCartStore.admincarts[i].order === orderId) {
+      ordersToDelete.push(i);
     }
   }
+
+  // 從陣列中刪除對應索引的訂單(倒敘刪除以防所引錯位)
+  for (let i = ordersToDelete.length - 1; i >= 0; i--) {
+    adminCartStore.admincarts.splice(ordersToDelete[i], 1);
+  }
+
+  // 刪完後 重新載入訂單
+  adminCartStore.orderFunction;
+  // 刪完後 將搜尋條清空
+  adminCartStore.orderSearchTermRef = "";
   ElMessage({ type: "success", message: "取消訂單成功" });
 }
 </script>
