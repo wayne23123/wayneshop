@@ -79,7 +79,7 @@ function stopCarousel() {
 </script>
 
 <template>
-  <section class="sectionCarousel">
+  <section>
     <div class="carouselLayout">
       <button
         @mouseenter="stopCarousel"
@@ -120,65 +120,74 @@ function stopCarousel() {
   </section>
 </template>
 
-<style scoped>
-.sectionCarousel {
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
+section {
   width: 100%;
   max-width: 100%;
   height: 210px;
   position: relative;
-}
 
-.carouselLayout {
-  width: 100%;
-  height: auto;
-  background-color: white;
-  overflow: hidden;
-}
+  .carouselLayout {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    overflow: hidden;
 
-.carouselLeftButton {
-  position: absolute;
+    .carouselLeftButton {
+      position: absolute;
 
-  color: red;
-  font-size: 30px;
-  z-index: 10;
-  top: 90px;
-  left: 15px;
-}
+      color: red;
+      font-size: 30px;
+      z-index: 10;
+      top: 90px;
+      left: 15px;
 
-.carouselRightButton {
-  position: absolute;
-  color: red;
-  font-size: 30px;
-  z-index: 10;
-  top: 90px;
-  right: 15px;
-}
-.caroselContainer {
-  display: flex;
-  width: 3150px;
-}
+      background-color: rgba(0, 0, 0, 0.642);
+      padding: 5px;
+      border-radius: 15px;
+    }
 
-.caroselUl {
-  position: relative;
-  list-style: none;
-  width: 210px;
-  height: 210px;
-  overflow: hidden;
-  transition: all 1.6s ease;
-}
+    .carouselRightButton {
+      position: absolute;
+      color: red;
+      font-size: 30px;
+      z-index: 10;
+      top: 90px;
+      right: 15px;
 
-.caroselLi {
-  width: 100%;
-  height: auto;
-}
-.caroselLi:hover {
-  transform: scale(1.3);
-  transition: all 0.6s ease;
-}
+      background-color: rgba(0, 0, 0, 0.642);
+      padding: 5px;
+      border-radius: 15px;
+    }
 
-button {
-  background-color: rgba(0, 0, 0, 0.642);
-  padding: 5px;
-  border-radius: 15px;
+    .caroselContainer {
+      display: flex;
+      width: 3150px;
+
+      .caroselUl {
+        position: relative;
+        list-style: none;
+        width: 210px;
+        height: 210px;
+        overflow: hidden;
+        transition: all 1.6s ease;
+
+        .caroselLi {
+          width: 100%;
+          height: auto;
+        }
+
+        .caroselLi:hover {
+          transform: scale(1.3);
+          transition: all 0.6s ease;
+        }
+      }
+    }
+  }
 }
 </style>

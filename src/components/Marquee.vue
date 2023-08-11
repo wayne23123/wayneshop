@@ -8,24 +8,31 @@
   </div>
 </template>
 
-<style scoped>
-p {
-  font-size: 16px;
-  color: #222;
-  margin: 15px 0 20px 0;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
+
 .marquee {
   position: relative;
   width: 100vw;
   height: 60px;
   max-width: 100%;
   overflow: hidden;
-  background-color: #daa520;
-}
+  background-color: $yellowColor;
 
-.track {
-  position: absolute;
-  animation: marquee 18s linear infinite;
+  .track {
+    position: absolute;
+    animation: marquee 18s linear infinite;
+
+    p {
+      font-size: 16px;
+      color: #222;
+      margin: 15px 0 20px 0;
+    }
+  }
 }
 
 @keyframes marquee {

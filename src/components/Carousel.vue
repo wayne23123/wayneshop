@@ -153,63 +153,95 @@ function stopCarousel() {
   </section>
 </template>
 
-<style scoped>
-button {
-  padding: 10px;
-  margin: 5px;
-  color: #daa520;
-  background-color: rgba(0, 0, 0, 0.642);
-  border-radius: 15px;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
 
-.carouselSection {
-  height: 500px;
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
+section {
+  .carouselSection {
+    height: 500px;
+    width: 100vw;
+    max-width: 100%;
+    // background-color: #daa520;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 
-.carouselContainer {
-  position: relative;
-  width: 100vw;
-  height: 500px;
-  background-color: #daa520;
-  overflow: hidden;
-}
-.page {
-  list-style: none;
-  width: 100vw;
-  height: 500px;
-}
-.pageImg {
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-}
+    .carouselLeft {
+      position: absolute;
+      left: 10px;
+      z-index: 11;
+      padding: 10px;
+      margin: 5px;
+      color: #daa520;
+      background-color: rgba(0, 0, 0, 0.642);
+      border-radius: 15px;
+    }
 
-.pageImgPOA {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  filter: blur(2px);
-  transform: translate(0, -3%);
-}
+    .carouselRight {
+      position: absolute;
+      right: 10px;
+      z-index: 11;
+      padding: 10px;
+      margin: 5px;
+      color: #daa520;
+      background-color: rgba(0, 0, 0, 0.642);
+      border-radius: 15px;
+    }
 
-.carouselLeft {
-  position: absolute;
-  left: 5px;
-  z-index: 11;
-}
+    .carouselContainer {
+      position: relative;
+      width: 100vw;
+      height: 500px;
+      // background-color: #daa520;
+      overflow: hidden;
 
-.carouselRight {
-  position: absolute;
-  right: 5px;
-  z-index: 11;
+      .page {
+        list-style: none;
+        width: 100vw;
+        height: 500px;
+
+        li {
+          .pageImg {
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+          }
+
+          .pageImgPOA {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            filter: blur(2px);
+            transform: translate(0, -3%);
+          }
+        }
+      }
+    }
+  }
+
+  .carouselOneToFive {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 530px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      color: #daa520;
+      background-color: rgba(0, 0, 0, 0.642);
+      border-radius: 15px;
+    }
+  }
 }
 
 /* right--------------------------------------------------------------------------------- */
@@ -248,15 +280,5 @@ button {
 .listRight-leave-active,
 .listRight-enter-active {
   position: absolute;
-}
-
-.carouselOneToFive {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 530px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 11;
 }
 </style>
