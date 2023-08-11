@@ -41,7 +41,7 @@ function toTopFunction() {
   <section class="sectionHoler40px"></section>
 
   <section class="sectionCategoryTop">
-    <div class="categoryLayout">
+    <div>
       <transition name="listRight" tag="div">
         <div v-show="y > 550" class="categoryDivContainer">
           <div
@@ -132,7 +132,7 @@ function toTopFunction() {
     <div>
       <div class="disCen">
         <div class="toShopLayout">
-          <div class="toShopCotainer">
+          <div>
             <div class="disCen">
               <img src="../assets/svgs/wss.svg" />
             </div>
@@ -172,15 +172,23 @@ function toTopFunction() {
   justify-content: center;
 }
 
-.title {
-  opacity: 0;
-  transform: translateY(-100);
-}
-
-.titleShow {
-  opacity: 1;
-  transform: none;
-  transition: all 0.8s ease;
+.sectionHoler40px {
+  width: 100vw;
+  max-width: 100%;
+  height: 40px;
+  background-color: $yellowColor;
+  color: black;
+  display: flex;
+  justify-content: center;
+  .title {
+    opacity: 0;
+    transform: translateY(-100);
+  }
+  .titleShow {
+    opacity: 1;
+    transform: none;
+    transition: all 0.8s ease;
+  }
 }
 
 .sectionCarouselShop {
@@ -196,73 +204,139 @@ function toTopFunction() {
   height: 200px;
   background-color: $yellowColor;
   overflow: hidden;
+  .categoryDivContainer {
+    display: flex;
+    justify-content: space-evenly;
+    .categoryDivOne {
+      height: 200px;
+      width: 232px;
+      background-color: white;
+      overflow: hidden;
+      .categoryDivOneText {
+        position: absolute;
+        height: 200px;
+        width: 232px;
+        background-color: #00000033;
+        z-index: 10;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        color: #fff;
+      }
+
+      .categoryDivOneImgSize {
+        width: 100%;
+        height: auto;
+      }
+      .categoryDivOneImgSize:hover {
+        transform: scale(1.2);
+        transition: all 1s ease;
+      }
+    }
+
+    .categoryDivTwo {
+      height: 200px;
+      width: 50vw;
+      background-color: white;
+      overflow: hidden;
+      .categoryDivTwoText {
+        position: absolute;
+        height: 200px;
+        width: 50vw;
+        background-color: #00000033;
+        z-index: 10;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        color: #fff;
+      }
+
+      .categoryDivTwoImgSize {
+        width: auto;
+        height: 100%;
+      }
+
+      .categoryDivTwoImgSize:hover {
+        transform: scale(1.2);
+        transition: all 1s ease;
+      }
+    }
+  }
 }
 
-.categoryDivContainer {
-  display: flex;
-  justify-content: space-evenly;
-}
+.sectionToShop {
+  width: 100vw;
+  max-width: 100%;
 
-.categoryDivOne {
-  height: 200px;
-  width: 232px;
-  background-color: white;
-  overflow: hidden;
-}
-
-.categoryDivOneImgSize {
-  width: 100%;
-  height: auto;
-}
-
-.categoryDivOneText {
-  position: absolute;
-  height: 200px;
-  width: 232px;
-  background-color: #00000033;
-  z-index: 10;
-  pointer-events: none;
+  // background-color: #000;
+  background-image: url(../assets/svgs/polygon-scatter2.svg);
   display: flex;
   justify-content: center;
-  align-items: center;
-}
+  padding: 120px 0;
 
-h1 {
-  color: #fff;
-}
+  .toShopLayout {
+    width: 200px;
+    height: 200px;
 
-.categoryDivOneImgSize:hover {
-  transform: scale(1.2);
-  transition: all 1s ease;
-}
+    background-color: #252525;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.categoryDivTwo {
-  height: 200px;
-  width: 50vw;
-  background-color: white;
-  overflow: hidden;
-}
+    .corB {
+      color: #daa520;
+    }
+  }
 
-.categoryDivTwoText {
-  position: absolute;
-  height: 200px;
-  width: 50vw;
-  background-color: #00000033;
-  z-index: 10;
-  pointer-events: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .btn {
+    background-color: #eeeeee;
+    color: #222;
+    font-size: 22px;
+    padding: 20px 60px;
+    border: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+  }
 
-.categoryDivTwoImgSize {
-  width: auto;
-  height: 100%;
-}
+  .btn.btn-background-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #daa520;
 
-.categoryDivTwoImgSize:hover {
-  transform: scale(1.2);
-  transition: all 1s ease;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .btn.btn-background-slide:hover::before,
+  .btn.btn-background-slide:focus::before {
+    transform: scaleX(1);
+  }
+
+  .btn.btn-background-slide {
+    transition: color 300ms ease-in-out;
+    z-index: 1;
+  }
+
+  .btn.btn-background-slide:hover,
+  .btn.btn-background-slide:focus {
+    color: rgb(0, 183, 0);
+  }
 }
 
 .toTop {
@@ -275,83 +349,18 @@ h1 {
   width: 40px;
   border-radius: 50%;
   cursor: pointer;
+
+  .toTopButton {
+    position: relative;
+    bottom: 7px;
+    padding-left: 0;
+    color: #999;
+    pointer-events: none;
+  }
 }
 
 .toTop:hover {
   background-color: #ab0101bd;
-}
-.toTopButton {
-  position: relative;
-  bottom: 7px;
-  padding-left: 0;
-  color: #999;
-  pointer-events: none;
-}
-
-.sectionToShop {
-  width: 100vw;
-  max-width: 100%;
-
-  // background-color: #000;
-  background-image: url(../assets/svgs/polygon-scatter2.svg);
-  display: flex;
-  justify-content: center;
-  padding: 120px 0;
-}
-
-.toShopLayout {
-  width: 200px;
-  height: 200px;
-
-  background-color: #252525;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.corB {
-  color: #daa520;
-}
-.btn {
-  background-color: #eeeeee;
-  color: #222;
-  font-size: 22px;
-  padding: 20px 60px;
-  border: none;
-  outline: none;
-  position: relative;
-  cursor: pointer;
-}
-
-.btn.btn-background-slide::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-  background-color: #daa520;
-
-  transition: transform 300ms ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.btn.btn-background-slide:hover::before,
-.btn.btn-background-slide:focus::before {
-  transform: scaleX(1);
-}
-
-.btn.btn-background-slide {
-  transition: color 300ms ease-in-out;
-  z-index: 1;
-}
-
-.btn.btn-background-slide:hover,
-.btn.btn-background-slide:focus {
-  color: rgb(0, 183, 0);
 }
 
 /* 控制TransitionGroup------------------------------------------------------------------------------------------------------- */
@@ -419,11 +428,5 @@ h1 {
 .listUp-leave-to {
   transform: translateY(100%);
   opacity: 0;
-}
-
-@media screen and (max-width: 865px) {
-  .tableLayout {
-    justify-content: flex-start;
-  }
 }
 </style>

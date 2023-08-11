@@ -2,15 +2,12 @@
 import { ref } from "vue";
 
 import { useProductionStore } from "../stores/production";
-import Footer from "../components/Footer.vue";
 import { useDemoStore } from "../stores/demo";
 import { useCartStore } from "../stores/cart";
 
 import { useScroll } from "@vueuse/core";
 // 解構賦值
 const { y } = useScroll(window);
-
-const sectionDebugRef = ref(false);
 
 const productionStore = useProductionStore();
 const demoStore = useDemoStore();
@@ -119,62 +116,15 @@ function addCartsFunction() {
 
 <template>
   <section>
-    <div class="main">
+    <div>
       <CarouselShop />
-      <section v-show="sectionDebugRef" class="sectionDebug">
-        <div v-for="cart in cartStore.carts" :key="cart.id">
-          carts的狀況{{ cart }}
-        </div>
-        <div class="shopCard">
-          <div>
-            <div class="cardImg">
-              <router-link to="/demo">
-                <img class="imgSize" :src="copyRef.img" />
-              </router-link>
-            </div>
-            <div class="cardCart">
-              <select name="sizeRef" v-model="sizeRef">
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="S">S</option>
-              </select>
-              <select name="amount" v-model="amount">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <button @mouseenter="addCartTest" class="cardCartButton">
-                <div class="buttonText">🛒</div>
-              </button>
-            </div>
-            <div class="cardLeft">
-              <div class="cardTitle">{{ copyRef.title }}</div>
-              <div class="cardCategory">
-                種類: {{ copyRef.category }} copyRef的狀況
-              </div>
-              <div class="cardStar">{{ copyRef.star }}</div>
-              <div class="cardPrice">NT{{ copyRef.price }}</div>
-            </div>
-          </div>
-        </div>
-        <div
-          v-for="(demo, index) in demoStore.sliceLastDemoFunction"
-          :key="index"
-        >
-          sliceLastDemoFunction只顯示demos最後一筆資料{{ demo }}
-        </div>
-
-        <div v-for="demo in demoStore.demos">demos狀況{{ demo }}</div>
-      </section>
       <Marquee />
-      <div class="leftNavBar">
-        <div class="leftNavBarLayout">
-          <div class="leftNavBarCenter">
+      <div class="topNavBar">
+        <div class="topNavBarLayout">
+          <div class="topNavBarCenter">
             <label for="input-field">搜尋:</label>
           </div>
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <input
               @mouseenter="productionStore.searchTerm = []"
               id="input-field"
@@ -186,7 +136,7 @@ function addCartsFunction() {
           </div>
 
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showAll"> 全部商品 </label>
             <input
               id="showAll"
@@ -198,7 +148,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showHat"> 帽子分類</label>
             <input
               id="showHat"
@@ -210,7 +160,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showShoes"> 鞋子分類</label>
             <input
               id="showShoes"
@@ -222,7 +172,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showClothes"> 衣服分類</label>
             <input
               id="showClothes"
@@ -234,7 +184,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showPants"> 褲子分類</label>
             <input
               id="showPants"
@@ -249,8 +199,10 @@ function addCartsFunction() {
       </div>
 
       <div class="bread">
-        <div>
-          <span> <router-link to="/" class="none"> 首頁 ➣ </router-link></span>
+        <div class="breacPad">
+          <span>
+            <router-link to="/" class="greenHov"> 首頁 ➣ </router-link></span
+          >
           <span>商城</span>
         </div>
       </div>
@@ -296,12 +248,12 @@ function addCartsFunction() {
 
       <!-- <Footer /> -->
 
-      <div class="leftNavBar opa" :class="{ show: y >= 295 }">
-        <div class="leftNavBarLayout">
-          <div class="leftNavBarCenter">
+      <div class="topNavBar opa" :class="{ show: y >= 295 }">
+        <div class="topNavBarLayout">
+          <div class="topNavBarCenter">
             <label for="input-field">搜尋:</label>
           </div>
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <input
               @mouseenter="productionStore.searchTerm = []"
               id="input-field"
@@ -313,7 +265,7 @@ function addCartsFunction() {
           </div>
 
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showAll"> 全部商品</label>
             <input
               id="showAll"
@@ -325,7 +277,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showHat"> 帽子分類</label>
             <input
               id="showHat"
@@ -337,7 +289,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showShoes"> 鞋子分類</label>
             <input
               id="showShoes"
@@ -349,7 +301,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showClothes"> 衣服分類</label>
             <input
               id="showClothes"
@@ -361,7 +313,7 @@ function addCartsFunction() {
             />
           </div>
           <br />
-          <div class="leftNavBarCenter">
+          <div class="topNavBarCenter">
             <label for="showPants"> 褲子分類</label>
             <input
               id="showPants"
@@ -386,33 +338,163 @@ function addCartsFunction() {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor;
+
 section {
   width: 100vw;
   max-width: 100%;
-}
+  .topNavBar {
+    background-color: #b18d30;
+    color: black;
+    display: flex;
+    align-items: center;
+    .topNavBarLayout {
+      display: flex;
+      flex-wrap: wrap;
 
-.sectionHolder {
-  height: 75px;
-  width: 100vw;
-  max-width: 100%;
-  background-color: #daa520;
-}
-.sectionDebug {
-  display: flex;
-  background-color: black;
-  color: green;
-  width: 100%;
-  height: 60vh;
-}
+      .topNavBarCenter {
+        padding: 10px 0 10px 15px;
 
-.sectionDebug button {
-  background-color: green;
-}
-.main {
-  right: 0;
-  width: 100vw;
-  max-width: 100%;
+        label {
+          cursor: pointer;
+        }
+        .searchInput {
+          width: 150px;
+          height: 30px;
+          border-radius: 10px;
+        }
+        .inputRadio {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .opa {
+    opacity: 0;
+    position: fixed;
+  }
+
+  .show {
+    z-index: 99;
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    transition: all 0.1s linear;
+    opacity: 1;
+  }
+
+  .bread {
+    background-color: $yellowColor;
+    color: black;
+
+    .breacPad {
+      padding: 20px;
+      margin-left: 20px;
+    }
+  }
+
+  .greenHov:hover {
+    color: #00b700;
+  }
+
+  .shopContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    background-color: $yellowColor;
+    width: 100vw;
+    max-width: 100%;
+    .shopCard {
+      display: flex;
+      flex-direction: column;
+      margin: 12px;
+      padding: 0 10px;
+      border-radius: 15px;
+      background-color: gray;
+      height: 350px;
+      width: 15vw;
+      min-width: 250px;
+      overflow: hidden;
+      left: 60px;
+
+      .cardImg {
+        position: relative;
+        width: 230px;
+        height: 230px;
+        top: 15px;
+        background-color: black;
+        overflow: hidden;
+        .imgSize {
+          width: 100%;
+          height: auto;
+          z-index: 20;
+        }
+
+        .imgSize:hover {
+          transform: scale(1.2);
+          transition: all 0.5s ease;
+        }
+
+        .imgPOR {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          filter: blur(5px);
+          transform: translate(0, 0);
+          z-index: 1;
+        }
+      }
+
+      .cardCart {
+        position: relative;
+        bottom: -95px;
+        left: 115px;
+        z-index: 50;
+        .cardCartButton {
+          position: relative;
+          bottom: 10px;
+          background-color: rgba(255, 0, 0, 0.772);
+          padding: 18px;
+          border-radius: 50%;
+
+          .buttonText {
+            position: absolute;
+            right: 9px;
+            bottom: 9px;
+            pointer-events: none;
+          }
+        }
+
+        .cardCartButton:hover {
+          background-color: rgba(255, 0, 0, 1);
+        }
+      }
+
+      .cardLeft {
+        position: relative;
+        bottom: 15px;
+
+        .cardTitle {
+          color: black;
+        }
+
+        .cardCategory {
+          color: rgba(30, 30, 30, 0.7);
+        }
+        .cardStar {
+          color: yellow;
+        }
+
+        .cardPrice {
+          color: black;
+        }
+      }
+    }
+  }
 }
 
 .toTop {
@@ -425,179 +507,16 @@ section {
   width: 40px;
   border-radius: 50%;
   cursor: pointer;
+  .toTopButton {
+    position: relative;
+    bottom: 7px;
+    padding-left: 0;
+    color: #999;
+    pointer-events: none;
+  }
 }
 
 .toTop:hover {
   background-color: #ab0101bd;
-}
-.toTopButton {
-  position: relative;
-  bottom: 7px;
-  padding-left: 0;
-  color: #999;
-  pointer-events: none;
-}
-
-/* V left--------------------------------------------------------------------------------- */
-
-.leftNavBar {
-  background-color: #b18d30;
-  color: black;
-  display: flex;
-  align-items: center;
-}
-
-.leftNavBarLayout {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.searchInput {
-  width: 150px;
-  height: 30px;
-  border-radius: 10px;
-}
-
-.leftNavBarCenter {
-  padding: 10px 0 10px 15px;
-}
-
-label {
-  cursor: pointer;
-}
-
-.inputRadio {
-  display: none;
-}
-
-.opa {
-  opacity: 0;
-  position: fixed;
-}
-
-.show {
-  z-index: 99;
-  position: fixed;
-  top: 70px;
-  width: 100%;
-  transition: all 0.1s linear;
-  opacity: 1;
-}
-
-/* A left--------------------------------------------------------------------------------- */
-
-.bread {
-  background-color: #daa520;
-  color: black;
-  padding-left: 20px;
-}
-
-.none:hover {
-  color: green;
-}
-
-.shopContainer {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: center;
-  background-color: goldenrod;
-  width: 100vw;
-  max-width: 100%;
-}
-
-.shopCard {
-  display: flex;
-  flex-direction: column;
-  margin: 12px;
-  padding: 0 10px;
-  border-radius: 15px;
-  background-color: gray;
-  height: 350px;
-  width: 15vw;
-  min-width: 250px;
-  overflow: hidden;
-  left: 60px;
-}
-
-.cardImg {
-  position: relative;
-  width: 230px;
-  height: 230px;
-  top: 15px;
-  background-color: black;
-  overflow: hidden;
-}
-
-.imgSize {
-  width: 100%;
-  height: auto;
-  z-index: 20;
-}
-
-.imgSize:hover {
-  transform: scale(1.2);
-  transition: all 0.5s ease;
-}
-
-.imgPOR {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  filter: blur(5px);
-  transform: translate(0, 0);
-  z-index: 1;
-}
-
-.cardCart {
-  position: relative;
-  bottom: -95px;
-  left: 115px;
-  z-index: 50;
-}
-
-.cardCartButton {
-  position: relative;
-  bottom: 10px;
-  background-color: rgba(255, 0, 0, 0.772);
-  padding: 18px;
-  border-radius: 50%;
-}
-
-.cardCartButton:hover {
-  background-color: rgba(255, 0, 0, 1);
-}
-
-.buttonText {
-  position: absolute;
-  right: 9px;
-  bottom: 9px;
-  pointer-events: none;
-}
-
-.cardTitle {
-  color: black;
-}
-.cardLeft {
-  position: relative;
-  bottom: 15px;
-}
-
-.cardCategory {
-  color: rgba(30, 30, 30, 0.7);
-}
-.cardStar {
-  color: yellow;
-}
-
-.cardPrice {
-  color: black;
-}
-
-.Footer {
-  max-width: none;
-  position: relative;
-  width: 97.39vw;
-  left: -20vw;
 }
 </style>
