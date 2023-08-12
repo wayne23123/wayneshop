@@ -374,113 +374,118 @@ function deleteOrderDone(orderId) {
   </div>
 </template>
 
-<style scoped>
-.pointer {
-  cursor: pointer;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
 
-.dataLayout {
-  color: black;
-  margin-top: 2px;
-}
+section {
+  .pointer {
+    cursor: pointer;
+  }
 
-.cardLayout {
-  background-color: #c4c4c4;
-  margin-top: 2px;
-}
+  .inputOne {
+    background-color: #000;
+    padding: 15px;
+    color: $grayColor;
 
-.tableContainer {
-  display: flex;
-  flex-wrap: wrap;
-  border-left: 4px #820000 solid;
-}
+    input {
+      padding: 10px;
+    }
+  }
 
-.tableContainerDone {
-  border-left: 4px #028200 solid;
-}
+  .dataLayout {
+    color: black;
+    margin-top: 2px;
 
-table {
-  margin-top: -2px;
-  /* background-color: #565656; */
-}
+    .cardLayout {
+      background-color: $grayColor;
+      margin-top: 2px;
 
-td {
-  /* background-color: #ffffff; */
-  padding: 5px;
-  border-top: 1px #939393 solid;
-}
+      .tableContainer {
+        display: flex;
+        flex-wrap: wrap;
+        border-left: 4px #820000 solid;
 
-.inputOne {
-  background-color: #000;
-  padding: 15px;
-  color: #c4c4c4;
-}
+        table {
+          margin-top: -2px;
+          /* background-color: #565656; */
 
-input {
-  padding: 10px;
-}
+          td {
+            /* background-color: #ffffff; */
+            padding: 5px;
+            border-top: 1px #939393 solid;
+            border-left: 1px #bababa solid;
+          }
+        }
 
-.tableRight {
-  /* background-color: #daa520; */
-  width: 200px;
-}
+        .tableRight {
+          /* background-color: #daa520; */
+          width: 200px;
 
-.tableRightCard {
-  padding: 5px;
-  border-top: 1px #939393 solid;
-  border-left: 1px #939393 solid;
-}
+          .tableRightCard {
+            padding: 5px;
+            border-top: 1px #939393 solid;
+            border-left: 1px #939393 solid;
 
-.tableRightCardPrice {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #f5e5bb;
-}
+            .tableRightCardPrice {
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #f5e5bb;
+            }
 
-.tableRightCardOrder {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #f2dda6;
-}
+            .tableRightCardOrder {
+              display: inline-block;
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #f2dda6;
+            }
 
-.tableRightCardEvaluate:hover {
-  background-color: #edd391;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+            .tableRightCardEvaluate:hover {
+              background-color: #edd391;
+              color: #00b700;
+              transition: all 0.3s ease;
+            }
+          }
 
-.tableRightCardBtnLayout {
-  display: flex;
-  justify-content: space-between;
-}
+          .tableRightCardBtnLayout {
+            display: flex;
+            justify-content: space-between;
+          }
 
-.tableRightCardBtnLayoutBtnR {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #accee3;
-}
+          .tableRightCardBtnLayoutBtnR {
+            padding: 10px;
+            border-radius: 15px;
+            background-color: #accee3;
+          }
 
-.tableRightCardBtnLayoutBtnR:hover {
-  background-color: #98c6e3;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+          .tableRightCardBtnLayoutBtnR:hover {
+            background-color: #98c6e3;
+            color: #00b700;
+            transition: all 0.3s ease;
+          }
 
-.tableRightCardBtnLayoutBtnL {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #d8bebe;
-}
+          .tableRightCardBtnLayoutBtnL {
+            padding: 10px;
+            border-radius: 15px;
+            background-color: #d8bebe;
+          }
 
-.tableRightCardBtnLayoutBtnL:hover {
-  background-color: #dbb2b2;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+          .tableRightCardBtnLayoutBtnL:hover {
+            background-color: #dbb2b2;
+            color: #00b700;
+            transition: all 0.3s ease;
+          }
+        }
+      }
 
-.pad10 {
-  padding: 0 10px;
+      .tableContainerDone {
+        border-left: 4px #028200 solid;
+      }
+    }
+  }
 }
 
 .sizeCor {

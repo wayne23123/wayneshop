@@ -72,6 +72,14 @@ function useKupengFunction() {
     return;
   }
 }
+
+// 顯示loading的函式
+const showLoading = ref(false);
+function showLoadingF() {
+  showLoading.value = true;
+  setTimeout(() => (showLoading.value = false), 800);
+}
+showLoadingF();
 </script>
 
 <template>
@@ -212,6 +220,7 @@ function useKupengFunction() {
         </div>
       </div>
     </div>
+    <div v-show="showLoading" class="loading"></div>
   </section>
 </template>
 
@@ -429,6 +438,44 @@ section {
         background-color: #fabd21;
         transition: all 0.4s ease;
       }
+    }
+  }
+
+  .loading {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 200;
+  }
+
+  .loading::after {
+    content: "";
+    height: 48px;
+    width: 48px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-right-color: transparent;
+
+    animation: infinite rotate 0.5s linear;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

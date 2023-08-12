@@ -112,6 +112,14 @@ function addCartsFunction() {
   });
   cartStore.comparisonByIdFunction();
 }
+
+// 顯示loading的函式
+const showLoading = ref(false);
+function showLoadingF() {
+  showLoading.value = true;
+  setTimeout(() => (showLoading.value = false), 800);
+}
+showLoadingF();
 </script>
 
 <template>
@@ -334,6 +342,7 @@ function addCartsFunction() {
           </div>
         </button>
       </transition>
+      <div v-show="showLoading" class="loading"></div>
     </div>
   </section>
 </template>
@@ -495,28 +504,66 @@ section {
       }
     }
   }
-}
 
-.toTop {
-  top: 550px;
-  right: 22px;
-  position: fixed;
-  z-index: 200;
-  background-color: #7f010190;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  .toTopButton {
-    position: relative;
-    bottom: 7px;
-    padding-left: 0;
-    color: #999;
-    pointer-events: none;
+  .toTop {
+    top: 550px;
+    right: 22px;
+    position: fixed;
+    z-index: 200;
+    background-color: #7f010190;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    .toTopButton {
+      position: relative;
+      bottom: 7px;
+      padding-left: 0;
+      color: #999;
+      pointer-events: none;
+    }
+  }
+
+  .toTop:hover {
+    background-color: #ab0101bd;
+  }
+
+  .loading {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 200;
+  }
+
+  .loading::after {
+    content: "";
+    height: 48px;
+    width: 48px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-right-color: transparent;
+
+    animation: infinite rotate 0.5s linear;
   }
 }
 
-.toTop:hover {
-  background-color: #ab0101bd;
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

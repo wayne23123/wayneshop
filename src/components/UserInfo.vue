@@ -120,33 +120,37 @@ function clearimgRef() {
 </script>
 
 <template>
-  <div class="homeOverview">
-    <div class="userMeta">
-      <div class="avatar">
-        <div class="avatarImgLayout">
-          <img class="avatarImg" :src="userStore.userInfo.img" alt="" />
-        </div>
-      </div>
-      <h4 class="bgcHome">{{ userStore.userInfo.name }}</h4>
-    </div>
-    <div class="item">
-      <RouterLink to="/member/user">
-        <p class="bgcHome"><span>✏ </span>會員中心</p>
-      </RouterLink>
-    </div>
-  </div>
-  <div class="container">
-    <div class="memberPanel">
-      <div class="header">
-        <div class="showTitle dis">
-          <div>
-            <span class="bgcTitle"> 姓名: </span> {{ userStore.userInfo.name }}
+  <section>
+    <div class="homeOverview">
+      <div class="userMeta">
+        <div class="avatar">
+          <div class="avatarImgLayout">
+            <img class="avatarImg" :src="userStore.userInfo.img" alt="" />
           </div>
-          <div @click="showNameEdit" class="showEdit">_ ✎ 編輯</div>
         </div>
+        <div class="bgcHome corBla">{{ userStore.userInfo.name }}</div>
+      </div>
+      <div class="item">
+        <RouterLink to="/member/user">
+          <div class="bgcHome"><span>✏ </span>會員中心</div>
+        </RouterLink>
+      </div>
+    </div>
+    <div class="container">
+      <div class="memberPanel">
         <div>
-          <transition name="fade" tag="div" v-show="showNameEditRef">
-            <div class="inputLayout">
+          <div class="dis">
+            <div>
+              <span class="bgcTitle"> 姓名: </span>
+              {{ userStore.userInfo.name }}
+            </div>
+            <div @click="showNameEdit" class="showEdit">_ ✎ 編輯</div>
+          </div>
+          <div>
+            <div
+              class="inputLayout"
+              :class="{ inputLayoutShow: showNameEditRef }"
+            >
               <input
                 v-model="userStore.nameEditRef"
                 placeholder="請輸入新姓名..."
@@ -164,23 +168,23 @@ function clearimgRef() {
                 <div>完成☑</div>
               </button>
             </div>
-          </transition>
-        </div>
-        <br />
-        <br />
-        <div class="showTitle dis">
-          <div>
-            <span class="bgcTitle"> 電話: </span>
-            {{ userStore.userInfo.telephone }}
           </div>
-          <div @click="showTelephoneEdit" class="showEdit">_ ✎ 編輯</div>
-        </div>
-        <div>
-          <transition name="fade" tag="div" v-show="showTelephoneEditRef">
-            <div class="inputLayout">
+
+          <div class="dis">
+            <div>
+              <span class="bgcTitle"> 電話: </span>
+              {{ userStore.userInfo.telephone }}
+            </div>
+            <div @click="showTelephoneEdit" class="showEdit">_ ✎ 編輯</div>
+          </div>
+          <div>
+            <div
+              class="inputLayout"
+              :class="{ inputLayoutShow: showTelephoneEditRef }"
+            >
               <input
                 v-model="userStore.telephoneEditRef"
-                placeholder="請輸入新姓名..."
+                placeholder="請輸入新號碼..."
                 class="inputText"
                 type="text"
                 min="1111111111"
@@ -197,20 +201,19 @@ function clearimgRef() {
                 <div>完成☑</div>
               </button>
             </div>
-          </transition>
-        </div>
-        <br />
-        <br />
-        <div class="showTitle dis">
-          <div>
-            <span class="bgcTitle"> email: </span>
-            {{ userStore.userInfo.email }}
           </div>
-          <div @click="showEmailEdit" class="showEdit">_ ✎ 編輯</div>
-        </div>
-        <div>
-          <transition name="fade" tag="div" v-show="showEmailEditRef">
-            <div class="inputLayout">
+          <div class="dis">
+            <div>
+              <span class="bgcTitle"> email: </span>
+              {{ userStore.userInfo.email }}
+            </div>
+            <div @click="showEmailEdit" class="showEdit">_ ✎ 編輯</div>
+          </div>
+          <div>
+            <div
+              class="inputLayout"
+              :class="{ inputLayoutShow: showEmailEditRef }"
+            >
               <input
                 v-model="userStore.emailEditRef"
                 placeholder="請輸入新姓名..."
@@ -228,20 +231,19 @@ function clearimgRef() {
                 <div>完成☑</div>
               </button>
             </div>
-          </transition>
-        </div>
-        <br />
-        <br />
-        <div class="showTitle dis">
-          <div>
-            <span class="bgcTitle"> 地址: </span>
-            {{ userStore.userInfo.adress }}
           </div>
-          <div @click="showAdressEdit" class="showEdit">_ ✎ 編輯</div>
-        </div>
-        <div>
-          <transition name="fade" tag="div" v-show="showAdressEditRef">
-            <div class="inputLayout">
+          <div class="dis">
+            <div>
+              <span class="bgcTitle"> 地址: </span>
+              {{ userStore.userInfo.adress }}
+            </div>
+            <div @click="showAdressEdit" class="showEdit">_ ✎ 編輯</div>
+          </div>
+          <div>
+            <div
+              class="inputLayout"
+              :class="{ inputLayoutShow: showAdressEditRef }"
+            >
               <input
                 v-model="userStore.adressEditRef"
                 placeholder="請輸入新姓名..."
@@ -259,252 +261,279 @@ function clearimgRef() {
                 <div>完成☑</div>
               </button>
             </div>
-          </transition>
-        </div>
-        <br />
-        <br />
-        <div class="dis wra">
-          <div>
+          </div>
+          <div class="dis wra">
             <div>
-              <span class="bgcTitle">
-                <label for="uploadImg" class="pointer"> 上傳新大頭貼:</label>
-                <input
-                  id="uploadImg"
-                  class="inputImg"
-                  type="file"
-                  @change="onFileChange"
-                />
-              </span>
-            </div>
-            <div v-if="imageUrl === ''"></div>
-            <div v-else>
-              <br />
-              <br />
-              <div class="dis">
-                <div class="btnLayout">
-                  <div
-                    @click="uploadImg"
-                    class="pointer tableRightCardBtnLayoutBtnR"
-                  >
-                    上傳✓
+              <div>
+                <span class="bgcTitle">
+                  <label for="uploadImg" class="pointer"> 上傳新大頭貼:</label>
+                  <input
+                    id="uploadImg"
+                    class="inputImg"
+                    type="file"
+                    @change="onFileChange"
+                  />
+                </span>
+              </div>
+              <div v-if="imageUrl === ''"></div>
+              <div v-else>
+                <br />
+                <br />
+                <div class="dis">
+                  <div class="btnLayout">
+                    <div
+                      @click="uploadImg"
+                      class="pointer tableRightCardBtnLayoutBtnR"
+                    >
+                      上傳✓
+                    </div>
                   </div>
-                </div>
-                <div class="btnLayout">
-                  <div
-                    @click="clearimgRef"
-                    class="pointer tableRightCardBtnLayoutBtnL"
-                  >
-                    取消✕
+                  <div class="btnLayout">
+                    <div
+                      @click="clearimgRef"
+                      class="pointer tableRightCardBtnLayoutBtnL"
+                    >
+                      取消✕
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="newImgLayout marAuto">
-            <img :src="imageUrl" class="avatarImg" alt="" />
+            <div>
+              <div v-if="imageUrl === ''" class="newImgLayout marAuto">
+                <img :src="userStore.userInfo.img" class="avatarImg" alt="" />
+              </div>
+              <div v-else class="newImgLayout marAuto">
+                <img :src="imageUrl" class="avatarImg" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<style scoped>
-a.router-link-exact-active {
-  /* 到頁面 active 顏色 */
-  color: #00b700;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
 
-.homeOverview {
-  display: flex;
-  height: 132px;
-  /* background-color: #d5d6d6; */
-  background-image: url(../assets/svgs/low-poly-grid.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+section {
+  a.router-link-exact-active {
+    /* 到頁面 active 顏色 */
+    color: #00b700;
+  }
 
-.userMeta {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
+  .pointer {
+    cursor: pointer;
+  }
 
-.avatar {
-  margin-left: 60px;
-  margin-right: 20px;
-}
+  .homeOverview {
+    display: flex;
+    height: 132px;
+    /* background-color: #d5d6d6; */
+    background-image: url(../assets/svgs/low-poly-grid.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.avatarImgLayout {
-  width: 85px;
-  height: 85px;
-  border-radius: 50%;
-  overflow: hidden;
-}
+    .userMeta {
+      flex: 1;
+      display: flex;
+      align-items: center;
 
-.avatarImg {
-  width: 100%;
-  height: 100%;
-}
+      .avatar {
+        margin-left: 60px;
+        margin-right: 20px;
 
-h4 {
-  padding-left: 26px;
-  font-size: 18px;
-  font-weight: normal;
-  color: #000;
-}
+        .avatarImgLayout {
+          width: 85px;
+          height: 85px;
+          border-radius: 50%;
+          overflow: hidden;
 
-.item {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+          .avatarImg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
 
-.container {
-  padding: 20px 0;
-  display: flex;
-  justify-content: center;
-}
+    .corBla {
+      color: #000;
+    }
 
-.memberPanel {
-  color: #000;
-  font-size: 20px;
-  border-radius: 15px;
-  width: 50vw;
-  padding: 30px 40px;
-  /* background-color: #aba39c; */
-  background-image: url(../assets/svgs/polygon-scatter1.svg);
-}
+    .bgcHome {
+      padding-left: 26px;
+      font-size: 18px;
+      font-weight: normal;
+      padding: 10px;
+      background-color: #dededebf;
+      border-radius: 15px;
+    }
 
-.bgcHome {
-  padding: 10px;
-  background-color: #dededebf;
-  border-radius: 15px;
-}
+    .item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  }
 
-.inputImg {
-  width: 65px;
-  background-color: #c4c4c4;
-  border: none;
-}
+  .container {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
 
-.showEdit {
-  cursor: pointer;
-  opacity: 0;
-  flex-grow: 1;
-  /* background-color: #000; */
-}
+    .memberPanel {
+      color: #000;
+      font-size: 20px;
+      border-radius: 15px;
+      width: 50vw;
+      padding: 30px 40px;
+      /* background-color: #aba39c; */
+      background-image: url(../assets/svgs/polygon-scatter1.svg);
+      overflow: hidden;
 
-.showEdit:hover {
-  opacity: 1;
-  color: #717171;
-}
+      .bgcTitle {
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #939393;
+      }
 
-.inputLayout {
-  position: absolute;
-}
+      .showEdit {
+        cursor: pointer;
+        opacity: 0;
+        flex-grow: 1;
+        /* background-color: #000; */
+      }
 
-.bgcTitle {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #939393;
-}
+      .showEdit:hover {
+        opacity: 1;
+        color: #717171;
+        transition: all 0.5s ease;
+      }
 
-.newImgLayout {
-  background-color: #c4c4c4;
-  width: 170px;
-  height: 170px;
-  border-radius: 50%;
-  overflow: hidden;
-  /* border: 1px #000 solid; */
-}
+      .inputLayout {
+        padding: 10px;
+        opacity: 0;
+        transform: translateX(100%);
 
-.marAuto {
-  margin: auto;
-}
+        transition: all 0.5s ease;
 
-.inputText {
-  height: 40px;
-  width: 300px;
-  border-radius: 15px;
-}
+        .inputText {
+          height: 40px;
+          border-radius: 15px;
+          width: 80%;
+        }
 
-.completeBtn {
-  padding: 0 10px;
-  height: 40px;
-  border-radius: 15px;
-  background-color: #84b770;
-}
+        .completeBtn {
+          padding: 0 10px;
+          height: 40px;
+          width: 20%;
+          border-radius: 15px;
+          background-color: #84b770;
+        }
 
-.completeBtn:hover {
-  background-color: #66c466;
-  color: #345d64;
-}
+        .completeBtn:hover {
+          background-color: #66c466;
+          color: #345d64;
+        }
+      }
 
-.pointer {
-  cursor: pointer;
-}
+      .inputLayoutShow {
+        opacity: 1;
+        transform: translateX(0);
 
-.btnLayout {
-  padding: 5px;
-}
+        transition: all 0.5s ease;
+      }
 
-.tableRightCardBtnLayoutBtnR {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #accee3;
-}
+      .inputImg {
+        width: 65px;
+        background-color: #c4c4c4;
+        border: none;
+      }
 
-.tableRightCardBtnLayoutBtnR:hover {
-  background-color: #98c6e3;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+      .btnLayout {
+        padding: 5px;
 
-.tableRightCardBtnLayoutBtnL {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #d8bebe;
-}
+        .tableRightCardBtnLayoutBtnR {
+          padding: 10px;
+          border-radius: 15px;
+          background-color: #accee3;
+        }
 
-.tableRightCardBtnLayoutBtnL:hover {
-  background-color: #dbb2b2;
-  color: #00b700;
-  transition: all 0.3s ease;
+        .tableRightCardBtnLayoutBtnR:hover {
+          background-color: #98c6e3;
+          color: #00b700;
+          transition: all 0.3s ease;
+        }
+
+        .tableRightCardBtnLayoutBtnL {
+          padding: 10px;
+          border-radius: 15px;
+          background-color: #d8bebe;
+        }
+
+        .tableRightCardBtnLayoutBtnL:hover {
+          background-color: #dbb2b2;
+          color: #00b700;
+          transition: all 0.3s ease;
+        }
+      }
+
+      .newImgLayout {
+        background-color: #c4c4c4;
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        overflow: hidden;
+        /* border: 1px #000 solid; */
+
+        .avatarImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .marAuto {
+        margin: auto;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 1100px) {
-  .memberPanel {
-    width: 60vw;
+  section {
+    .container {
+      .memberPanel {
+        width: 60vw;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 800px) {
-  .memberPanel {
-    width: 70vw;
+  section {
+    .container {
+      .memberPanel {
+        width: 70vw;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 700px) {
-  .memberPanel {
-    width: 90vw;
-    padding: 10px;
+  section {
+    .container {
+      .memberPanel {
+        width: 90vw;
+        padding: 10px;
+      }
+    }
   }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
 }
 </style>

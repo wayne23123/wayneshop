@@ -51,7 +51,7 @@ function deleteOrder(orderId) {
 </script>
 
 <template>
-  <div class="pageOneLayout">
+  <section>
     <div class="inputOne">
       <span @click="adminCartStore.reverseOrderRefs" class="pointer">
         訂單編號 ▼
@@ -107,95 +107,100 @@ function deleteOrder(orderId) {
                 <div class="disCen">原價</div>
                 <div>NT${{ cartItem.price }}</div>
               </td>
-              <td class="pad10">x{{ cartItem.counter }}</td>
+              <td>x{{ cartItem.counter }}</td>
             </tr>
           </table>
 
-          <div>
-            <div class="tableRight">
-              <div class="tableRightCard">
+          <div class="tableRight">
+            <div class="tableRightCard">
+              <div>
+                <div v-if="cartItems[0].kupeng">
+                  <!-- 優惠價 -->
+                  <div class="tableRightCardPrice">
+                    總共NT${{
+                      Math.floor(
+                        cartItems.reduce(
+                          (acc, cur) => acc + cur.price * cur.counter * 0.7,
+                          0
+                        )
+                      )
+                    }}
+                  </div>
+                </div>
+                <div v-else>
+                  <!-- 原價 -->
+                  <div class="tableRightCardPrice">
+                    總共NT${{
+                      Math.floor(
+                        cartItems.reduce(
+                          (acc, cur) => acc + cur.price * cur.counter,
+                          0
+                        )
+                      )
+                    }}
+                  </div>
+                </div>
+              </div>
+
+              <br />
+
+              <div v-if="cartItems[0].complete">
+                <!-- {{ cartItems[0].complete }} -->
+                <!-- 為 true 時顯示 -->
                 <div>
-                  <div v-if="cartItems[0].kupeng">
-                    <!-- 優惠價 -->
-                    <div class="tableRightCardPrice">
-                      總共NT${{
-                        Math.floor(
-                          cartItems.reduce(
-                            (acc, cur) => acc + cur.price * cur.counter * 0.7,
-                            0
-                          )
-                        )
-                      }}
-                    </div>
-                  </div>
-                  <div v-else>
-                    <!-- 原價 -->
-                    <div class="tableRightCardPrice">
-                      總共NT${{
-                        Math.floor(
-                          cartItems.reduce(
-                            (acc, cur) => acc + cur.price * cur.counter,
-                            0
-                          )
-                        )
-                      }}
-                    </div>
-                  </div>
+                  <div class="tableRightCardOrder">訂單已完成</div>
                 </div>
-
                 <br />
-
-                <div v-if="cartItems[0].complete">
-                  <!-- {{ cartItems[0].complete }} -->
-                  <!-- 為 true 時顯示 -->
-                  <div>
-                    <div class="tableRightCardOrder">訂單已完成</div>
-                  </div>
-                  <br />
-                  <div>
-                    <div
-                      class="tableRightCardOrder tableRightCardEvaluate pointer"
-                    >
-                      評價商品
-                    </div>
+                <div>
+                  <div
+                    class="tableRightCardOrder tableRightCardEvaluate pointer"
+                  >
+                    評價商品
                   </div>
                 </div>
-                <div v-else>
-                  <!-- {{ cartItems[0].complete }} -->
-                  <!-- 為 false 時顯示 -->
-                  <div class="tableRightCardOrder"><span>訂單配送中</span></div>
+              </div>
+              <div v-else>
+                <!-- {{ cartItems[0].complete }} -->
+                <!-- 為 false 時顯示 -->
+                <div class="tableRightCardOrder">
+                  <span>訂單配送中</span>
                 </div>
+              </div>
 
+              <br />
+
+              <div v-if="cartItems[0].complete">
+                <!-- {{ cartItems[0].complete }} -->
+                <!-- 為 true 時顯示 -->
+              </div>
+              <div v-else>
+                <!-- {{ cartItems[0].complete }} -->
+                <!-- 為 false 時顯示 -->
+
+                <div class="tableRightCardBtnLayout">
+                  <div
+                    @click="completeTrue(cartItems[0].order)"
+                    class="tableRightCardBtnLayoutBtnR pointer"
+                  >
+                    <div>完成訂單✓</div>
+                  </div>
+
+                  <!-- <div class="poptip tableRightCardBtnLayoutBtnL pointer">
+                      取消訂單✕
+                    </div> -->
+
+                  <div
+                    @click="deleteOrder(cartItems[0].order)"
+                    class="tableRightCardBtnLayoutBtnL pointer"
+                  >
+                    <div>取消訂單✕</div>
+                  </div>
+                </div>
                 <br />
-
-                <div v-if="cartItems[0].complete">
-                  <!-- {{ cartItems[0].complete }} -->
-                  <!-- 為 true 時顯示 -->
-                </div>
-                <div v-else>
-                  <!-- {{ cartItems[0].complete }} -->
-                  <!-- 為 false 時顯示 -->
-
-                  <div class="tableRightCardBtnLayout">
-                    <div
-                      @click="completeTrue(cartItems[0].order)"
-                      class="tableRightCardBtnLayoutBtnR pointer"
-                    >
-                      <div>完成訂單✓</div>
-                    </div>
-
-                    <div
-                      @click="deleteOrder(cartItems[0].order)"
-                      class="tableRightCardBtnLayoutBtnL pointer"
-                    >
-                      <div>取消訂單✕</div>
-                    </div>
-                  </div>
-                  <br />
-                </div>
               </div>
             </div>
           </div>
+
           <!-- bottom -->
         </div>
       </div>
@@ -244,7 +249,7 @@ function deleteOrder(orderId) {
                 <div class="disCen">原價</div>
                 <div>NT${{ search.price }}</div>
               </td>
-              <td class="pad10">x{{ search.counter }}</td>
+              <td>x{{ search.counter }}</td>
             </tr>
           </table>
 
@@ -300,7 +305,9 @@ function deleteOrder(orderId) {
                 <div v-else>
                   <!-- {{ cartItems[0].complete }} -->
                   <!-- 為 false 時顯示 -->
-                  <div class="tableRightCardOrder"><span>訂單配送中</span></div>
+                  <div class="tableRightCardOrder">
+                    <span>訂單配送中</span>
+                  </div>
                 </div>
 
                 <br />
@@ -362,116 +369,121 @@ function deleteOrder(orderId) {
         <br />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<style scoped>
-.pointer {
-  cursor: pointer;
-}
+<style scoped lang="scss">
+@import "@/styles/var.scss";
+// $yellowColor
+// $darkYellowColor
+// $grayColor
+// $darkGrayColor
 
-.dataLayout {
-  color: black;
-  margin-top: 2px;
-}
+section {
+  .pointer {
+    cursor: pointer;
+  }
 
-.cardLayout {
-  background-color: #c4c4c4;
-  margin-top: 2px;
-}
+  .inputOne {
+    background-color: #000;
+    padding: 15px;
+    color: #c4c4c4;
 
-.tableContainer {
-  display: flex;
-  flex-wrap: wrap;
-  border-left: 4px #820000 solid;
-}
+    input {
+      padding: 10px;
+    }
+  }
 
-.tableContainerDone {
-  border-left: 4px #028200 solid;
-}
+  .dataLayout {
+    color: black;
+    margin-top: 2px;
 
-table {
-  margin-top: -2px;
-  /* background-color: #565656; */
-}
+    .cardLayout {
+      background-color: #c4c4c4;
+      margin-top: 2px;
 
-td {
-  /* background-color: #ffffff; */
-  padding: 5px;
-  border-top: 1px #939393 solid;
-}
+      .tableContainer {
+        display: flex;
+        flex-wrap: wrap;
+        border-left: 4px #820000 solid;
 
-.inputOne {
-  background-color: #000;
-  padding: 15px;
-  color: #c4c4c4;
-}
+        table {
+          margin-top: -2px;
+          /* background-color: #565656; */
 
-input {
-  padding: 10px;
-}
+          td {
+            /* background-color: #ffffff; */
+            padding: 5px;
+            border-top: 1px #939393 solid;
+            border-left: 1px #bababa solid;
+          }
+        }
 
-.tableRight {
-  /* background-color: #daa520; */
-  width: 200px;
-}
+        .tableRight {
+          /* background-color: #daa520; */
+          width: 200px;
 
-.tableRightCard {
-  padding: 5px;
-  border-top: 1px #939393 solid;
-  border-left: 1px #939393 solid;
-}
+          .tableRightCard {
+            padding: 5px;
+            border-top: 1px #939393 solid;
+            border-left: 1px #939393 solid;
 
-.tableRightCardPrice {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #f5e5bb;
-}
+            .tableRightCardPrice {
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #f5e5bb;
+            }
 
-.tableRightCardOrder {
-  display: inline-block;
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #f2dda6;
-}
+            .tableRightCardOrder {
+              display: inline-block;
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #f2dda6;
+            }
 
-.tableRightCardEvaluate:hover {
-  background-color: #edd391;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+            .tableRightCardEvaluate:hover {
+              background-color: #edd391;
+              color: #00b700;
+              transition: all 0.3s ease;
+            }
+          }
 
-.tableRightCardBtnLayout {
-  display: flex;
-  justify-content: space-between;
-}
+          .tableRightCardBtnLayout {
+            display: flex;
+            justify-content: space-between;
+          }
 
-.tableRightCardBtnLayoutBtnR {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #accee3;
-}
+          .tableRightCardBtnLayoutBtnR {
+            padding: 10px;
+            border-radius: 15px;
+            background-color: #accee3;
+          }
 
-.tableRightCardBtnLayoutBtnR:hover {
-  background-color: #98c6e3;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+          .tableRightCardBtnLayoutBtnR:hover {
+            background-color: #98c6e3;
+            color: #00b700;
+            transition: all 0.3s ease;
+          }
 
-.tableRightCardBtnLayoutBtnL {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #d8bebe;
-}
+          .tableRightCardBtnLayoutBtnL {
+            padding: 10px;
+            border-radius: 15px;
+            background-color: #d8bebe;
+          }
 
-.tableRightCardBtnLayoutBtnL:hover {
-  background-color: #dbb2b2;
-  color: #00b700;
-  transition: all 0.3s ease;
-}
+          .tableRightCardBtnLayoutBtnL:hover {
+            background-color: #dbb2b2;
+            color: #00b700;
+            transition: all 0.3s ease;
+          }
+        }
+      }
 
-.pad10 {
-  padding: 0 10px;
+      .tableContainerDone {
+        border-left: 4px #028200 solid;
+      }
+    }
+  }
 }
 
 .sizeCor {
@@ -480,12 +492,5 @@ input {
 
 .desCor {
   color: #747474;
-}
-
-.dialogLayout {
-  background-color: #c4c4c4;
-  padding: 50px;
-  display: flex;
-  justify-content: center;
 }
 </style>
