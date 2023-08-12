@@ -137,7 +137,6 @@ function pushAdminCart() {
               <div v-if="payCheckRef" class="padL20">付款成功,感謝您的購買</div>
               <div v-else class="padL20">尚未付款</div>
             </div>
-            <br />
           </div>
           <div v-if="payCheckRef">
             <router-link to="/shop">回到商城繼續逛逛</router-link>

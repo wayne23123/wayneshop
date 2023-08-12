@@ -72,12 +72,8 @@ export default {
 // $darkGrayColor
 
 .my-message {
-  width: 300px;
-  height: 50px;
   position: fixed;
   z-index: 9999;
-  left: 50%;
-  margin-left: -150px;
   bottom: 40px;
   line-height: 50px;
   padding: 0 25px;
@@ -85,6 +81,8 @@ export default {
   background: #f5f5f5;
   color: #999;
   border-radius: 4px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .listUp-enter-active,
@@ -93,9 +91,9 @@ export default {
 }
 
 .listUp-enter-from {
-  transform: translateY(100%);
+  transform: translate(-50%, 100%);
 }
 .listUp-leave-to {
-  transform: translateY(200%);
+  transform: translateY(100%);
 }
 </style>

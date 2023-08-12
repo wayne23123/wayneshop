@@ -1,10 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import { useScroll } from "@vueuse/core";
-import { getCurrentInstance } from "vue";
-
-const { proxy } = getCurrentInstance();
-proxy.$message({ text: "test", type: "error" });
 
 // 解構賦值
 const { y } = useScroll(window);
