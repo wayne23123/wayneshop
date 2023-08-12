@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useAdminCartStore } from "../stores/admincart";
 
 const adminCartStore = useAdminCartStore();
@@ -48,6 +48,49 @@ function deleteOrder(orderId) {
   adminCartStore.orderSearchTermRef = "";
   ElMessage({ type: "success", message: "取消訂單成功" });
 }
+
+// 這個 showDetailRef 用來顯示訂單 detail
+const showDetailRef = ref({});
+
+// 定義一個名為 showDetailFunction 的函式，傳入 order 參數
+function showDetailFunction(order) {
+  // 將 showDetailRef 中 order 對應的值設為相反的 boolean 值
+  showDetailRef.value[order] = !showDetailRef.value[order];
+}
+
+// 這個函式用來關閉訂單 detail
+function closeFunction() {
+  showDetailRef.value = {};
+}
+
+const confirm = (orderId) => {
+  // 確認後執行
+  // 方法2
+  const ordersToDelete = []; // 用於儲存要刪除的訂單的索引
+
+  // 找到所有要刪除的訂單的索引
+  for (let i = 0; i < adminCartStore.admincarts.length; i++) {
+    if (adminCartStore.admincarts[i].order === orderId) {
+      ordersToDelete.push(i);
+    }
+  }
+
+  // 從陣列中刪除對應索引的訂單(倒敘刪除以防所引錯位)
+  for (let i = ordersToDelete.length - 1; i >= 0; i--) {
+    adminCartStore.admincarts.splice(ordersToDelete[i], 1);
+  }
+
+  // 刪完後 重新載入訂單
+  adminCartStore.orderFunction;
+  // 刪完後 將搜尋條清空
+  adminCartStore.orderSearchTermRef = "";
+
+  closeFunction();
+};
+
+const cancel = () => {
+  closeFunction();
+};
 </script>
 
 <template>
@@ -185,15 +228,44 @@ function deleteOrder(orderId) {
                     <div>完成訂單✓</div>
                   </div>
 
-                  <!-- <div class="poptip tableRightCardBtnLayoutBtnL pointer">
-                      取消訂單✕
-                    </div> -->
-
                   <div
-                    @click="deleteOrder(cartItems[0].order)"
+                    @click="showDetailFunction(order)"
                     class="tableRightCardBtnLayoutBtnL pointer"
                   >
                     <div>取消訂單✕</div>
+                  </div>
+                  <div v-if="showDetailRef[order]" class="dialogLayout">
+                    <div class="dialogContent">
+                      <div class="dialogContentTitle">
+                        <div>
+                          <img
+                            src="../assets/svgs/wss.svg"
+                            width="50"
+                            height="30"
+                            alt=""
+                          />
+                        </div>
+                        <div @click="cancel()" class="pointer">☒</div>
+                      </div>
+                      <div class="dialogContentText">
+                        <p>確定要刪除訂單?</p>
+                        <br />
+                        <div class="tableRightCardBtnLayout">
+                          <div
+                            @click="confirm(cartItems[0].order)"
+                            class="tableRightCardBtnLayoutBtnR pointer"
+                          >
+                            <div>確定</div>
+                          </div>
+                          <div
+                            @click="cancel()"
+                            class="tableRightCardBtnLayoutBtnL pointer"
+                          >
+                            <div>取消</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <br />
@@ -327,10 +399,43 @@ function deleteOrder(orderId) {
                       <div>完成訂單✓</div>
                     </div>
                     <div
-                      @click="deleteOrder(searchs[0].order)"
+                      @click="showDetailFunction(order)"
                       class="tableRightCardBtnLayoutBtnL pointer"
                     >
                       <div>取消訂單✕</div>
+                    </div>
+                    <div v-if="showDetailRef[order]" class="dialogLayout">
+                      <div class="dialogContent">
+                        <div class="dialogContentTitle">
+                          <div>
+                            <img
+                              src="../assets/svgs/wss.svg"
+                              width="50"
+                              height="30"
+                              alt=""
+                            />
+                          </div>
+                          <div @click="cancel()" class="pointer">☒</div>
+                        </div>
+                        <div class="dialogContentText">
+                          <p>確定要刪除訂單?</p>
+                          <br />
+                          <div class="tableRightCardBtnLayout">
+                            <div
+                              @click="confirm(searchs[0].order)"
+                              class="tableRightCardBtnLayoutBtnR pointer"
+                            >
+                              <div>確定</div>
+                            </div>
+                            <div
+                              @click="cancel()"
+                              class="tableRightCardBtnLayoutBtnL pointer"
+                            >
+                              <div>取消</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -451,30 +556,60 @@ section {
           .tableRightCardBtnLayout {
             display: flex;
             justify-content: space-between;
-          }
 
-          .tableRightCardBtnLayoutBtnR {
-            padding: 10px;
-            border-radius: 15px;
-            background-color: #accee3;
-          }
+            .tableRightCardBtnLayoutBtnR {
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #accee3;
+            }
 
-          .tableRightCardBtnLayoutBtnR:hover {
-            background-color: #98c6e3;
-            color: #00b700;
-            transition: all 0.3s ease;
-          }
+            .tableRightCardBtnLayoutBtnR:hover {
+              background-color: #98c6e3;
+              color: #00b700;
+              transition: all 0.3s ease;
+            }
 
-          .tableRightCardBtnLayoutBtnL {
-            padding: 10px;
-            border-radius: 15px;
-            background-color: #d8bebe;
-          }
+            .tableRightCardBtnLayoutBtnL {
+              padding: 10px;
+              border-radius: 15px;
+              background-color: #d8bebe;
+            }
 
-          .tableRightCardBtnLayoutBtnL:hover {
-            background-color: #dbb2b2;
-            color: #00b700;
-            transition: all 0.3s ease;
+            .tableRightCardBtnLayoutBtnL:hover {
+              background-color: #dbb2b2;
+              color: #00b700;
+              transition: all 0.3s ease;
+            }
+
+            .dialogLayout {
+              position: fixed;
+              top: 0;
+              left: 0;
+              z-index: 300;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.5);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .dialogContent {
+              background-color: #c4c4c4;
+              padding: 10px;
+              border-radius: 5px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+              text-align: center;
+
+              .dialogContentTitle {
+                display: flex;
+                justify-content: space-between;
+              }
+
+              .dialogContentText {
+                padding: 20px;
+              }
+            }
           }
         }
       }
