@@ -5,6 +5,10 @@ import { useCartStore } from "../stores/cart";
 
 import { useMouseInElement } from "@vueuse/core";
 
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
 const demoStore = useDemoStore();
 const cartStore = useCartStore();
 
@@ -25,7 +29,8 @@ function copyDemoFunction(event, demoLast) {
 
 // 新增複製的商品到購物車
 function addcopyDemoFunction() {
-  ElMessage({ type: "success", message: "加入購物車成功" });
+  proxy.$message({ text: "加入購物車成功", type: "success" });
+
   // 將複製商品的資料以物件的形式加入到空的購物車參考值中
   cartStore.emptyRefs.push({
     id: demoRef.value.id,

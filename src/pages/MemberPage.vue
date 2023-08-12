@@ -1,16 +1,6 @@
 <script setup>
 import { ref } from "vue";
 
-const orderActiveRef = ref(false);
-
-function orderActiveTrue() {
-  orderActiveRef.value = true;
-}
-
-function orderActiveFalse() {
-  orderActiveRef.value = false;
-}
-
 // 顯示loading的函式
 const showLoading = ref(false);
 function showLoadingF() {
@@ -28,7 +18,7 @@ showLoadingF();
           <div>
             <h4>交易管理</h4>
             <br />
-            <div @click="orderActiveTrue()">
+            <div>
               <RouterLink to="/member/"
                 ><div class="links">
                   <span :class="{ active: orderActiveRef }">我的訂單</span>
@@ -40,7 +30,7 @@ showLoadingF();
           <div>
             <h4>我的帳戶</h4>
             <br />
-            <div @click="orderActiveFalse" class="links">
+            <div class="links">
               <RouterLink to="/member/user">個人中心</RouterLink>
             </div>
             <br />
@@ -63,13 +53,8 @@ showLoadingF();
 // $darkGrayColor
 
 section {
-  a.router-link-exact-active {
+  a.router-link-active {
     /* 到頁面 active 顏色 */
-    color: #00b700;
-    border-bottom: 1px #00b700 solid;
-  }
-
-  .active {
     color: #00b700;
     border-bottom: 1px #00b700 solid;
   }

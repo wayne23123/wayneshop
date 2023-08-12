@@ -5,6 +5,9 @@ import { loginAPI } from "../apis/user";
 import { useRouter } from "vue-router";
 
 import { useUserStore } from "../stores/user";
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
 
 const userStore = useUserStore();
 
@@ -49,6 +52,7 @@ const formRef = ref(null);
 
 const router = useRouter();
 const doLogin = () => {
+  showLoadingF();
   // 有3個值, 只要2個, 先解構復職
   const { account, password } = form.value;
   // 調用實例方法
@@ -65,7 +69,7 @@ const doLogin = () => {
       // console.log(res);
       // await userStore.getUserInfo({ account, password });
       // 1. 提示用戶
-      ElMessage({ type: "success", message: "登陸成功" });
+      proxy.$message({ text: "登入成功", type: "success" });
 
       // 2. 跳轉首頁
       router.replace({ path: "/" });
@@ -74,6 +78,13 @@ const doLogin = () => {
     }
   });
 };
+
+// 顯示loading的函式
+const showLoading = ref(false);
+function showLoadingF() {
+  showLoading.value = true;
+  setTimeout(() => (showLoading.value = false), 1400);
+}
 </script>
 
 <template>
@@ -134,7 +145,9 @@ const doLogin = () => {
         </div>
       </div>
     </div>
+    <div v-show="showLoading" class="loading"></div>
   </section>
+
   <Footer />
 </template>
 
@@ -205,7 +218,7 @@ section {
           .bgcTitle {
             padding: 15px;
             border-radius: 15px;
-            background-color: #171717;
+            background-color: #535353;
             color: #c4c4c4;
           }
 
@@ -223,6 +236,43 @@ section {
         }
       }
     }
+  }
+  .loading {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 200;
+  }
+
+  .loading::after {
+    content: "";
+    height: 48px;
+    width: 48px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-right-color: transparent;
+
+    animation: infinite rotate 0.5s linear;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

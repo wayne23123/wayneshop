@@ -6,6 +6,11 @@ import { useDemoStore } from "../stores/demo";
 import { useCartStore } from "../stores/cart";
 
 import { useScroll } from "@vueuse/core";
+
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
 // 解構賦值
 const { y } = useScroll(window);
 
@@ -79,7 +84,7 @@ const sizeRef = ref("M");
 
 // 使用 push 將複製的 copyRef 推進 cartStore 裡面的 emptyRefs 再用 comparisonByIdFuntion來比較後加入購物車;
 function addCartsFunction() {
-  ElMessage({ type: "success", message: "加入購物車成功" });
+  proxy.$message({ text: "加入購物車成功", type: "success" });
   cartStore.emptyRefs.push({
     id: copyRef.value.id,
     order: copyRef.value.order,

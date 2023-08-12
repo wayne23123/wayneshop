@@ -5,6 +5,10 @@ import Footer from "../components/Footer.vue";
 import { useCartStore } from "../stores/cart";
 import { useSteponeStore } from "../stores/stepone";
 
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
 const cartStore = useCartStore();
 const steponeStore = useSteponeStore();
 
@@ -49,26 +53,18 @@ function useKupengFunction() {
   // 保存當下的 carts 狀態
   emptyCopyCartsRef.value = cartStore.carts;
   if (inputKupengRef.value == "") {
-    ElMessage({
-      type: "warning",
-      message: "優惠碼不能為空",
-    });
+    proxy.$message({ text: "優惠碼不能為空", type: "error" });
+
     return;
   } else if (inputKupengRef.value == " ") {
-    ElMessage({
-      type: "warning",
-      message: "優惠碼不能為空",
-    });
+    proxy.$message({ text: "優惠碼不能為空", type: "error" });
     return;
   } else if (inputKupengRef.value == "open") {
     steponeStore.updateMultipleKupengValues();
     useKupengRef.value = true;
-    ElMessage({ type: "success", message: "套用優惠碼成功" });
+    proxy.$message({ text: "套用優惠碼成功", type: "success" });
   } else {
-    ElMessage({
-      type: "warning",
-      message: "非活動優惠碼",
-    });
+    proxy.$message({ text: "非活動優惠碼", type: "error" });
     return;
   }
 }
@@ -80,6 +76,22 @@ function showLoadingF() {
   setTimeout(() => (showLoading.value = false), 800);
 }
 showLoadingF();
+
+function successPlus() {
+  proxy.$message({ text: "成功增加一件商品", type: "success" });
+}
+
+function successReduce() {
+  proxy.$message({ text: "成功減少一件商品", type: "success" });
+}
+
+function successReduceOne() {
+  proxy.$message({ text: "成功刪除一件商品", type: "success" });
+}
+
+function successReduceAll() {
+  proxy.$message({ text: "成功刪除全部商品", type: "success" });
+}
 </script>
 
 <template>
@@ -110,7 +122,12 @@ showLoadingF();
           <tr v-for="cart in cartStore.carts" :key="cart.id">
             <td>
               <button
-                @click="cartStore.removeCartItemById(cart.id, cart.size)"
+                @click="
+                  {
+                    cartStore.removeCartItemById(cart.id, cart.size);
+                    successReduceOne();
+                  }
+                "
                 class="removeButton"
               >
                 Remove
@@ -122,14 +139,24 @@ showLoadingF();
             <td>{{ cart.size }}</td>
             <td>
               <button
-                @click="cartStore.decreaseCartItemById(cart.id, cart.size)"
+                @click="
+                  {
+                    cartStore.decreaseCartItemById(cart.id, cart.size);
+                    successReduce();
+                  }
+                "
                 class="addLeft"
               >
                 -1
               </button>
               {{ cart.counter }} 件
               <button
-                @click="cartStore.increaseCartItemById(cart.id, cart.size)"
+                @click="
+                  {
+                    cartStore.increaseCartItemById(cart.id, cart.size);
+                    successPlus();
+                  }
+                "
                 class="addLeft"
               >
                 +1
@@ -169,7 +196,12 @@ showLoadingF();
       <div class="sectionTotalLayout">
         <div
           v-if="cartStore.cartsHasProductionFunction()"
-          @click="cartStore.clearCartFunction()"
+          @click="
+            {
+              cartStore.clearCartFunction();
+              successReduceAll();
+            }
+          "
           class="totalLeftButton"
         >
           清除購物車
@@ -455,7 +487,7 @@ section {
     justify-content: center;
     align-items: center;
 
-    z-index: 200;
+    z-index: 300;
   }
 
   .loading::after {

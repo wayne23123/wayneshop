@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from "vue";
 import { useAdminCartStore } from "../stores/admincart";
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
 
 const adminCartStore = useAdminCartStore();
 
@@ -16,6 +19,8 @@ function completeTrue(orderId) {
       order.complete = true;
     }
   });
+
+  proxy.$message({ text: "訂單完成", type: "success" });
 }
 
 // 依照 orderId 刪除訂單
@@ -84,6 +89,8 @@ const confirm = (orderId) => {
   adminCartStore.orderUndoSearchTermRef = "";
 
   closeFunction();
+
+  proxy.$message({ text: "訂單取消成功", type: "success" });
 };
 
 const cancel = () => {
@@ -235,7 +242,11 @@ const cancel = () => {
                     >
                       <div>取消訂單✕</div>
                     </div>
-                    <div v-if="showDetailRef[order]" class="dialogLayout">
+                    <div
+                      v-if="showDetailRef[order]"
+                      @click="cancel()"
+                      class="dialogLayout"
+                    >
                       <div class="dialogContent">
                         <div class="dialogContentTitle">
                           <div>
@@ -246,7 +257,7 @@ const cancel = () => {
                               alt=""
                             />
                           </div>
-                          <div @click="cancel()" class="pointer">☒</div>
+                          <div class="pointer">☒</div>
                         </div>
                         <div class="dialogContentText">
                           <p>確定要刪除訂單?</p>
@@ -258,10 +269,7 @@ const cancel = () => {
                             >
                               <div>確定</div>
                             </div>
-                            <div
-                              @click="cancel()"
-                              class="tableRightCardBtnLayoutBtnL pointer"
-                            >
+                            <div class="tableRightCardBtnLayoutBtnL pointer">
                               <div>取消</div>
                             </div>
                           </div>
@@ -409,7 +417,11 @@ const cancel = () => {
                     >
                       <div>取消訂單✕</div>
                     </div>
-                    <div v-if="showDetailRef[order]" class="dialogLayout">
+                    <div
+                      v-if="showDetailRef[order]"
+                      @click="cancel()"
+                      class="dialogLayout"
+                    >
                       <div class="dialogContent">
                         <div class="dialogContentTitle">
                           <div>
@@ -420,7 +432,7 @@ const cancel = () => {
                               alt=""
                             />
                           </div>
-                          <div @click="cancel()" class="pointer">☒</div>
+                          <div class="pointer">☒</div>
                         </div>
                         <div class="dialogContentText">
                           <p>確定要刪除訂單?</p>
@@ -432,10 +444,7 @@ const cancel = () => {
                             >
                               <div>確定</div>
                             </div>
-                            <div
-                              @click="cancel()"
-                              class="tableRightCardBtnLayoutBtnL pointer"
-                            >
+                            <div class="tableRightCardBtnLayoutBtnL pointer">
                               <div>取消</div>
                             </div>
                           </div>
@@ -523,6 +532,14 @@ section {
             padding: 5px;
             border-top: 1px #939393 solid;
             border-left: 1px #bababa solid;
+
+            .sizeCor {
+              color: #888;
+            }
+
+            .desCor {
+              color: #747474;
+            }
           }
         }
 
@@ -620,13 +637,5 @@ section {
       }
     }
   }
-}
-
-.sizeCor {
-  color: #888;
-}
-
-.desCor {
-  color: #747474;
 }
 </style>

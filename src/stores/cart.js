@@ -84,7 +84,6 @@ export const useCartStore = defineStore(
 
     // 用來清空購物車
     function clearCartFunction() {
-      ElMessage({ type: "success", message: "清空購物車成功" });
       carts.value = [];
     }
 
@@ -104,7 +103,6 @@ export const useCartStore = defineStore(
 
     // 根據商品 id 與尺寸來移除購物車裡的商品
     function removeCartItemById(id, size) {
-      ElMessage({ type: "success", message: "移除成功" });
       const index = carts.value.findIndex(
         (product) => product.id === id && product.size === size
       );
@@ -115,7 +113,6 @@ export const useCartStore = defineStore(
 
     // 根據商品 id 與尺寸來增加購物車裡的商品數量
     function increaseCartItemById(id, size) {
-      ElMessage({ type: "success", message: "增加成功" });
       const product = carts.value.find(
         (product) => product.id === id && product.size === size
       );
@@ -126,7 +123,6 @@ export const useCartStore = defineStore(
 
     // 根據商品 id 與尺寸來減少購物車裡的商品數量
     function decreaseCartItemById(id, size) {
-      ElMessage({ type: "success", message: "減少成功" });
       const product = carts.value.find(
         (product) => product.id === id && product.size === size
       );

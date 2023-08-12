@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import w001 from "@/assets/imgs/w001.jpg";
 import w002 from "@/assets/imgs/w002.jpg";

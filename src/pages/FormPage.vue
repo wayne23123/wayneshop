@@ -4,6 +4,10 @@ import { useSteponeStore } from "../stores/stepone";
 import { usePayStore } from "../stores/pay";
 import { useRouter } from "vue-router";
 
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
 const steponeStore = useSteponeStore();
 const payStore = usePayStore();
 
@@ -103,43 +107,38 @@ const router = useRouter();
 // 當滑鼠移入付款去時 先將 pays 清空後把 stepones 的資料全部堆進 pays
 function pushPayFunction() {
   if (inputNameRef.value === "") {
-    ElMessage({
-      type: "warning",
-      message: "請輸入姓名",
-    });
+    proxy.$message({ text: "請輸入姓名", type: "error" });
+
     return;
   }
 
   if (inputTelphoneRef.value === "") {
-    ElMessage({
-      type: "warning",
-      message: "請輸入電話",
-    });
+    proxy.$message({ text: "請輸入電話", type: "error" });
+
     return;
   } else if (inputTelphoneRef.value == " ") {
-    ElMessage.warning("電話號碼不能為空！");
+    proxy.$message({ text: "請輸入電話", type: "error" });
+
     return;
   } else if (inputTelphoneRef.value < 111111111) {
-    ElMessage.warning("電話號碼格式錯誤！");
+    proxy.$message({ text: "電話號碼格式錯誤", type: "error" });
+
     return;
   } else if (inputTelphoneRef.value > 999999999) {
-    ElMessage.warning("電話號碼格式錯誤！");
+    proxy.$message({ text: "電話號碼格式錯誤", type: "error" });
+
     return;
   }
 
   if (!checkEmailFormat(inputEmailRef.value)) {
-    ElMessage({
-      type: "warning",
-      message: "請確認Email格式",
-    });
+    proxy.$message({ text: "Email格式錯誤", type: "error" });
+
     return;
   }
 
   if (inputinputAdressRef.value === "") {
-    ElMessage({
-      type: "warning",
-      message: "請輸入地址",
-    });
+    proxy.$message({ text: "請輸入地址", type: "error" });
+
     return;
   }
   // 設定時間陣列

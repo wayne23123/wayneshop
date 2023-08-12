@@ -4,6 +4,10 @@ import { usePayStore } from "../stores/pay";
 import { useAdminCartStore } from "../stores/admincart";
 import { useCartStore } from "../stores/cart";
 
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
 const cartStore = useCartStore();
 const payStore = usePayStore();
 const adminCartStore = useAdminCartStore();
@@ -39,7 +43,8 @@ function sendOrderFunction() {
   for (let pay of payStore.pays) {
     messageText += `商品名：${pay.title}，數量：${pay.counter} 個\n`;
   }
-  ElMessage({ type: "success", message: messageText });
+
+  proxy.$message({ text: messageText, type: "success" });
 }
 
 // 使用 JSON.stringify() 方法將 payStore.pays 轉換為字符串，再使用JSON.parse()方法將字符串轉換成一個新的陣列 paysCopy。
@@ -112,21 +117,25 @@ function pushAdminCart() {
 
           <div v-for="(pay, index) in payStore.pays" :key="index">
             <div v-if="index === 0" class="formPadding">
-              <span class="bgcTitle"> Email: </span> {{ pay.email }}
+              <span class="bgcTitle"> Email: </span>
+              <span class="padL20"> {{ pay.email }} </span>
             </div>
             <div v-if="index === 0" class="formPadding">
-              <span class="bgcTitle"> 姓名: </span>{{ pay.name }}
+              <span class="bgcTitle"> 姓名: </span
+              ><span class="padL20"> {{ pay.name }} </span>
             </div>
             <div v-if="index === 0" class="formPadding">
-              <span class="bgcTitle"> 收件人電話: </span>{{ pay.telphone }}
+              <span class="bgcTitle"> 收件人電話: </span
+              ><span class="padL20"> {{ pay.telphone }}</span>
             </div>
             <div v-if="index === 0" class="formPadding">
-              <span class="bgcTitle"> 收件人地址: </span>{{ pay.adress }}
+              <span class="bgcTitle"> 收件人地址: </span
+              ><span class="padL20"> {{ pay.adress }} </span>
             </div>
             <div v-if="index === 0" class="formPadding payCheck">
               <span class="bgcTitle"> 付款狀態: </span>
-              <div v-if="payCheckRef">付款成功,感謝您的購買</div>
-              <div v-else>尚未付款</div>
+              <div v-if="payCheckRef" class="padL20">付款成功,感謝您的購買</div>
+              <div v-else class="padL20">尚未付款</div>
             </div>
             <br />
           </div>
@@ -230,6 +239,7 @@ section {
           tr {
             td {
               border-top: solid 1px gray;
+              border-bottom: solid 1px gray;
 
               padding: 15px;
 
@@ -287,6 +297,10 @@ section {
           border-radius: 15px;
           background-color: #c4b9b9;
           border-bottom: 2px #565656 solid;
+        }
+
+        .padL20 {
+          padding-left: 20px;
         }
       }
       .payCheck {

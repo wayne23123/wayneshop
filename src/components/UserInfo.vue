@@ -1,8 +1,19 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from "../stores/user";
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
 
 const userStore = useUserStore();
+
+const nameEditRef = ref("");
+
+const telephoneEditRef = ref("");
+
+const adressEditRef = ref("");
+
+const emailEditRef = ref("");
 
 // 顯示修改姓名的input
 const showNameEditRef = ref(false);
@@ -14,11 +25,17 @@ function showNameEdit() {
 
 // 改完名字後點擊 完成 來關閉input框
 function closeNameEdit() {
-  if (userStore.nameEditRef == "") {
+  if (nameEditRef.value == "") {
+    proxy.$message({ text: "姓名不能為空", type: "error" });
     return;
-  } else if (userStore.nameEditRef == " ") {
+  } else if (nameEditRef.value == " ") {
+    proxy.$message({ text: "姓名不能為空", type: "error" });
     return;
   }
+  userStore.userInfo.name = nameEditRef.value;
+
+  proxy.$message({ text: "更改姓名成功", type: "success" });
+
   showNameEditRef.value = false;
 }
 
@@ -32,11 +49,25 @@ function showTelephoneEdit() {
 
 // 改完電話後點擊 完成 來關閉input框
 function closeTelephoneEdit() {
-  if (userStore.telephoneEditRef == "") {
+  if (telephoneEditRef.value == "") {
+    proxy.$message({ text: "電話號碼不能為空", type: "error" });
+
     return;
-  } else if (userStore.telephoneEditRef == " ") {
+  } else if (telephoneEditRef.value == " ") {
+    proxy.$message({ text: "電話號碼不能為空", type: "error" });
+
+    return;
+  } else if (telephoneEditRef.value < 111111111) {
+    proxy.$message({ text: "電話號碼格式錯誤", type: "error" });
+    return;
+  } else if (telephoneEditRef.value > 999999999) {
+    proxy.$message({ text: "電話號碼格式錯誤", type: "error" });
     return;
   }
+  userStore.userInfo.teleplone = telephoneEditRef.value;
+
+  proxy.$message({ text: "更改電話號碼成功", type: "success" });
+
   showTelephoneEditRef.value = false;
 }
 
@@ -56,17 +87,23 @@ function checkEmailFormat(email) {
 
 // 改完 email 後點擊 完成 來關閉input框
 function closeEmailEdit() {
-  if (userStore.emailEditRef == "") {
+  if (emailEditRef.value == "") {
+    proxy.$message({ text: "email不能為空", type: "error" });
+
     return;
-  } else if (userStore.emailEditRef == " ") {
+  } else if (emailEditRef.value == " ") {
+    proxy.$message({ text: "email不能為空", type: "error" });
+
     return;
-  } else if (!checkEmailFormat(userStore.emailEditRef)) {
-    ElMessage({
-      type: "warning",
-      message: "請確認Email格式",
-    });
+  } else if (!checkEmailFormat(emailEditRef.value)) {
+    proxy.$message({ text: "meail格式錯誤", type: "error" });
+
     return;
   }
+  userStore.userInfo.email = emailEditRef.value;
+
+  proxy.$message({ text: "更改email成功", type: "success" });
+
   showEmailEditRef.value = false;
 }
 
@@ -80,11 +117,19 @@ function showAdressEdit() {
 
 // 改完 地址 後點擊 完成 來關閉input框
 function closeAdressEdit() {
-  if (userStore.adressEditRef == "") {
+  if (adressEditRef.value == "") {
+    proxy.$message({ text: "地址不能為空", type: "error" });
+
     return;
-  } else if (userStore.adressEditRef == " ") {
+  } else if (adressEditRef.value == " ") {
+    proxy.$message({ text: "地址不能為空", type: "error" });
+
     return;
   }
+  userStore.userInfo.adress = adressEditRef.value;
+
+  proxy.$message({ text: "更改地址成功", type: "success" });
+
   showAdressEditRef.value = false;
 }
 
@@ -108,14 +153,14 @@ const onFileChange = (event) => {
 function uploadImg() {
   // 將保存的圖片值賦值給userStore的userInfo的img
   userStore.userInfo.img = imageUrl.value;
-  ElMessage({ type: "success", message: "上傳圖片成功" });
+  proxy.$message({ text: "上傳圖片成功", type: "success" });
   imageUrl.value = "";
 }
 
 // 取消上傳圖片函式
 function clearimgRef() {
   imageUrl.value = "";
-  ElMessage({ type: "success", message: "已取消" });
+  proxy.$message({ text: "取消成功", type: "success" });
 }
 </script>
 
@@ -152,7 +197,7 @@ function clearimgRef() {
               :class="{ inputLayoutShow: showNameEditRef }"
             >
               <input
-                v-model="userStore.nameEditRef"
+                v-model="nameEditRef"
                 placeholder="請輸入新姓名..."
                 class="inputText"
                 type="text"
@@ -183,7 +228,7 @@ function clearimgRef() {
               :class="{ inputLayoutShow: showTelephoneEditRef }"
             >
               <input
-                v-model="userStore.telephoneEditRef"
+                v-model="telephoneEditRef"
                 placeholder="請輸入新號碼..."
                 class="inputText"
                 type="text"
@@ -215,8 +260,8 @@ function clearimgRef() {
               :class="{ inputLayoutShow: showEmailEditRef }"
             >
               <input
-                v-model="userStore.emailEditRef"
-                placeholder="請輸入新姓名..."
+                v-model="emailEditRef"
+                placeholder="請輸入新email..."
                 class="inputText"
                 type="text"
                 maxlength="32"
@@ -245,8 +290,8 @@ function clearimgRef() {
               :class="{ inputLayoutShow: showAdressEditRef }"
             >
               <input
-                v-model="userStore.adressEditRef"
-                placeholder="請輸入新姓名..."
+                v-model="adressEditRef"
+                placeholder="請輸入新地址..."
                 class="inputText"
                 type="text"
                 maxlength="32"
