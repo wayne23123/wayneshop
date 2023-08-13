@@ -229,7 +229,7 @@ section {
     position: absolute;
     display: flex;
     justify-content: center;
-    top: 530px;
+    bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;

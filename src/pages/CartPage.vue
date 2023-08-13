@@ -50,15 +50,15 @@ const useKupengRef = ref(false);
 function useKupengFunction() {
   // 保存當下的 carts 狀態
   emptyCopyCartsRef.value = cartStore.carts;
-  if (inputKupengRef.value == "") {
+  if (inputKupengRef.value === "") {
     proxy.$message({ text: "優惠碼不能為空", type: "error" });
 
     return;
-  } else if (inputKupengRef.value == " ") {
+  } else if (inputKupengRef.value === " ") {
     proxy.$message({ text: "優惠碼不能為空", type: "error" });
     return;
-  } else if (inputKupengRef.value == "open") {
-    steponeStore.updateMultipleKupengValues();
+  } else if (inputKupengRef.value === "open") {
+    cartStore.updateMultipleKupengValues();
     useKupengRef.value = true;
     proxy.$message({ text: "套用優惠碼成功", type: "success" });
   } else {
@@ -178,7 +178,7 @@ function successReduceAll() {
       <div class="sectionInputKupengLayout">
         <div>
           <input
-            v-bind="inputKupengRef"
+            v-model="inputKupengRef"
             type="text"
             placeholder="輸入優惠碼"
             class="nputKupengInput"

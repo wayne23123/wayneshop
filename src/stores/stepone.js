@@ -59,16 +59,8 @@ export const useSteponeStore = defineStore("stepones", () => {
   // 這個計數器用來做 order 最後 3 碼的計數器
   const counters = ref(1);
 
-  // 更新 stepones 陣列中每個元素的 kupeng 屬性為 true
-  function updateMultipleKupengValues() {
-    for (let i = 0; i < stepones.value.length; i++) {
-      stepones.value[i].kupeng = true;
-    }
-  }
-
   return {
     stepones,
     counters,
-    updateMultipleKupengValues,
   };
 });

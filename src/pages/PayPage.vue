@@ -139,6 +139,7 @@ function pushAdminCart() {
             </div>
           </div>
           <div v-if="payCheckRef">
+            <br />
             <router-link to="/shop">回到商城繼續逛逛</router-link>
           </div>
           <div v-else class="goShop">
@@ -248,6 +249,10 @@ section {
 
               .yellowMarkPrice {
                 background-color: #daa520;
+              }
+
+              .noneText {
+                text-decoration: line-through;
               }
 
               .yellowMark {
