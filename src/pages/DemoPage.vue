@@ -200,12 +200,6 @@ watch([elementX, elementY], () => {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   .bread {
     padding: 20px;

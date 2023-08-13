@@ -360,12 +360,6 @@ function clearimgRef() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   a.router-link-exact-active {
     /* 到頁面 active 顏色 */

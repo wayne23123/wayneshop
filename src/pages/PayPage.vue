@@ -153,12 +153,6 @@ function pushAdminCart() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   .sectionBuyProcess {
     padding: 20px 0;

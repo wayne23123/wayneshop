@@ -54,7 +54,11 @@ function showLoadingF() {
         <!-- 是否有 token -->
         <template v-if="userStore.userInfo.token">
           <li>
-            <a href="javascript:;" @click="$router.push('/member')">
+            <a
+              href="javascript:;"
+              @click="$router.push('/member')"
+              class="borR"
+            >
               <span class="imgLayout">
                 <img
                   :src="userStore.userInfo.img"
@@ -68,7 +72,7 @@ function showLoadingF() {
           </li>
           <li>
             <div @click="showLogoutFunction()" class="pointer">
-              <a href="javascript:;">退出登入</a>
+              <a href="javascript:;" class="borR">退出登入</a>
             </div>
             <div
               v-if="showLogoutRef && y < 100"
@@ -96,7 +100,10 @@ function showLoadingF() {
             </div>
           </li>
           <li>
-            <a href="javascript:;" @click="$router.push('/member/')"
+            <a
+              href="javascript:;"
+              @click="$router.push('/member/')"
+              class="borR"
               >我的訂單</a
             >
           </li>
@@ -124,9 +131,6 @@ function showLoadingF() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor;
-
 .dis {
   display: flex;
 }

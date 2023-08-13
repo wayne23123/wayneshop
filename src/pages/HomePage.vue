@@ -161,7 +161,6 @@ function toTopFunction() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
 .sectionHoler40px {
   width: 100vw;
   max-width: 100%;

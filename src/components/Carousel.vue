@@ -154,12 +154,6 @@ function stopCarousel() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   .carouselSection {
     height: 500px;

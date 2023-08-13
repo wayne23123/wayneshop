@@ -19,7 +19,9 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "@vueuse/core": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
+    "node-sass": "^9.0.0",
     "sass": "^1.64.2",
+    "sass-loader": "^13.3.2",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.6"

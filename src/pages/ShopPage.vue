@@ -353,9 +353,6 @@ showLoadingF();
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor;
-
 section {
   width: 100vw;
   max-width: 100%;

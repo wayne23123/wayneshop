@@ -105,9 +105,6 @@ function toTopFunction() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor;
-
 .bgcIMG {
   position: absolute;
   width: 100vw;

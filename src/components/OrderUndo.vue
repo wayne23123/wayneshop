@@ -9,6 +9,7 @@ const adminCartStore = useAdminCartStore();
 
 // 呼叫 orderFunction，從 Pinia store 中取得訂單
 adminCartStore.orderUndoFunction;
+adminCartStore.reverseOrderUndoRefs();
 
 // 定義一個名為 completeTrue 的函式，傳入 orderId 參數
 function completeTrue(orderId) {
@@ -480,12 +481,6 @@ const cancel = () => {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   .pointer {
     cursor: pointer;

@@ -32,8 +32,6 @@ import Footer from "../components/Footer.vue";
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor;
 section {
   .pageContainer {
     width: 100vw;

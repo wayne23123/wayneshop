@@ -73,8 +73,10 @@ const doLogin = () => {
       // console.log(res);
       // await userStore.getUserInfo({ account, password });
       // 1. 提示用戶
-      proxy.$message({ text: "登入成功", type: "success" });
 
+      setTimeout(() => {
+        proxy.$message({ text: "登入成功", type: "success" });
+      }, 800);
       // 2. 跳轉首頁
       setTimeout(() => router.replace({ path: "/" }), 1000);
 
@@ -157,12 +159,6 @@ function showLoadingF() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
 section {
   .formLayout {
     // background-color: #daa520;

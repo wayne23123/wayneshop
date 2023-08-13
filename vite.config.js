@@ -27,12 +27,10 @@ export default defineConfig({
     },
   },
   // 這裡放自動引入 scss 變數
-  CSS: {
+  css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `
-          @use "@/styles/var.scss" as *;
-        `,
+        additionalData: `@import '/src/styles/var.scss';`,
       },
     },
   },

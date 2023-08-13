@@ -65,22 +65,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/var.scss";
-// $yellowColor
-// $darkYellowColor
-// $grayColor
-// $darkGrayColor
-
-// .myMessageContainer {
-//   bottom: 150px;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: stretch;
-
-//   z-index: 9999;
-// }
-
 .myMessage {
   position: fixed;
   z-index: 9999;
