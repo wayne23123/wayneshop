@@ -3,6 +3,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { loginAPI } from "@/apis/user";
+import avatarDefault from "@/assets/pictures/avatarDefault.png";
 
 export const useUserStore = defineStore(
   "user",
@@ -13,7 +14,7 @@ export const useUserStore = defineStore(
       telephone: "0912345678",
       adress: "測試用地址",
       email: "test@gmail.com",
-      img: "../src/assets/pictures/avatarDefault.png",
+      img: avatarDefault,
       token: "",
     });
     // 2. 定義獲取接口數據的 action 函數

@@ -28,7 +28,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 1,
         order: "0810105034001",
-        img: "./src/assets/imgs/w001.jpg",
+        img: w001,
         title: "燈芯絨水手帽",
         category: "hat",
         star: "★★★★",
@@ -59,7 +59,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 1,
         order: "0810105034001",
-        img: "./src/assets/imgs/w001.jpg",
+        img: w001,
         title: "燈芯絨水手帽",
         category: "hat",
         star: "★★★★",
@@ -90,7 +90,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 3,
         order: "0810105034001",
-        img: "./src/assets/imgs/w003.jpg",
+        img: w003,
         title: "Champion AS拼色運動外套(綠色)",
         category: "clothes",
         star: "★★★",
@@ -121,7 +121,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 1,
         order: "0810111848002",
-        img: "./src/assets/imgs/w001.jpg",
+        img: w001,
         title: "燈芯絨水手帽",
         category: "hat",
         star: "★★★★",
@@ -152,7 +152,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 2,
         order: "0810111848002",
-        img: "./src/assets/imgs/w002.jpg",
+        img: w002,
         title: "Puma Suede Classic",
         category: "shoes",
         star: "★★★★★",
@@ -182,7 +182,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 3,
         order: "0810111848002",
-        img: "./src/assets/imgs/w003.jpg",
+        img: w003,
         title: "Champion AS拼色運動外套(綠色)",
         category: "clothes",
         star: "★★★",
@@ -212,7 +212,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 4,
         order: "0810111848002",
-        img: "./src/assets/imgs/w004.jpg",
+        img: w004,
         title: "Vans old skool",
         category: "shoes",
         star: "★★★★★",
@@ -242,7 +242,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 5,
         order: "0810111848002",
-        img: "./src/assets/imgs/w005.jpg",
+        img: w005,
         title: "STOCK CUFF BEANIE",
         category: "hat",
         star: "★★★★",
@@ -272,7 +272,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 6,
         order: "0810111848002",
-        img: "./src/assets/imgs/w006.jpg",
+        img: w006,
         title: "BIG LOGO LOW PRO CAP",
         category: "hat",
         star: "★★★★",
@@ -302,7 +302,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 7,
         order: "0810111848002",
-        img: "./src/assets/imgs/w007.jpg",
+        img: w007,
         title: "Champion AS復古拼色外套",
         category: "clothes",
         star: "★★★",
@@ -332,7 +332,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 8,
         order: "0810111848002",
-        img: "./src/assets/imgs/w008.jpg",
+        img: w008,
         title: "Champion AS運動長褲(黑色)",
         category: "pants",
         star: "★★★",
@@ -362,7 +362,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 5,
         order: "0810111731003",
-        img: "./src/assets/imgs/w005.jpg",
+        img: w005,
         title: "STOCK CUFF BEANIE",
         category: "hat",
         star: "★★★★",
@@ -392,7 +392,7 @@ export const useAdminCartStore = defineStore(
       {
         id: 5,
         order: "0810111731003",
-        img: "./src/assets/imgs/w005.jpg",
+        img: w005,
         title: "STOCK CUFF BEANIE",
         category: "hat",
         star: "★★★★",

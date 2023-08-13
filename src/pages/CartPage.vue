@@ -1,7 +1,5 @@
 <script setup>
-import { ref, reactive, computed } from "vue";
-import Footer from "../components/Footer.vue";
-// import Marquee from "../components/Marquee.vue";
+import { ref, computed } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useSteponeStore } from "../stores/stepone";
 
@@ -180,7 +178,7 @@ function successReduceAll() {
       <div class="sectionInputKupengLayout">
         <div>
           <input
-            v-model="inputKupengRef"
+            v-bind="inputKupengRef"
             type="text"
             placeholder="輸入優惠碼"
             class="nputKupengInput"

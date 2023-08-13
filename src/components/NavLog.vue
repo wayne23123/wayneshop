@@ -168,19 +168,9 @@ nav {
         cursor: pointer;
       }
 
-      .triangle {
-        position: absolute;
-        top: -25px;
-        transform: rotate(225deg);
-        width: 50px;
-        height: 50px;
-        background-color: $middleGrayColor;
-        z-index: 300;
-      }
-
       .tableRightCardBtnLayout {
         display: flex;
-        color: #50d450;
+        color: #000;
         .tableRightCardBtnLayoutBtnR {
           padding: 10px;
           border-radius: 15px;
@@ -217,9 +207,28 @@ nav {
       .dialogContent {
         background-color: $middleGrayColor;
         padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        border: 2px #000 solid;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         text-align: center;
+
+        .triangle {
+          position: absolute;
+          top: -25px;
+          left: 25px;
+          transform: rotate(225deg);
+          width: 50px;
+          height: 50px;
+          border-right: 2px #000 solid;
+          border-bottom: 2px #000 solid;
+          background-color: $middleGrayColor;
+          z-index: 300;
+        }
+
+        p {
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          padding: 10px;
+        }
 
         .dialogContentText {
           padding: 20px;

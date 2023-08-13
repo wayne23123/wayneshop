@@ -26,7 +26,7 @@ export const useDemoStore = defineStore("demos", () => {
     {
       id: 1,
       order: "",
-      img: "./src/assets/imgs/w001.jpg",
+      img: w001,
       title: "燈芯絨水手帽",
       category: "hat",
       star: "★★★★",

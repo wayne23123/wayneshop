@@ -135,7 +135,7 @@ const cancel = () => {
           <table>
             <tr v-for="cartItem in cartItems" :key="cartItem.id">
               <td>
-                <img :src="'.' + cartItem.img" alt="" width="40" height="50" />
+                <img :src="cartItem.img" alt="" width="40" height="50" />
               </td>
               <td>
                 <div>
@@ -307,7 +307,7 @@ const cancel = () => {
           <table>
             <tr v-for="(search, adminIndex) in searchs" :key="adminIndex">
               <td>
-                <img :src="'.' + search.img" alt="" width="40" height="50" />
+                <img :src="search.img" alt="" width="40" height="50" />
               </td>
               <td>
                 <div>

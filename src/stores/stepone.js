@@ -26,7 +26,7 @@ export const useSteponeStore = defineStore("stepones", () => {
     {
       id: 1,
       order: "",
-      img: "./src/assets/imgs/w001.jpg",
+      img: w001,
       title: "測試用資料",
       category: "hat",
       star: "★★★★",

@@ -56,7 +56,8 @@ const doLogin = () => {
   // 有3個值, 只要2個, 先解構復職
   const { account, password } = form.value;
   // 調用實例方法
-  formRef.value.validate(async (valid) => {
+  // formRef.value.validate(async (valid) => {
+  formRef.value.validate((valid) => {
     // valid: 所有表單都通過較驗 才為true
     // console.log(valid);
     // 以valid作為判斷條件, 如果通過較驗才執行登陸邏輯
@@ -65,7 +66,8 @@ const doLogin = () => {
       // TODO LOGIN
       // const res = await loginAPI({ account, password });
       // 改造
-      await userStore.getUserInfo({ account, password });
+      // await userStore.getUserInfo({ account, password });
+      userStore.userInfo.token = "1";
       // console.log(res);
       // await userStore.getUserInfo({ account, password });
       // 1. 提示用戶
@@ -140,7 +142,8 @@ function showLoadingF() {
         </div>
 
         <div>
-          <div>測試帳號 xiaotuxian001</div>
+          <!-- <div>測試帳號 xiaotuxian001</div> -->
+          <div>測試帳號 admin</div>
           <div>測試密碼 123456</div>
         </div>
       </div>

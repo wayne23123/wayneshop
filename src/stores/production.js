@@ -26,7 +26,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 1,
       order: "",
-      img: "./src/assets/imgs/w001.jpg",
+      img: w001,
       title: "燈芯絨水手帽",
       category: "hat",
       star: "★★★★",
@@ -57,7 +57,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 2,
       order: "",
-      img: "./src/assets/imgs/w002.jpg",
+      img: w002,
       title: "Puma Suede Classic",
       category: "shoes",
       star: "★★★★★",
@@ -87,7 +87,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 3,
       order: "",
-      img: "./src/assets/imgs/w003.jpg",
+      img: w003,
       title: "Champion AS拼色運動外套(綠色)",
       category: "clothes",
       star: "★★★",
@@ -117,7 +117,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 4,
       order: "",
-      img: "./src/assets/imgs/w004.jpg",
+      img: w004,
       title: "Vans old skool",
       category: "shoes",
       star: "★★★★★",
@@ -147,7 +147,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 5,
       order: "",
-      img: "./src/assets/imgs/w005.jpg",
+      img: w005,
       title: "STOCK CUFF BEANIE",
       category: "hat",
       star: "★★★★",
@@ -177,7 +177,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 6,
       order: "",
-      img: "./src/assets/imgs/w006.jpg",
+      img: w006,
       title: "BIG LOGO LOW PRO CAP",
       category: "hat",
       star: "★★★★",
@@ -207,7 +207,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 7,
       order: "",
-      img: "./src/assets/imgs/w007.jpg",
+      img: w007,
       title: "Champion AS復古拼色外套",
       category: "clothes",
       star: "★★★",
@@ -237,7 +237,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 8,
       order: "",
-      img: "./src/assets/imgs/w008.jpg",
+      img: w008,
       title: "Champion AS運動長褲(黑色)",
       category: "pants",
       star: "★★★",
@@ -267,7 +267,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 9,
       order: "",
-      img: "./src/assets/imgs/w009.jpg",
+      img: w009,
       title: "經典嘻哈復古拼接外套",
       category: "clothes",
       star: "★★★★★",
@@ -297,7 +297,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 10,
       order: "",
-      img: "./src/assets/imgs/w010.jpg",
+      img: w010,
       title: "Adidas Superstar",
       category: "shoes",
       star: "★★★★",
@@ -327,7 +327,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 11,
       order: "",
-      img: "./src/assets/imgs/w011.jpg",
+      img: w011,
       title: "Nike Air Force 1 '07",
       category: "shoes",
       star: "★★★★★",
@@ -358,7 +358,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 12,
       order: "",
-      img: "./src/assets/imgs/w012.jpg",
+      img: w012,
       title: "8 BALL TEE",
       category: "clothes",
       star: "★★★",
@@ -388,7 +388,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 13,
       order: "",
-      img: "./src/assets/imgs/w013.jpg",
+      img: w013,
       title: "TRIBAL MASK TEE",
       category: "clothes",
       star: "★★★",
@@ -418,7 +418,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 14,
       order: "",
-      img: "./src/assets/imgs/w014.jpg",
+      img: w014,
       title: "Champion AS拼色運動長褲",
       category: "clothes",
       star: "★★★★★",
@@ -448,7 +448,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 15,
       order: "",
-      img: "./src/assets/imgs/w015.jpg",
+      img: w015,
       title: "Champion 棒球外套",
       category: "clothes",
       star: "★★★★★",
@@ -479,7 +479,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 16,
       order: "",
-      img: "./src/assets/imgs/w016.jpg",
+      img: w016,
       title: "CLASSIC COACH JACKET",
       category: "clothes",
       star: "★★★",
@@ -510,7 +510,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 17,
       order: "",
-      img: "./src/assets/imgs/w017.jpg",
+      img: w017,
       title: "PANEL TRACK PANT",
       category: "pants",
       star: "★★★★★",
@@ -540,7 +540,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 18,
       order: "",
-      img: "./src/assets/imgs/w018.jpg",
+      img: w018,
       title: "格紋寬褲",
       category: "pants",
       star: "★★★★★",
@@ -570,7 +570,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 19,
       order: "",
-      img: "./src/assets/imgs/w019.jpg",
+      img: w019,
       title: "Miki discovery 網眼拼接水兵帽",
       category: "hat",
       star: "★★★★",
@@ -601,7 +601,7 @@ export const useProductionStore = defineStore("productions", () => {
     {
       id: 20,
       order: "",
-      img: "./src/assets/imgs/w020.jpg",
+      img: w020,
       title: "STOCK BUCKET HAT",
       category: "hat",
       star: "★★★★",
