@@ -2,6 +2,9 @@
 import { ref, computed } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useProductionStore } from "../stores/production";
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
 
 const cartStore = useCartStore();
 const productionStore = useProductionStore();
@@ -45,6 +48,14 @@ const cartsTotalPrice = computed(() => {
 import { useScroll } from "@vueuse/core";
 // 解構賦值
 const { y } = useScroll(window);
+
+function successReduceOne() {
+  proxy.$message({ text: "成功刪除一件商品", type: "success" });
+}
+
+function successReduceAll() {
+  proxy.$message({ text: "成功刪除全部商品", type: "success" });
+}
 </script>
 
 <template>
@@ -108,7 +119,12 @@ const { y } = useScroll(window);
               商品: {{ cart.title }} size: {{ cart.size }} 數量:
               {{ cart.counter }} 件
               <button
-                @click="cartStore.removeCartItemById(cart.id, cart.size)"
+                @click="
+                  {
+                    cartStore.removeCartItemById(cart.id, cart.size);
+                    successReduceOne();
+                  }
+                "
                 class="cartEmptyTopButton"
               >
                 刪除商品
@@ -125,7 +141,12 @@ const { y } = useScroll(window);
               {{ cartsTotalPrice }} 元
               <button
                 v-if="cartStore.cartsHasProductionFunction()"
-                @click="cartStore.clearCartFunction()"
+                @click="
+                  {
+                    cartStore.clearCartFunction();
+                    successReduceAll();
+                  }
+                "
                 class="cartEmptyTopButton"
               >
                 刪除全部商品

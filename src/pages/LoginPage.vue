@@ -56,17 +56,19 @@ const doLogin = () => {
   // 有3個值, 只要2個, 先解構復職
   const { account, password } = form.value;
   // 調用實例方法
-  // formRef.value.validate(async (valid) => {
-  formRef.value.validate((valid) => {
+  formRef.value.validate(async (valid) => {
+    // formRef.value.validate((valid) => {
     // valid: 所有表單都通過較驗 才為true
     // console.log(valid);
     // 以valid作為判斷條件, 如果通過較驗才執行登陸邏輯
 
     if (valid) {
+      showLoading.value = true;
       // TODO LOGIN
       // const res = await loginAPI({ account, password });
       // 改造
       // await userStore.getUserInfo({ account, password });
+      await setTimeout(() => console.log("1"), 1000);
       userStore.userInfo.token = "1";
       // console.log(res);
       // await userStore.getUserInfo({ account, password });
@@ -74,7 +76,7 @@ const doLogin = () => {
       proxy.$message({ text: "登入成功", type: "success" });
 
       // 2. 跳轉首頁
-      router.replace({ path: "/" });
+      setTimeout(() => router.replace({ path: "/" }), 1000);
 
       localStorage.setItem("token", "1");
     }
