@@ -60,15 +60,15 @@
 
 - 使用者在購物頁面，可以篩選商品，並且即時在右上角看到動態購物車狀況。
 
-![This is a alt text.](https://imgur.com/PUCyFrk)
+![This is a alt text.](https://imgur.com/PUCyFrk.jpg)
 
 - 在購物車頁面可以實現訂單的增加刪除，以及使用酷碰卷。
 
-![This is a alt text.](https://imgur.com/a/j1GdPrw)
+![This is a alt text.](https://imgur.com/a/j1GdPrw.jpg)
 
 - 登入後可以查看訂單狀況，並實現刪除、查詢、完成訂單功能。
 
-![This is a alt text.](https://imgur.com/gallery/HGHoexu)
+![This is a alt text.](https://imgur.com/gallery/HGHoexu.jpg)
 
 ## Recommended IDE Setup
 
