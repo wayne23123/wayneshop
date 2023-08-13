@@ -68,7 +68,7 @@
 
 - 登入後可以查看訂單狀況，並實現刪除、查詢、完成訂單功能。
 
-![This is a alt text.](https://imgur.com/PUCyFrk)
+![This is a alt text.](https://imgur.com/gallery/HGHoexu)
 
 ## Recommended IDE Setup
 
