@@ -278,6 +278,8 @@ function toTopFunction() {
 
   // background-color: #000;
   background-image: url(../assets/svgs/polygon-scatter2.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   padding: 120px 0;

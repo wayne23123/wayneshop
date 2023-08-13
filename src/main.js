@@ -7,6 +7,7 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 import router from "./router";
 
+// message組件
 import Message from "../src/components/message";
 
 const app = createApp(App);

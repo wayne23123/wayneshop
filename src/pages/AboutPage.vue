@@ -179,7 +179,7 @@ section {
 
       .cardLeft {
         width: 45vw;
-        color: #c4c4c4;
+        color: #028200;
         padding: 40px;
         z-index: 10;
 

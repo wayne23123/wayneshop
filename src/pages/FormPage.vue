@@ -285,7 +285,7 @@ section {
     background-color: #000;
     display: flex;
     justify-content: center;
-    background-image: url("../assets/svgs/stacked-waves-2.svg");
+    background-image: url("../assets/svgs/stacked-waves2.svg");
     background-repeat: no-repeat;
     background-size: cover;
 

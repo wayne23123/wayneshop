@@ -104,6 +104,7 @@ section {
     justify-content: space-between;
     padding: 0 50px;
     z-index: 200;
+    border-bottom: 1px solid #a9a8a8;
 
     a.router-link-exact-active {
       color: #00b700;

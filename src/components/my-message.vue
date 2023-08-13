@@ -18,19 +18,19 @@ export default {
     // 定義一個物件, 包含三種情況的樣式, 物件key 是類型字串
     const style = {
       warn: {
-        icon: "✖",
+        icon: "✖ ",
         color: "#E6A23C",
         backgroundColor: "rgb(253, 246, 236)",
         borderColor: "rgb(250, 236, 216)",
       },
       error: {
-        icon: "✖",
+        icon: "✖ ",
         color: "#F56C6C",
         backgroundColor: "rgb(254, 240, 240)",
         borderColor: "rgb(253, 226, 226)",
       },
       success: {
-        icon: "✔",
+        icon: "✔ ",
         color: "#67C23A",
         backgroundColor: "rgb(240, 249, 235)",
         borderColor: "rgb(225, 243, 216)",
@@ -53,8 +53,8 @@ export default {
 </script>
 
 <template>
-  <Transition name="listUp">
-    <div class="my-message" :style="style[type]" v-show="isShow">
+  <Transition name="listUp" tag="div">
+    <div class="myMessage" :style="style[type]" v-show="isShow">
       <!-- 上面綁定樣式 -->
       <!-- 不同提示圖標會變 -->
       <!-- class="iconfont" :class="[style[type].icon]" -->
@@ -71,7 +71,17 @@ export default {
 // $grayColor
 // $darkGrayColor
 
-.my-message {
+// .myMessageContainer {
+//   bottom: 150px;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: stretch;
+
+//   z-index: 9999;
+// }
+
+.myMessage {
   position: fixed;
   z-index: 9999;
   bottom: 40px;
@@ -87,13 +97,14 @@ export default {
 
 .listUp-enter-active,
 .listUp-leave-active {
-  transition: all 0.2s ease;
+  transition: all 0.8s ease;
 }
 
 .listUp-enter-from {
   transform: translate(-50%, 100%);
+  opacity: 1;
 }
 .listUp-leave-to {
-  transform: translateY(100%);
+  opacity: 0;
 }
 </style>

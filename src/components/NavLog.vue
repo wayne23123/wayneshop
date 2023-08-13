@@ -1,18 +1,49 @@
 <script setup>
+import { ref } from "vue";
 import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
+import { useScroll } from "@vueuse/core";
+
+import { getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
+// 解構賦值
+const { y } = useScroll(window);
 
 const userStore = useUserStore();
 
 const router = useRouter();
+
+const showLogoutRef = ref(false);
+
+function showLogoutFunction() {
+  showLogoutRef.value = !showLogoutRef.value;
+}
+
+function closeShowLogout() {
+  showLogoutRef.value = false;
+}
+
 const confirm = () => {
+  showLogoutRef.value = false;
   // 退出登入邏輯
   localStorage.removeItem("token");
   // 1. 清除用戶訊息 觸發 action
   userStore.clearUserInfo();
+
+  showLoadingF();
   // 2. 跳轉到登入頁
-  router.push("/login");
+  setTimeout(() => router.push("/login"), 800);
+  proxy.$message({ text: "登出成功", type: "success" });
 };
+
+// 顯示loading的函式
+const showLoading = ref(false);
+function showLoadingF() {
+  showLoading.value = true;
+  setTimeout(() => (showLoading.value = false), 800);
+}
 </script>
 
 <template>
@@ -36,16 +67,33 @@ const confirm = () => {
             </a>
           </li>
           <li>
-            <el-popconfirm
-              @confirm="confirm"
-              title="確定退出嗎?"
-              confirm-button-text="確定"
-              cancel-button-text="取消"
+            <div @click="showLogoutFunction()" class="pointer">
+              <a href="javascript:;">退出登入</a>
+            </div>
+            <div
+              v-if="showLogoutRef && y < 100"
+              @click="closeShowLogout()"
+              class="dialogLayout"
             >
-              <template #reference>
-                <a href="javascript:;">退出登陸</a>
-              </template>
-            </el-popconfirm>
+              <div class="dialogContent">
+                <div class="triangle"></div>
+                <div class="dialogContentText">
+                  <p>確定登出?</p>
+                  <br />
+                  <div class="tableRightCardBtnLayout">
+                    <div
+                      @click="confirm()"
+                      class="tableRightCardBtnLayoutBtnR pointer"
+                    >
+                      <div>確定</div>
+                    </div>
+                    <div class="tableRightCardBtnLayoutBtnL pointer">
+                      <div>取消</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
             <a href="javascript:;" @click="$router.push('/member/')"
@@ -71,6 +119,7 @@ const confirm = () => {
         </template>
       </ul>
     </div>
+    <div v-show="showLoading" class="loading"></div>
   </nav>
 </template>
 
@@ -115,7 +164,106 @@ nav {
       .borR {
         border-right: 1px solid $whiteColor;
       }
+      .pointer {
+        cursor: pointer;
+      }
+
+      .triangle {
+        position: absolute;
+        top: -25px;
+        transform: rotate(225deg);
+        width: 50px;
+        height: 50px;
+        background-color: $middleGrayColor;
+        z-index: 300;
+      }
+
+      .tableRightCardBtnLayout {
+        display: flex;
+        color: #50d450;
+        .tableRightCardBtnLayoutBtnR {
+          padding: 10px;
+          border-radius: 15px;
+          background-color: #accee3;
+        }
+
+        .tableRightCardBtnLayoutBtnR:hover {
+          background-color: #98c6e3;
+          color: #00b700;
+          transition: all 0.3s ease;
+        }
+
+        .tableRightCardBtnLayoutBtnL {
+          margin-left: 15px;
+          padding: 10px;
+          border-radius: 15px;
+          background-color: #d8bebe;
+        }
+
+        .tableRightCardBtnLayoutBtnL:hover {
+          background-color: #dbb2b2;
+          color: #00b700;
+          transition: all 0.3s ease;
+        }
+      }
+      .dialogLayout {
+        position: absolute;
+        top: 60px;
+        color: $whiteColor;
+
+        z-index: 300;
+      }
+
+      .dialogContent {
+        background-color: $middleGrayColor;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+
+        .dialogContentText {
+          padding: 20px;
+        }
+      }
     }
+  }
+
+  .loading {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 200;
+  }
+
+  .loading::after {
+    content: "";
+    height: 48px;
+    width: 48px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-right-color: transparent;
+
+    animation: infinite rotate 0.5s linear;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
