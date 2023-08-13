@@ -62,17 +62,17 @@
 
 ![This is a alt text.](https://imgur.com/PUCyFrk.jpg)
 
--點擊商品可以用放大鏡查看商品功能
+- 點擊商品可以用放大鏡查看商品功能
 
-![This is a alt text.](https://imgur.com/gallery/SfP4r8x.jpg)
+![This is a alt text.](https://imgur.com/gallery/SfP4r8x)
 
 - 在購物車頁面可以實現訂單的增加刪除，以及使用酷碰卷。
 
-![This is a alt text.](https://imgur.com/gallery/oTz3Ip6.jpg)
+![This is a alt text.](https://imgur.com/gallery/oTz3Ip6)
 
 - 登入後可以查看訂單狀況，並實現刪除、查詢、完成訂單功能。
 
-![This is a alt text.](https://imgur.com/gallery/Dcoihtf.jpg)
+![This is a alt text.](https://imgur.com/gallery/Dcoihtf)
 
 ## Recommended IDE Setup
 
