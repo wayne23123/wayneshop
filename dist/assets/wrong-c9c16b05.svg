@@ -1,0 +1,15 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 黑色外圍 -->
+  <polygon points="100,10 10,190 190,190" fill="black" />
+
+  <!-- 黃色三角形 -->
+  <polygon points="100,20 20,180 180,180" fill="#fac533" />
+
+<text x="100" y="100" text-anchor="middle" alignment-baseline="middle" font-size="36" fill="white">🛠️</text>
+
+  <!-- 文字 -->
+  <text x="100" y="150" text-anchor="middle" alignment-baseline="middle" font-size="20" font-weight="bold"  fill="#000">好像出錯了</text>
+</svg>
+
+
+<!-- fac533 -->
