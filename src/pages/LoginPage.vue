@@ -99,7 +99,7 @@ function showLoadingF() {
       <div class="logo">
         <router-link to="/"
           ><div class="svgHover">
-            <img src="../assets/svgs/wss.svg" /></div
+            <img src="../assets/svgs/wss.svg" width="200" /></div
         ></router-link>
       </div>
       <div class="bread">
@@ -137,7 +137,7 @@ function showLoadingF() {
                 </el-checkbox>
               </el-form-item>
               <el-button size="large" class="subBtn" @click="doLogin"
-                >點擊登陸</el-button
+                >點擊登入</el-button
               >
             </el-form>
             <br />
@@ -160,6 +160,9 @@ function showLoadingF() {
 
 <style scoped lang="scss">
 section {
+  width: 100vw;
+  max-width: 100%;
+
   .formLayout {
     // background-color: #daa520;
 
@@ -174,19 +177,11 @@ section {
     }
 
     .bread {
-      padding: 20px;
       background-color: $yellowColor;
       color: black;
-    }
 
-    .greenHov:hover {
-      color: #00b700;
-    }
-
-    .bread {
-      background-color: $yellowColor;
-      color: black;
-      padding-left: 50px;
+      padding: 50px 0 0 50px;
+      font-size: 26px;
 
       .breacPad {
         padding: 20px;
@@ -199,6 +194,7 @@ section {
     }
 
     .formCardContainer {
+      height: 60vh;
       color: black;
       background-image: url(../assets/svgs/circle-scatter1.svg);
       background-repeat: no-repeat;
@@ -221,12 +217,16 @@ section {
             border-radius: 15px;
             background-color: #535353;
             color: #c4c4c4;
+            font-size: 30px;
           }
 
           .subBtn {
             width: 100%;
             background-color: #171717;
             color: #c4c4c4;
+            font-size: 30px;
+
+            border-radius: 15px;
           }
           .subBtn:hover {
             background-color: #aa0000;

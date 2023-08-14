@@ -234,8 +234,8 @@ section {
       flex-wrap: wrap;
 
       .processDivOne {
-        width: 200px;
-        height: 100px;
+        padding: 20px 10px;
+        font-size: 26px;
         margin: 10px;
         color: black;
         background-color: #ddd;
@@ -244,10 +244,9 @@ section {
         justify-content: center;
         align-items: center;
       }
-
       .processDivTwo {
-        width: 200px;
-        height: 100px;
+        padding: 20px 10px;
+        font-size: 26px;
         margin: 10px;
 
         color: rgb(200, 200, 200);
@@ -259,8 +258,8 @@ section {
       }
 
       .processDivThree {
-        width: 200px;
-        height: 100px;
+        padding: 20px 50px;
+        font-size: 26px;
         margin: 10px;
         color: black;
         background-color: #ddd;
@@ -292,7 +291,7 @@ section {
       border-radius: 15px;
 
       .formWidth {
-        width: 400px;
+        width: 700px;
         .formTitle {
           padding-left: 15px;
 
@@ -300,12 +299,14 @@ section {
             padding: 10px 15px;
             border-radius: 15px;
             background-color: #c4b9b9;
+            font-size: 30px;
           }
         }
 
         input {
           width: 100%;
-          height: 40px;
+          font-size: 26px;
+          padding: 15px;
           background-color: #fff7f7;
           border-radius: 10px;
         }
@@ -313,6 +314,7 @@ section {
           background-color: #fff7f7;
           border-radius: 10px;
           width: 100%;
+          font-size: 26px;
         }
 
         .formMargin {
@@ -327,6 +329,7 @@ section {
             background-color: #daa520;
             margin: 15px;
             padding: 10px;
+            font-size: 26px;
           }
 
           a:hover {
@@ -339,12 +342,35 @@ section {
             margin: 15px;
             padding: 10px;
             cursor: pointer;
+            font-size: 26px;
           }
 
           .goPay:hover {
             color: rgb(0, 144, 0);
             background-color: #fabd21;
           }
+        }
+      }
+    }
+  }
+}
+
+// 清除 input 右邊有上下小箭頭
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .sectionCart {
+      .formLayout {
+        .formWidth {
+          width: 80vw;
         }
       }
     }

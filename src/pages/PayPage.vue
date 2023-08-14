@@ -82,8 +82,10 @@ function pushAdminCart() {
               <td>{{ pay.counter }}</td>
               <td v-if="payStore.pays[0].kupeng">
                 <div class="noneText">{{ pay.price * pay.counter }}</div>
-                <div class="yellowMarkPrice">
-                  {{ Math.floor(pay.price * pay.counter * 0.7) }}
+                <div>
+                  <span class="yellowMarkPrice">
+                    {{ Math.floor(pay.price * pay.counter * 0.7) }}</span
+                  >
                 </div>
               </td>
               <td v-else="payStore.pays[0].kupeng">
@@ -93,11 +95,13 @@ function pushAdminCart() {
           </table>
           <div>
             <div v-show="payStore.pays[0].kupeng">
-              <div class="useKupeng yellowMark">使用了優惠券!</div>
+              <div class="useKupeng">
+                <span class="yellowMark">使用了優惠券!</span>
+              </div>
             </div>
             <div v-if="payStore.pays[0].kupeng">
               <div class="cartsTotalCounter">
-                總共 {{ cartsTotalCounter }} 件商品
+                總共{{ cartsTotalCounter }}件商品
 
                 <div>
                   <div class="noneText">原價 NT {{ cartsTotalPrice }} 元</div>
@@ -144,7 +148,9 @@ function pushAdminCart() {
           </div>
           <div v-else class="goShop">
             <router-link to="/form">上一步</router-link>
-            <button @click="sendOrderFunction" class="a">送出訂單</button>
+            <button @click="sendOrderFunction" class="addOrderBtn">
+              送出訂單
+            </button>
           </div>
         </div>
       </div>
@@ -170,8 +176,8 @@ section {
       flex-wrap: wrap;
 
       .processDivOne {
-        width: 200px;
-        height: 100px;
+        padding: 20px 10px;
+        font-size: 26px;
         margin: 10px;
         color: black;
         background-color: #ddd;
@@ -182,8 +188,8 @@ section {
       }
 
       .processDivTwo {
-        width: 200px;
-        height: 100px;
+        padding: 20px 10px;
+        font-size: 26px;
         margin: 10px;
 
         color: black;
@@ -195,8 +201,8 @@ section {
       }
 
       .processDivThree {
-        width: 200px;
-        height: 100px;
+        padding: 20px 50px;
+        font-size: 26px;
         margin: 10px;
         color: rgb(200, 200, 200);
         background-color: rgb(0, 0, 0);
@@ -221,7 +227,7 @@ section {
     background-size: cover;
 
     .payLayout {
-      width: 500px;
+      width: 60vw;
 
       .payCard {
         background-color: $grayColor;
@@ -230,8 +236,15 @@ section {
         border-radius: 15px;
 
         table {
+          width: 100%;
+          tr {
+            th {
+              font-size: 26px;
+            }
+          }
           tr {
             td {
+              font-size: 26px;
               border-top: solid 1px gray;
               border-bottom: solid 1px gray;
 
@@ -251,7 +264,6 @@ section {
 
               .yellowMark {
                 background-color: #daa520;
-                width: 130px;
               }
             }
           }
@@ -259,21 +271,24 @@ section {
 
         .useKupeng {
           margin: 10px;
+          font-size: 20px;
         }
 
         .yellowMarkPrice {
           background-color: #daa520;
+          padding: 5px;
         }
 
         .yellowMark {
           background-color: #daa520;
-          width: 130px;
+          padding: 5px;
         }
 
         .cartsTotalCounter {
           margin: 10px;
           display: flex;
           justify-content: space-between;
+          font-size: 30px;
 
           .noneText {
             text-decoration: line-through;
@@ -284,6 +299,7 @@ section {
           padding: 10px;
           display: flex;
           justify-content: space-between;
+          font-size: 30px;
         }
       }
 
@@ -295,10 +311,12 @@ section {
           border-radius: 15px;
           background-color: #c4b9b9;
           border-bottom: 2px #565656 solid;
+          font-size: 30px;
         }
 
         .padL20 {
           padding-left: 20px;
+          font-size: 26px;
         }
       }
       .payCheck {
@@ -309,12 +327,14 @@ section {
         background-color: #daa520;
         margin: 15px;
         padding: 10px;
+        font-size: 26px;
       }
 
-      .a {
+      .addOrderBtn {
         background-color: #daa520;
         margin: 15px;
         padding: 10px;
+        font-size: 26px;
       }
 
       a:hover {
@@ -322,7 +342,7 @@ section {
         background-color: #fabd21;
       }
 
-      .a:hover {
+      .addOrderBtn:hover {
         color: rgb(0, 144, 0);
         background-color: #fabd21;
       }
@@ -330,6 +350,16 @@ section {
       .goShop {
         display: flex;
         justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .sectionPay {
+      .payLayout {
+        width: 100vw;
       }
     }
   }

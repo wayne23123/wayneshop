@@ -137,7 +137,6 @@ function showLoadingF() {
 
 nav {
   background-color: #2b2a2a;
-  height: 25px;
 
   ul {
     list-style: none;
@@ -148,6 +147,7 @@ nav {
       a {
         color: $whiteColor;
         padding: 0 20px 0 20px;
+        font-size: 20px;
 
         .imgLayout {
           width: 170px;
@@ -202,7 +202,7 @@ nav {
       }
       .dialogLayout {
         position: absolute;
-        top: 60px;
+        top: 70px;
         color: $whiteColor;
 
         z-index: 300;
@@ -232,6 +232,7 @@ nav {
         p {
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
           padding: 10px;
+          font-size: 20px;
         }
 
         .dialogContentText {

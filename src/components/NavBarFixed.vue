@@ -132,7 +132,11 @@ function successReduceAll() {
               </button>
             </div>
           </TransitionGroup>
-          <router-link v-if="cartStore.carts.length > 8" to="/cart">
+          <router-link
+            v-if="cartStore.carts.length > 8"
+            to="/cart"
+            class="toCartRouter"
+          >
             到購物車查看更多商品...
           </router-link>
           <hr />
@@ -204,7 +208,7 @@ section {
     transform: translateY(-100%);
     opacity: 0;
 
-    a.router-link-exact-active {
+    a.router-link-active {
       color: #00b700;
     }
 
@@ -252,7 +256,8 @@ section {
     z-index: 201;
     right: 80px;
     top: 55px;
-    /* background-color: #8a0202; */
+
+    // background-color: #8a0202;
 
     .cartTop {
       display: flex;
@@ -287,11 +292,21 @@ section {
         align-items: center;
         background-color: $grayColor;
         z-index: 215;
+        font-size: 26px;
+      }
+
+      .toCartRouter {
+        font-size: 20px;
+      }
+
+      .toCartRouter:hover {
+        color: #00b700;
       }
 
       .cartEmptyTopButton {
         margin: 10px 15px 0px 10px;
         padding: 10px;
+        font-size: 26px;
 
         background-color: #000000;
         color: $whiteColor;
@@ -308,6 +323,7 @@ section {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 30px;
 
       .cartEmptyTopButton {
         margin: 10px 15px 0px 10px;
@@ -329,6 +345,7 @@ section {
       top: 5px;
       background-color: #daa520;
       padding: 10px;
+      font-size: 30px;
     }
 
     .goCart:hover {
@@ -346,18 +363,14 @@ section {
     }
 
     .fakeleft {
-      /* background-color: green; */
+      // background-color: green;
       position: relative;
-      height: 1400px;
-      left: -520px;
-
-      top: -900px;
     }
 
     .fakeright {
       display: flex;
       justify-content: flex-end;
-      /* background-color: green; */
+      // background-color: green;
       position: relative;
       left: 250px;
     }

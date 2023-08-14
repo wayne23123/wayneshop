@@ -216,15 +216,20 @@ function successReduceAll() {
         <div>
           <transition name="fade" tag="div" class="POA">
             <div v-if="useKupengRef">
-              <div class="totalUse">使用了優惠碼</div>
-              <div class="totalPrice">目前購物車總共 {{ total }} 件商品，</div>
-              <div class="totalPriceTop">原本 NT {{ totalPrice }} 元</div>
+              <div class="totalUse">
+                <span class="bgcDa">使用了優惠碼</span>
+              </div>
+              <div class="totalPrice">總共 {{ total }} 件商品，</div>
+              <div class="totalPriceTop">原價NT{{ totalPrice }}</div>
               <div class="totalPriceBottom">
-                特價 NT {{ Math.floor(totalPrice * 0.7) }} 元
+                特價NT{{ Math.floor(totalPrice * 0.7) }}
               </div>
             </div>
-            <div v-else>
-              目前購物車總共 {{ total }} 件商品，總共 NT {{ totalPrice }} 元
+            <div v-else class="fz20">
+              <div>目前購物車</div>
+              <div>總共{{ total }}件商品</div>
+
+              <div>總共NT{{ totalPrice }}</div>
             </div>
           </transition>
         </div>
@@ -274,8 +279,8 @@ section {
       flex-wrap: wrap;
 
       .processDivOne {
-        width: 200px;
-        height: 100px;
+        padding: 20px 10px;
+        font-size: 26px;
         margin: 10px;
         color: rgb(200, 200, 200);
         background-color: rgb(0, 0, 0);
@@ -286,8 +291,7 @@ section {
       }
 
       .processDivTwo {
-        width: 200px;
-        height: 100px;
+        padding: 20px;
         margin: 10px;
         color: black;
         background-color: #ddd;
@@ -295,11 +299,11 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 26px;
       }
 
       .processDivThree {
-        width: 200px;
-        height: 100px;
+        padding: 20px 50px;
         margin: 10px;
         color: black;
         background-color: #ddd;
@@ -307,6 +311,7 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 26px;
       }
     }
   }
@@ -324,6 +329,7 @@ section {
 
       th,
       td {
+        font-size: 26px;
         padding: 10px;
         border-bottom: solid 1px black;
       }
@@ -332,6 +338,8 @@ section {
           .removeButton {
             padding: 10px;
             background-color: rgba(0, 0, 0, 0.15);
+            font-size: 20px;
+            border-radius: 10px;
           }
 
           .removeButton:hover {
@@ -342,6 +350,8 @@ section {
             margin: 0 10px;
             padding: 10px;
             background-color: rgba(0, 0, 0, 0.15);
+            font-size: 20px;
+            border-radius: 10px;
           }
 
           .addLeft:hover {
@@ -376,15 +386,16 @@ section {
       justify-content: center;
 
       .nputKupengInput {
-        width: 150px;
-        height: 30px;
         border-radius: 5px;
+        font-size: 20px;
+        padding: 20px;
       }
       .nputKupengButton {
         margin-left: 10px;
         background-color: #daa520;
         padding: 10px;
         border-radius: 15px;
+        font-size: 20px;
       }
 
       .nputKupengButton:hover {
@@ -416,6 +427,7 @@ section {
         color: white;
         padding: 20px;
         cursor: pointer;
+        font-size: 26px;
       }
 
       .totalLeftButton:hover {
@@ -425,20 +437,30 @@ section {
       }
 
       .totalUse {
-        background-color: #daa520;
-        width: 100px;
+        .bgcDa {
+          background-color: #daa520;
+          padding: 5px;
+          font-size: 20px;
+        }
+      }
+
+      .fz20 {
+        font-size: 26px;
       }
       .totalPrice {
         display: flex;
+        font-size: 20px;
       }
 
       .totalPriceTop {
         text-decoration: line-through;
         width: 120px;
+        font-size: 20px;
       }
       .totalPriceBottom {
         background-color: #daa520;
         width: 120px;
+        font-size: 20px;
       }
 
       .POA {
@@ -458,6 +480,7 @@ section {
       a {
         background-color: #daa520;
         padding: 20px;
+        font-size: 26px;
       }
 
       a:hover {
