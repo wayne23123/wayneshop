@@ -31,7 +31,7 @@ function toTopFunction() {
 
 <template>
   <div class="bgcIMG" :class="{ show: y >= 100 }">
-    <img class="bgcIMGClass" src="../assets/pictures/carl-r.jpg" alt="" />
+    <img class="bgcIMGClass" src="../assets/pictures/carl-rfilter.jpg" alt="" />
   </div>
   <section>
     <div class="sectionHolder"></div>
@@ -150,6 +150,7 @@ section {
 
       .corDaa {
         color: $yellowColor;
+        font-size: 30px;
       }
     }
 
@@ -175,7 +176,7 @@ section {
       flex-wrap: wrap;
 
       .cardLeft {
-        width: 45vw;
+        width: 800px;
         color: #028200;
         padding: 40px;
         z-index: 10;
@@ -190,10 +191,11 @@ section {
           h2 {
             color: black;
             border-bottom: 2px solid #c4c4c4;
+            font-size: 34px;
           }
 
           p {
-            font-size: 18px;
+            font-size: 24px;
             color: #222;
             padding: 20px 10px;
           }
@@ -207,7 +209,7 @@ section {
       }
 
       .imgRightLayout {
-        width: 45vw;
+        width: 800px;
         z-index: 10;
         padding-top: 40px;
         opacity: 0;

@@ -29,6 +29,8 @@
 
 <style scoped lang="scss">
 section {
+  position: absolute;
+  // 為了讓 about頁面能看到
   z-index: 100;
   width: 100vw;
   padding: 50px 0;
