@@ -108,47 +108,49 @@ function stopCarousel() {
         ⇨
       </button>
     </div>
-    <div class="carouselOneToFive">
-      <button
-        @mouseenter="stopCarousel"
-        @mouseleave="startCarousel"
-        @click="buttonDisabled(), (showCarousel = 0)"
-        :disabled="buttonState"
-      >
-        ○
-      </button>
-      <button
-        @mouseenter="stopCarousel"
-        @mouseleave="startCarousel"
-        @click="buttonDisabled(), (showCarousel = 1)"
-        :disabled="buttonState"
-      >
-        ○
-      </button>
-      <button
-        @mouseenter="stopCarousel"
-        @mouseleave="startCarousel"
-        @click="buttonDisabled(), (showCarousel = 2)"
-        :disabled="buttonState"
-      >
-        ○
-      </button>
-      <button
-        @mouseenter="stopCarousel"
-        @mouseleave="startCarousel"
-        @click="buttonDisabled(), (showCarousel = 3)"
-        :disabled="buttonState"
-      >
-        ○
-      </button>
-      <button
-        @mouseenter="stopCarousel"
-        @mouseleave="startCarousel"
-        @click="buttonDisabled(), (showCarousel = 4)"
-        :disabled="buttonState"
-      >
-        ○
-      </button>
+    <div class="carouselOneToFiveContainer">
+      <div class="carouselOneToFive">
+        <button
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          @click="buttonDisabled(), (showCarousel = 0)"
+          :disabled="buttonState"
+        >
+          ○
+        </button>
+        <button
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          @click="buttonDisabled(), (showCarousel = 1)"
+          :disabled="buttonState"
+        >
+          ○
+        </button>
+        <button
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          @click="buttonDisabled(), (showCarousel = 2)"
+          :disabled="buttonState"
+        >
+          ○
+        </button>
+        <button
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          @click="buttonDisabled(), (showCarousel = 3)"
+          :disabled="buttonState"
+        >
+          ○
+        </button>
+        <button
+          @mouseenter="stopCarousel"
+          @mouseleave="startCarousel"
+          @click="buttonDisabled(), (showCarousel = 4)"
+          :disabled="buttonState"
+        >
+          ○
+        </button>
+      </div>
     </div>
   </section>
 </template>
@@ -156,10 +158,10 @@ function stopCarousel() {
 <style scoped lang="scss">
 section {
   .carouselSection {
-    height: 500px;
+    height: 800px;
     width: 100vw;
     max-width: 100%;
-    // background-color: #daa520;
+    // background-color: #171717;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,35 +171,35 @@ section {
       position: absolute;
       left: 10px;
       z-index: 11;
-      padding: 10px;
+      padding: 25px;
       margin: 5px;
       color: #daa520;
       background-color: rgba(0, 0, 0, 0.642);
-      border-radius: 15px;
+      border-radius: 30px;
     }
 
     .carouselRight {
       position: absolute;
       right: 10px;
       z-index: 11;
-      padding: 10px;
+      padding: 25px;
       margin: 5px;
       color: #daa520;
       background-color: rgba(0, 0, 0, 0.642);
-      border-radius: 15px;
+      border-radius: 30px;
     }
 
     .carouselContainer {
       position: relative;
       width: 100vw;
-      height: 500px;
+      height: 800px;
       // background-color: #daa520;
       overflow: hidden;
 
       .page {
         list-style: none;
         width: 100vw;
-        height: 500px;
+        height: 800px;
 
         li {
           .pageImg {
@@ -219,21 +221,39 @@ section {
     }
   }
 
-  .carouselOneToFive {
-    position: absolute;
+  .carouselOneToFiveContainer {
+    width: 100vw;
+    max-width: 100%;
+    padding: 0 0 30px 0;
+    background-color: $yellowColor;
     display: flex;
     justify-content: center;
-    bottom: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 11;
+    .carouselOneToFive {
+      // background-color: #171717;
+      // position: absolute;
+      z-index: 11;
 
-    button {
-      padding: 10px;
-      margin: 5px;
-      color: #daa520;
-      background-color: rgba(0, 0, 0, 0.642);
-      border-radius: 15px;
+      button {
+        padding: 26px;
+        margin: 5px;
+        color: #daa520;
+        background-color: rgba(0, 0, 0, 0.642);
+        border-radius: 30px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .carouselSection {
+      height: 400px;
+      .carouselContainer {
+        height: 400px;
+        .page {
+          height: 400px;
+        }
+      }
     }
   }
 }

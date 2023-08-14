@@ -7,17 +7,17 @@
 
       <div class="centerWord">
         <a href="https://github.com/wayne23123/" class="pad5"
-          ><img src="../assets/svgs/github.svg" alt=""
+          ><img src="../assets/svgs/github.svg" width="50" alt=""
         /></a>
         <router-link to="/" class="pad5">
-          <img src="../assets/svgs/facebook.svg" />
+          <img src="../assets/svgs/facebook.svg" width="50" />
         </router-link>
 
         <router-link to="/" class="pad5">
-          <img src="../assets/svgs/instergram.svg" />
+          <img src="../assets/svgs/instergram.svg" width="50" />
         </router-link>
         <router-link to="/" class="pad5">
-          <img src="../assets/svgs/twitter.svg" />
+          <img src="../assets/svgs/twitter.svg" width="50" />
         </router-link>
       </div>
 
@@ -29,7 +29,6 @@
 
 <style scoped lang="scss">
 section {
-  position: absolute;
   z-index: 100;
   width: 100vw;
   padding: 50px 0;
@@ -47,6 +46,7 @@ section {
     .centerWord {
       display: flex;
       justify-content: center;
+      font-size: 30px;
 
       .pad5 {
         padding: 5px;

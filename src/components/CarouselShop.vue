@@ -105,13 +105,13 @@ function stopCarousel() {
         <ul
           :style="{ right: carouselStart + 'px' }"
           @mouseenter="copyCard($event, production)"
-          v-for="production in productionStore.productions.slice(0, 14)"
+          v-for="production in productionStore.productions.slice(0, 18)"
           :key="production.id"
           class="caroselUl"
         >
           <li>
             <router-link to="/demo"
-              ><img class="caroselLi" :src="production.img" alt="" />
+              ><img class="caroselImg" :src="production.img" alt="" />
             </router-link>
           </li>
         </ul>
@@ -124,7 +124,6 @@ function stopCarousel() {
 section {
   width: 100%;
   max-width: 100%;
-  height: 210px;
   position: relative;
 
   .carouselLayout {
@@ -135,11 +134,12 @@ section {
 
     .carouselLeftButton {
       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
 
       color: red;
       font-size: 30px;
       z-index: 10;
-      top: 90px;
       left: 15px;
 
       background-color: rgba(0, 0, 0, 0.642);
@@ -149,12 +149,13 @@ section {
 
     .carouselRightButton {
       position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
       color: red;
       font-size: 30px;
       z-index: 10;
-      top: 90px;
       right: 15px;
-
       background-color: rgba(0, 0, 0, 0.642);
       padding: 5px;
       border-radius: 15px;
@@ -167,19 +168,25 @@ section {
       .caroselUl {
         position: relative;
         list-style: none;
-        width: 210px;
-        height: 210px;
-        overflow: hidden;
+        width: 260px;
+        height: 260px;
+
         transition: all 1.6s ease;
 
-        .caroselLi {
-          width: 100%;
-          height: auto;
-        }
+        li {
+          width: 260px;
+          height: 260px;
+          overflow: hidden;
 
-        .caroselLi:hover {
-          transform: scale(1.3);
-          transition: all 0.6s ease;
+          .caroselImg {
+            width: 100%;
+            height: 100%;
+          }
+
+          .caroselImg:hover {
+            transform: scale(1.3);
+            transition: all 0.6s ease;
+          }
         }
       }
     }

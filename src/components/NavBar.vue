@@ -48,7 +48,8 @@ const cartsTotalPrice = computed(() => {
     <header>
       <div>
         <router-link to="/"
-          ><div class="svgHover"><img src="../assets/svgs/wss.svg" /></div
+          ><div class="svgHover">
+            <img src="../assets/svgs/wss.svg" width="130" /></div
         ></router-link>
       </div>
       <input type="checkbox" id="nav" hidden />
@@ -92,7 +93,7 @@ const cartsTotalPrice = computed(() => {
 section {
   header {
     background: $grayColor;
-    height: 70px;
+    // height: 70px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -111,6 +112,10 @@ section {
       padding: 5px 0;
       margin: 0 1;
       border: 3px solid transparent;
+    }
+
+    .svgHover {
+      font-size: 26px;
     }
 
     .svgHover:hover {

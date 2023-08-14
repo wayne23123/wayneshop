@@ -63,7 +63,8 @@ function successReduceAll() {
     <header :class="{ show: y > 78 }">
       <div>
         <router-link to="/"
-          ><div class="svgHover"><img src="../assets/svgs/wss.svg" /></div
+          ><div class="svgHover">
+            <img src="../assets/svgs/wss.svg" width="130" /></div
         ></router-link>
       </div>
       <input type="checkbox" id="nav_check" hidden />
@@ -191,7 +192,7 @@ section {
   header {
     position: fixed;
     background: $grayColor;
-    height: 70px;
+    // height: 70px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -213,6 +214,10 @@ section {
       padding: 5px 0;
       margin: 0 1;
       border: 3px solid transparent;
+    }
+
+    .svgHover {
+      font-size: 26px;
     }
 
     .svgHover:hover {

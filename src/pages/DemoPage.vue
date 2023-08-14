@@ -277,7 +277,7 @@ section {
       .rightInfoLayout {
         width: 400px;
         height: 400px;
-        padding: 0 0 0 20px;
+        padding: 0 20px 0 20px;
 
         .rightInfo {
           padding: 15px;
