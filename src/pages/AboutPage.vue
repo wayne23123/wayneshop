@@ -230,17 +230,19 @@ section {
 }
 
 .toTop {
-  top: 550px;
-  right: 22px;
+  bottom: 100px;
+  right: 50px;
   position: fixed;
   z-index: 200;
   background-color: #7f010190;
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   cursor: pointer;
+
   .toTopButton {
     position: relative;
+    font-size: 20px;
     bottom: 7px;
     padding-left: 0;
     color: #999;

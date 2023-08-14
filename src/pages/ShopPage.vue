@@ -379,9 +379,9 @@ section {
           cursor: pointer;
         }
         .searchInput {
-          width: 150px;
-          height: 30px;
           border-radius: 10px;
+          font-size: 20px;
+          padding: 10px;
         }
         .inputRadio {
           display: none;

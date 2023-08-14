@@ -48,7 +48,7 @@ section {
     .centerWord {
       display: flex;
       justify-content: center;
-      font-size: 30px;
+      font-size: 20px;
 
       .pad5 {
         padding: 5px;

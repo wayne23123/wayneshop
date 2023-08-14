@@ -94,21 +94,21 @@ watch([elementX, elementY], () => {
   // 沒移入盒子不執行
   if (isOutside.value) return;
   // 有效範圍內控制滑塊距離
-  if (elementX.value > 100 && elementX.value < 300) {
+  if (elementX.value > 100 && elementX.value < 400) {
     left.value = elementX.value - 100;
   }
-  if (elementY.value > 100 && elementY.value < 300) {
+  if (elementY.value > 100 && elementY.value < 400) {
     top.value = elementY.value - 100;
   }
   // 處理邊界
-  if (elementX.value > 300) {
-    left.value = 200;
+  if (elementX.value > 400) {
+    left.value = 300;
   }
   if (elementX.value < 100) {
     left.value = 0;
   }
-  if (elementY.value > 300) {
-    top.value = 200;
+  if (elementY.value > 400) {
+    top.value = 300;
   }
   if (elementY.value < 100) {
     top.value = 0;
@@ -160,7 +160,7 @@ watch([elementX, elementY], () => {
         <div class="rightInfoContainer">
           <div class="rightInfoLayout">
             <div class="rightInfo">
-              <div class="demoTitle">商品名稱: {{ demoRef.title }}</div>
+              <div class="demoTitle">{{ demoRef.title }}</div>
 
               <div class="demoPrice">商品價格: {{ demoRef.price }}</div>
               <div class="demoStar">
@@ -202,9 +202,10 @@ watch([elementX, elementY], () => {
 <style scoped lang="scss">
 section {
   .bread {
-    padding: 20px;
+    padding: 50px;
     background-color: $yellowColor;
     color: black;
+    font-size: 26px;
   }
 
   .greenHov:hover {
@@ -214,17 +215,18 @@ section {
   .sectionDemo {
     width: 100vw;
     max-width: 100%;
-    padding: 0 0 50px 0;
+
+    padding: 50px 0 150px 0;
     display: flex;
     justify-content: center;
     // background-color: #daa520;
-    background-image: url(../assets/svgs/layered-waves1.svg);
+    background-image: url(../assets/svgs/stacked-peaks2.svg);
     background-repeat: no-repeat;
     background-size: cover;
 
     .demoLayout {
       position: relative;
-      width: 800px;
+      width: 1000px;
       max-width: 800px;
       /* background-color: #500000; */
       display: flex;
@@ -232,10 +234,11 @@ section {
 
       .leftImgLayout {
         .leftImg {
-          width: 400px;
-          height: 400px;
+          width: 600px;
+          height: 600px;
           background-color: #343333;
           overflow: hidden;
+          position: relative;
 
           .imgSize {
             width: 100%;
@@ -243,8 +246,8 @@ section {
           }
 
           .layer {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             background: rgba(0, 0, 0, 0.2);
             left: 0;
             top: 0;
@@ -256,8 +259,8 @@ section {
           position: absolute;
           top: 0;
           left: 412px;
-          width: 400px;
-          height: 400px;
+          width: 600px;
+          height: 600px;
           z-index: 10;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           background-repeat: no-repeat;
@@ -265,8 +268,8 @@ section {
           overflow: hidden;
 
           .imgLargeSize {
-            width: 800px;
-            height: 800px;
+            width: 1000px;
+            height: 1000px;
             object-position: v-bind(positionX) v-bind(positionY);
           }
         }
@@ -275,8 +278,8 @@ section {
 
     .rightInfoContainer {
       .rightInfoLayout {
-        width: 400px;
-        height: 400px;
+        width: 600px;
+        height: 600px;
         padding: 0 20px 0 20px;
 
         .rightInfo {
@@ -288,17 +291,20 @@ section {
           .demoTitle {
             color: black;
             padding: 5px;
+            font-size: 32px;
           }
 
           .demoPrice {
             color: black;
             padding: 5px;
+            font-size: 26px;
           }
 
           .demoStar {
             color: #565656;
             padding: 5px;
             display: flex;
+            font-size: 24px;
 
             .demoYellowStar {
               color: yellow;
@@ -323,6 +329,7 @@ section {
             color: black;
             padding: 6px 10px 6px 10px;
             margin-left: 5px;
+            font-size: 20px;
           }
 
           .demoButton:hover {
@@ -333,14 +340,17 @@ section {
 
           .demoCategory {
             color: #565656;
+            font-size: 24px;
           }
           .demoDescriptionTitle {
             color: black;
             padding: 5px 0;
+            font-size: 26px;
           }
 
           .demoDescription {
             color: black;
+            font-size: 24px;
           }
         }
       }
