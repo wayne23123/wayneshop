@@ -149,14 +149,18 @@ const cancel = () => {
                 </div>
               </td>
               <td v-if="cartItem.kupeng">
-                <div class="disCen">優惠價</div>
-                <div>NT${{ Math.floor(cartItem.price * 0.7) }}</div>
+                <div class="disCen pad20">優惠價</div>
+                <div class="pad20">
+                  NT${{ Math.floor(cartItem.price * 0.7) }}
+                </div>
               </td>
               <td v-else="cartItem.kupeng">
-                <div class="disCen">原價</div>
-                <div>NT${{ cartItem.price }}</div>
+                <div class="disCen pad20">原價</div>
+                <div class="pad20">NT${{ cartItem.price }}</div>
               </td>
-              <td class="pad10">x{{ cartItem.counter }}</td>
+              <td>
+                <div class="pad20">x{{ cartItem.counter }}</div>
+              </td>
             </tr>
           </table>
 
@@ -320,14 +324,16 @@ const cancel = () => {
                 </div>
               </td>
               <td v-if="search.kupeng">
-                <div class="disCen">優惠價</div>
-                <div>NT${{ Math.floor(search.price * 0.7) }}</div>
+                <div class="disCen pad20">優惠價</div>
+                <div class="pad20">NT${{ Math.floor(search.price * 0.7) }}</div>
               </td>
               <td v-else="search.kupeng">
-                <div class="disCen">原價</div>
-                <div>NT${{ search.price }}</div>
+                <div class="disCen pad20">原價</div>
+                <div class="pad20">NT${{ search.price }}</div>
               </td>
-              <td class="pad10">x{{ search.counter }}</td>
+              <td>
+                <div class="pad20">x{{ search.counter }}</div>
+              </td>
             </tr>
           </table>
 
@@ -491,7 +497,16 @@ section {
     padding: 15px;
     color: $grayColor;
 
+    span {
+      font-size: 30px;
+    }
+
+    label {
+      font-size: 30px;
+    }
+
     input {
+      font-size: 20px;
       padding: 10px;
     }
   }
@@ -503,6 +518,7 @@ section {
     .cardLayout {
       background-color: $grayColor;
       margin-top: 2px;
+      font-size: 26px;
 
       .tableContainer {
         display: flex;
@@ -525,6 +541,10 @@ section {
 
             .desCor {
               color: #747474;
+            }
+
+            .pad20 {
+              padding: 0 20px;
             }
           }
         }

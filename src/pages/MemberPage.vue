@@ -64,7 +64,7 @@ section {
     min-height: 30vw;
 
     .memberAside {
-      width: 180px;
+      width: 300px;
       margin-right: 15px;
       border-radius: 2px;
       /* background-color: #c4c4c4; */
@@ -75,13 +75,13 @@ section {
       border-bottom: 1px solid #f6f6f6;
 
       .userManage {
-        width: 180px;
+        // width: 300px;
         /* background-color: #c4c4c4; */
 
         h4 {
           color: #464646;
           background-color: #adadad;
-          font-size: 18px;
+          font-size: 30px;
           font-weight: 400;
           padding: 20px 52px 5px;
           border-top: 1px solid #f6f6f6;
@@ -90,6 +90,7 @@ section {
 
         .links {
           padding: 0 52px 10px;
+          font-size: 26px;
         }
       }
     }

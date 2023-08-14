@@ -187,7 +187,7 @@ function clearimgRef() {
           <div class="dis">
             <div>
               <span class="bgcTitle"> 姓名: </span>
-              {{ userStore.userInfo.name }}
+              <span class="userInfo">{{ userStore.userInfo.name }}</span>
             </div>
             <div @click="showNameEdit" class="showEdit">_ ✎ 編輯</div>
           </div>
@@ -218,7 +218,7 @@ function clearimgRef() {
           <div class="dis">
             <div>
               <span class="bgcTitle"> 電話: </span>
-              {{ userStore.userInfo.telephone }}
+              <span class="userInfo"> {{ userStore.userInfo.telephone }}</span>
             </div>
             <div @click="showTelephoneEdit" class="showEdit">_ ✎ 編輯</div>
           </div>
@@ -250,7 +250,7 @@ function clearimgRef() {
           <div class="dis">
             <div>
               <span class="bgcTitle"> email: </span>
-              {{ userStore.userInfo.email }}
+              <span class="userInfo">{{ userStore.userInfo.email }}</span>
             </div>
             <div @click="showEmailEdit" class="showEdit">_ ✎ 編輯</div>
           </div>
@@ -280,7 +280,7 @@ function clearimgRef() {
           <div class="dis">
             <div>
               <span class="bgcTitle"> 地址: </span>
-              {{ userStore.userInfo.adress }}
+              <span class="userInfo">{{ userStore.userInfo.adress }}</span>
             </div>
             <div @click="showAdressEdit" class="showEdit">_ ✎ 編輯</div>
           </div>
@@ -344,7 +344,7 @@ function clearimgRef() {
                 </div>
               </div>
             </div>
-            <div>
+            <div class="newImgContainer">
               <div v-if="imageUrl === ''" class="newImgLayout marAuto">
                 <img :src="userStore.userInfo.img" class="avatarImg" alt="" />
               </div>
@@ -407,7 +407,7 @@ section {
 
     .bgcHome {
       padding-left: 26px;
-      font-size: 18px;
+      font-size: 28px;
       font-weight: normal;
       padding: 10px;
       background-color: #dededebf;
@@ -441,12 +441,19 @@ section {
         padding: 10px;
         border-radius: 15px;
         background-color: #939393;
+        font-size: 26px;
+      }
+
+      .userInfo {
+        font-size: 26px;
+        padding-left: 30px;
       }
 
       .showEdit {
         cursor: pointer;
         opacity: 0;
         flex-grow: 1;
+        font-size: 26px;
         /* background-color: #000; */
       }
 
@@ -464,9 +471,10 @@ section {
         transition: all 0.5s ease;
 
         .inputText {
-          height: 40px;
           border-radius: 15px;
           width: 80%;
+          font-size: 26px;
+          padding: 10px;
         }
 
         .completeBtn {
@@ -475,6 +483,7 @@ section {
           width: 20%;
           border-radius: 15px;
           background-color: #84b770;
+          font-size: 26px;
         }
 
         .completeBtn:hover {
@@ -503,6 +512,7 @@ section {
           padding: 10px;
           border-radius: 15px;
           background-color: #accee3;
+          font-size: 26px;
         }
 
         .tableRightCardBtnLayoutBtnR:hover {
@@ -515,6 +525,7 @@ section {
           padding: 10px;
           border-radius: 15px;
           background-color: #d8bebe;
+          font-size: 26px;
         }
 
         .tableRightCardBtnLayoutBtnL:hover {
@@ -540,6 +551,10 @@ section {
 
       .marAuto {
         margin: auto;
+      }
+
+      .newImgContainer {
+        flex-grow: 1;
       }
     }
   }

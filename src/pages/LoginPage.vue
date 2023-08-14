@@ -114,6 +114,8 @@ function showLoadingF() {
         <div class="formCardLayout">
           <div class="formCard">
             <br />
+            <br />
+            <br />
             <div class="disCen bgcTitle">帳戶登入</div>
             <br />
             <br />
@@ -121,15 +123,23 @@ function showLoadingF() {
               ref="formRef"
               :model="form"
               :rules="rules"
-              label-position="right"
+              label-position="top"
               label-width="60px"
               status-icon
             >
               <el-form-item prop="account" label="帳號">
-                <el-input v-model="form.account" />
+                <el-input
+                  size="large"
+                  v-model="form.account"
+                  placeholder="請輸入帳號"
+                />
               </el-form-item>
               <el-form-item prop="password" label="密碼">
-                <el-input v-model="form.password" />
+                <el-input
+                  size="large"
+                  v-model="form.password"
+                  placeholder="請輸入密碼"
+                />
               </el-form-item>
               <el-form-item prop="agree" label-width="22px">
                 <el-checkbox size="large" v-model="form.agree">
@@ -140,6 +150,7 @@ function showLoadingF() {
                 >點擊登入</el-button
               >
             </el-form>
+            <br />
             <br />
             <br />
           </div>
@@ -194,7 +205,6 @@ section {
     }
 
     .formCardContainer {
-      height: 60vh;
       color: black;
       background-image: url(../assets/svgs/circle-scatter1.svg);
       background-repeat: no-repeat;
@@ -206,9 +216,9 @@ section {
         // background-color: #c4c4c4;
 
         .formCard {
-          width: 350px;
+          width: 600px;
           background-color: #c4c4c4;
-          padding: 0 20px 0 20px;
+          padding: 0 50px 0 50px;
           /* width: 250px; */
           border-radius: 15px;
 
@@ -217,14 +227,15 @@ section {
             border-radius: 15px;
             background-color: #535353;
             color: #c4c4c4;
-            font-size: 30px;
+            font-size: 36px;
           }
 
           .subBtn {
             width: 100%;
             background-color: #171717;
             color: #c4c4c4;
-            font-size: 30px;
+            font-size: 34px;
+            padding: 50px;
 
             border-radius: 15px;
           }

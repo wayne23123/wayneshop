@@ -208,7 +208,7 @@ section {
     transform: translateY(-100%);
     opacity: 0;
 
-    a.router-link-active {
+    a.router-link-exact-active {
       color: #00b700;
     }
 

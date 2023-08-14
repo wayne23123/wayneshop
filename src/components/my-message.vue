@@ -68,7 +68,7 @@ export default {
 .myMessage {
   position: fixed;
   z-index: 9999;
-  bottom: 40px;
+  bottom: 100px;
   line-height: 50px;
   padding: 0 25px;
   border: 1px solid #e4e4e4;
@@ -77,6 +77,10 @@ export default {
   border-radius: 4px;
   left: 50%;
   transform: translateX(-50%);
+
+  span {
+    font-size: 30px;
+  }
 }
 
 .listUp-enter-active,

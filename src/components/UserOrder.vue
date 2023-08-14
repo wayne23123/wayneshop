@@ -45,13 +45,20 @@ section {
   }
   .orderContainer {
     padding: 20px;
+    // background-color: #171717;
     .orderTop {
       display: flex;
-      padding: 0;
+      // background-color: #171717;
       border-bottom: 1px solid black;
 
       .links {
         padding: 0 20px;
+        font-size: 26px;
+        // background-color: #171717;
+
+        a {
+          padding: 0 0 6px 0;
+        }
       }
     }
     .orderLayout {
