@@ -34,7 +34,7 @@
 
 - 封裝 message 彈窗提示組件，實現提示自定義。
 
-- 使用 elementPlus 設置提示訊息及處理表單驗證，
+- 使用 elementPlus 處理表單驗證，
 
 - 使用 vueuse 實現更多更能功能，
 
@@ -64,15 +64,15 @@
 
 - 點擊商品可以用放大鏡查看商品功能
 
-![This is a alt text.](https://imgur.com/gallery/SfP4r8x)
+![This is a alt text.](https://imgur.com/lBFPu3i.jpg)
 
 - 在購物車頁面可以實現訂單的增加刪除，以及使用酷碰卷。
 
-![This is a alt text.](https://imgur.com/gallery/oTz3Ip6)
+![This is a alt text.](https://imgur.com/VBB6coB.jpg)
 
 - 登入後可以查看訂單狀況，並實現刪除、查詢、完成訂單功能。
 
-![This is a alt text.](https://imgur.com/gallery/Dcoihtf)
+![This is a alt text.](https://imgur.com/uxcYdQO.jpg)
 
 ## Recommended IDE Setup
 
