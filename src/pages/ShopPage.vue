@@ -233,6 +233,14 @@ showLoadingF();
               <img class="imgPOR" :src="production.img" />
             </router-link>
           </div>
+
+          <div class="cardLeft">
+            <div class="cardTitle">{{ production.title }}</div>
+            <div class="cardCategory">種類: {{ production.category }}</div>
+            <div class="cardStar">{{ production.star }}</div>
+            <div class="cardPrice">NT {{ production.price }}</div>
+          </div>
+
           <div class="cardCart">
             <select name="sizeRef" v-model="sizeRef">
               <option value="M">M</option>
@@ -246,22 +254,20 @@ showLoadingF();
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-            <button @click="addCartsFunction" class="cardCartButton">
+            <button
+              @click="addCartsFunction"
+              class="cardCartButton poptip"
+              aria-controls="加入購物車"
+            >
               <div class="buttonText">🛒</div>
             </button>
-          </div>
-          <div class="cardLeft">
-            <div class="cardTitle">{{ production.title }}</div>
-            <div class="cardCategory">種類: {{ production.category }}</div>
-            <div class="cardStar">{{ production.star }}</div>
-            <div class="cardPrice">NT {{ production.price }}</div>
           </div>
         </div>
       </div>
 
       <!-- <Footer /> -->
 
-      <div class="topNavBar opa" :class="{ show: y >= 295 }">
+      <div class="topNavBar opa" :class="{ show: y >= 357 }">
         <div class="topNavBarLayout">
           <div class="topNavBarCenter">
             <label for="input-field">搜尋:</label>
@@ -367,6 +373,7 @@ section {
 
       .topNavBarCenter {
         padding: 10px 0 10px 15px;
+        font-size: 30px;
 
         label {
           cursor: pointer;
@@ -391,7 +398,7 @@ section {
   .show {
     z-index: 99;
     position: fixed;
-    top: 70px;
+    top: 90px;
     width: 100%;
     transition: all 0.1s linear;
     opacity: 1;
@@ -404,6 +411,7 @@ section {
     .breacPad {
       padding: 20px;
       margin-left: 20px;
+      font-size: 24px;
     }
   }
 
@@ -420,22 +428,21 @@ section {
     width: 100vw;
     max-width: 100%;
     .shopCard {
+      position: relative;
       display: flex;
       flex-direction: column;
-      margin: 12px;
-      padding: 0 10px;
+      margin: 24px;
+      padding: 10px 10px;
       border-radius: 15px;
       background-color: gray;
-      height: 350px;
-      width: 15vw;
+      // height: 350px;
+      // width: 200px;
       min-width: 250px;
       overflow: hidden;
-      left: 60px;
 
       .cardImg {
-        position: relative;
-        width: 230px;
-        height: 230px;
+        width: 360px;
+        height: 360px;
         top: 15px;
         background-color: black;
         overflow: hidden;
@@ -461,64 +468,119 @@ section {
       }
 
       .cardCart {
-        position: relative;
-        bottom: -95px;
-        left: 115px;
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
         z-index: 50;
+
+        select {
+          font-size: 30px;
+          margin-right: 5px;
+        }
         .cardCartButton {
           position: relative;
           bottom: 10px;
           background-color: rgba(255, 0, 0, 0.772);
-          padding: 18px;
+          padding: 36px;
           border-radius: 50%;
+          font-size: 30px;
 
           .buttonText {
             position: absolute;
-            right: 9px;
-            bottom: 9px;
+            right: 14px;
+            bottom: 14px;
             pointer-events: none;
           }
         }
 
-        .cardCartButton:hover {
-          background-color: rgba(255, 0, 0, 1);
+        .poptip {
+          position: relative;
+          z-index: 101;
+          &::before,
+          &::after {
+            visibility: hidden;
+            opacity: 0;
+            transform: translate3d(0, 0, 0);
+            transition: all 0.3s ease 0.2s;
+            box-sizing: border-box;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 0 8px;
+            border-color: #30363d transparent transparent transparent;
+            left: calc(50% - #{8px});
+            top: 0px;
+            transform: translateX(0%) translateY(-12px);
+          }
+
+          &::after {
+            font-size: 14px;
+            color: #fff;
+            content: attr(aria-controls);
+            position: absolute;
+            padding: 6px 12px;
+            white-space: nowrap;
+            z-index: -1;
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%) translateY(-12px);
+            background: #30363d;
+            line-height: 1;
+            border-radius: 2px;
+          }
+          &:hover::before,
+          &:hover::after {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
 
-      .cardLeft {
-        position: relative;
-        bottom: 15px;
+      .cardCartButton:hover {
+        background-color: rgba(255, 0, 0, 1);
+      }
 
+      .cardLeft {
         .cardTitle {
           color: black;
+          font-size: 30px;
         }
 
         .cardCategory {
           color: rgba(30, 30, 30, 0.7);
+          font-size: 20px;
         }
         .cardStar {
           color: yellow;
+          font-size: 20px;
         }
 
         .cardPrice {
           color: black;
+          font-size: 26px;
         }
       }
     }
   }
 
   .toTop {
-    top: 550px;
-    right: 22px;
+    bottom: 100px;
+    right: 50px;
     position: fixed;
     z-index: 200;
     background-color: #7f010190;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     cursor: pointer;
+
     .toTopButton {
       position: relative;
+      font-size: 20px;
       bottom: 7px;
       padding-left: 0;
       color: #999;
@@ -557,6 +619,21 @@ section {
     border-right-color: transparent;
 
     animation: infinite rotate 0.5s linear;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .topNavBar {
+      .topNavBarLayout {
+        .topNavBarCenter {
+          font-size: 16px;
+        }
+      }
+    }
+    .show {
+      top: 100px;
+    }
   }
 }
 

@@ -12,19 +12,20 @@
 .marquee {
   position: relative;
   width: 100vw;
-  height: 60px;
+  height: 70px;
   max-width: 100%;
   overflow: hidden;
   background-color: $yellowColor;
 
   .track {
     position: absolute;
-    animation: marquee 18s linear infinite;
+    animation: marquee 24s linear infinite;
 
     p {
-      font-size: 16px;
+      font-size: 30px;
       color: #222;
       margin: 15px 0 20px 0;
+      // background-color: #c4c4c4;
     }
   }
 }
@@ -34,7 +35,7 @@
     transform: translateX(250%);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-150%);
   }
 }
 </style>
