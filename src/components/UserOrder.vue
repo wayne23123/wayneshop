@@ -54,16 +54,34 @@ section {
       .links {
         padding: 0 20px;
         font-size: 26px;
+        // font-size: 20px;
         // background-color: #171717;
 
         a {
           padding: 0 0 6px 0;
+          // padding: 0 0 5px 0;
         }
       }
     }
     .orderLayout {
       width: 100%;
       background-color: #000;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .orderContainer {
+      .orderTop {
+        .links {
+          font-size: 20px;
+
+          a {
+            padding: 0 0 5px 0;
+          }
+        }
+      }
     }
   }
 }

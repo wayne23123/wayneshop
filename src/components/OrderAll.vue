@@ -649,4 +649,25 @@ section {
     }
   }
 }
+
+@media only screen and (max-width: 700px) {
+  section {
+    .dataLayout {
+      .cardLayout {
+        .tableContainer {
+          table {
+            tr {
+              td {
+                padding: 0;
+                .pad20 {
+                  padding: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>

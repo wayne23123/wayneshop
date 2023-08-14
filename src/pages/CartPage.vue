@@ -192,69 +192,59 @@ function successReduceAll() {
 
     <div class="sectionTotal">
       <div class="sectionTotalLayout">
-        <div
-          v-if="cartStore.cartsHasProductionFunction()"
-          @click="
-            {
-              cartStore.clearCartFunction();
-              successReduceAll();
-            }
-          "
-          class="totalLeftButton"
-        >
-          清除購物車
+        <div class="totalLeftButton">
+          <div>
+            <div
+              v-if="cartStore.cartsHasProductionFunction()"
+              @click="
+                {
+                  cartStore.clearCartFunction();
+                  successReduceAll();
+                }
+              "
+              class="leftClearBtn"
+            >
+              清除購物車
+            </div>
+            <div v-else><router-link to="/shop">前往至商城</router-link></div>
+          </div>
         </div>
-        <router-link
-          v-else
-          @mouseenter="copyStepOne"
-          to="/shop"
-          class="totalLeftButton"
-        >
-          <div>前往至商城</div>
-        </router-link>
 
-        <div>
-          <transition name="fade" tag="div" class="POA">
+        <div class="totalMiddleButton">
+          <div>
             <div v-if="useKupengRef">
               <div class="totalUse">
                 <span class="bgcDa">使用了優惠碼</span>
               </div>
-              <div class="totalPrice">總共 {{ total }} 件商品，</div>
-              <div class="totalPriceTop">原價NT{{ totalPrice }}</div>
+              <div class="totalPriceTop">原價NT{{ totalPrice }}元</div>
               <div class="totalPriceBottom">
-                特價NT{{ Math.floor(totalPrice * 0.7) }}
+                特價NT{{ Math.floor(totalPrice * 0.7) }}元
               </div>
             </div>
-            <div v-else class="fz20">
+            <div v-else>
               <div>目前購物車</div>
               <div>總共{{ total }}件商品</div>
-
-              <div>總共NT{{ totalPrice }}</div>
+              <div>總共NT{{ totalPrice }}元</div>
             </div>
-          </transition>
+          </div>
         </div>
 
-        <div>
-          <transition name="fade" tag="div" class="totalRightButton">
-            <router-link
+        <div class="totalRightButton">
+          <div>
+            <div
               v-if="cartStore.cartsHasProductionFunction()"
               @mouseenter="copyStepOne"
-              to="/form"
-              class="router"
-              >前去結帳</router-link
             >
-            <router-link
-              v-else
-              @mouseenter="copyStepOne"
-              to="/shop"
-              class="router"
-            >
-              <div>到商城看新商品</div>
-            </router-link>
-          </transition>
+              <router-link to="/form"> 前去結帳 </router-link>
+            </div>
+            <div v-else>
+              <router-link to="/shop">前往商城</router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     <div v-show="showLoading" class="loading"></div>
   </section>
 </template>
@@ -408,85 +398,81 @@ section {
   .sectionTotal {
     width: 100vw;
     max-width: 100%;
-    height: 190px;
+    padding: 50px 0;
+
     color: black;
     display: flex;
     justify-content: center;
     background-color: #939393;
 
     .sectionTotalLayout {
-      width: 60vw;
-      height: 190px;
-      /* background-color: #fff; */
+      width: 70vw;
+
+      // background-color: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
 
       .totalLeftButton {
-        background-color: black;
-        color: white;
-        padding: 20px;
-        cursor: pointer;
+        // background-color: black;
+        padding: 30px 30px;
+        margin: 10px;
         font-size: 26px;
-      }
 
-      .totalLeftButton:hover {
-        background-color: #aa0000;
-        color: black;
-        transition: all 0.6s ease;
-      }
+        .leftClearBtn {
+          border-radius: 15px;
+          background-color: black;
+          color: white;
+          cursor: pointer;
+          padding: 30px 30px;
+        }
 
-      .totalUse {
-        .bgcDa {
-          background-color: #daa520;
-          padding: 5px;
-          font-size: 20px;
+        .leftClearBtn:hover {
+          background-color: #aa0000;
+          color: black;
+          transition: all 0.4s ease;
+        }
+
+        a {
+          border-radius: 15px;
+          background-color: black;
+          color: white;
+          cursor: pointer;
+          padding: 30px 30px;
+        }
+
+        a:hover {
+          background-color: #aa0000;
+          color: black;
+          transition: all 0.4s ease;
         }
       }
 
-      .fz20 {
+      .totalMiddleButton {
+        // background-color: #171717;
+        padding: 30px 30px;
+        margin: 10px;
         font-size: 26px;
-      }
-      .totalPrice {
-        display: flex;
-        font-size: 20px;
-      }
-
-      .totalPriceTop {
-        text-decoration: line-through;
-        width: 120px;
-        font-size: 20px;
-      }
-      .totalPriceBottom {
-        background-color: #daa520;
-        width: 120px;
-        font-size: 20px;
-      }
-
-      .POA {
-        width: 196px;
-        position: absolute;
-        transform: translate(-50%, -50%);
       }
 
       .totalRightButton {
-        display: flex;
-        justify-content: center;
-        width: 150px;
-        position: absolute;
-        transform: translate(-50%, -50%);
-      }
-
-      a {
-        background-color: #daa520;
-        padding: 20px;
+        // background-color: #171717;
+        padding: 30px 30px;
+        margin: 10px;
         font-size: 26px;
-      }
 
-      a:hover {
-        color: rgb(0, 144, 0);
-        background-color: #fabd21;
-        transition: all 0.4s ease;
+        a {
+          background-color: #daa520;
+          padding: 30px 30px;
+          border-radius: 15px;
+        }
+
+        a:hover {
+          color: rgb(0, 144, 0);
+          background-color: #fabd21;
+          transition: all 0.4s ease;
+        }
       }
     }
   }
@@ -526,6 +512,15 @@ section {
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  section {
+    .sectionTotal {
+      .sectionTotalLayout {
+      }
     }
   }
 }

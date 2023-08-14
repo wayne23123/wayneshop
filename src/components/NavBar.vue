@@ -165,7 +165,7 @@ section {
     position: absolute;
     width: 100%;
     left: -100%;
-    top: 95px;
+    top: 130px;
     width: 100%;
     background-color: #9e9e9e;
     padding: 30px;

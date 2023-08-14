@@ -56,7 +56,7 @@ function showLoadingF() {
           <li>
             <a
               href="javascript:;"
-              @click="$router.push('/member')"
+              @click="$router.push('/member/user')"
               class="borR"
             >
               <span class="imgLayout">
@@ -107,11 +107,6 @@ function showLoadingF() {
               >我的訂單</a
             >
           </li>
-          <li>
-            <a href="javascript:;" @click="$router.push('/member/user')"
-              >會員中心</a
-            >
-          </li>
         </template>
         <template v-else>
           <li>
@@ -131,10 +126,6 @@ function showLoadingF() {
 </template>
 
 <style scoped lang="scss">
-.dis {
-  display: flex;
-}
-
 nav {
   background-color: #2b2a2a;
 
@@ -142,6 +133,7 @@ nav {
     list-style: none;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 
     li {
       a {

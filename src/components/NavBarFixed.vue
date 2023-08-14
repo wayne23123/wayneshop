@@ -202,11 +202,11 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
-    z-index: 100;
+    z-index: 201;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
     transform: translateY(-100%);
-    opacity: 0;
+    opacity: 1;
 
     a.router-link-exact-active {
       color: #00b700;
@@ -375,59 +375,64 @@ section {
       left: 250px;
     }
   }
+
+  .hamburger {
+    cursor: pointer;
+    display: none;
+  }
+
+  .hamburger div {
+    width: 30px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: black;
+  }
 }
 
-.hamburger {
-  cursor: pointer;
-  display: none;
-}
-
-.hamburger div {
-  width: 30px;
-  height: 3px;
-  margin: 5px 0;
-  background-color: black;
-}
 @media only screen and (max-width: 900px) {
   header {
     padding: 0 30px;
   }
 }
 @media only screen and (max-width: 700px) {
-  header {
-    transform: translateY(-500%);
-  }
-  .hamburger {
-    display: block;
-  }
-  nav {
-    position: absolute;
-    width: 100%;
-    left: -100%;
-    top: 70px;
-    width: 100%;
-    background-color: #9e9e9e;
-    padding: 30px;
-    transition: 0.3s;
-    z-index: 99;
-  }
-  #nav_check:checked ~ nav {
-    left: 0;
-  }
-  ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  a {
-    margin: 5px 0;
-  }
-  .svgH {
-    display: flex;
-    justify-content: center;
+  section {
+    header {
+      transform: translate(-100%, -100%);
+    }
+    .show {
+      transform: none;
+    }
+    nav {
+      position: absolute;
+      width: 100%;
+      left: -100%;
+      top: 100px;
+      width: 100%;
+      background-color: #9e9e9e;
+      padding: 30px;
+      transition: 0.3s;
+      z-index: 201;
+    }
+    #nav_check:checked ~ nav {
+      left: 0;
+    }
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+    a {
+      margin: 5px 0;
+    }
+    .svgH {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hamburger {
+      display: block;
+    }
   }
 }
-
-/* cart----------------------------------------------------------------------- */
 
 /* 控制TransitionGroup------------------------------------------------------------------------------------------------------- */
 .fade-enter-active,
