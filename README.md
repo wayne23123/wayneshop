@@ -74,6 +74,9 @@
 
 ![This is a alt text.](https://imgur.com/uxcYdQO.jpg)
 
+- 最後，感謝您的觀看。
+
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
